@@ -143,4 +143,3 @@ python3 tests/run_tests.py
 - [Project root README](../../README.md) — whole-project architecture, quick start
 - [Brand AI-Readiness Audit](../README.md) — the 9-skill backend this subsystem reads output from
 - [tests/README.md](tests/README.md) — test file and fixture breakdown
-- [User Manual](../../docs/USER_MANUAL.md) — click-by-click guide to the Query Intelligence dashboard

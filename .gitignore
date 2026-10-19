@@ -48,3 +48,10 @@ docs/Judge_QA_Bank.pdf
 
 # Collected audit output (third-party site data)
 brand-ai-readiness-audit/audit-output/
+
+# Dashboard-only manual (frontend is not part of this repo)
+docs/USER_MANUAL.md
+
+# Generated output
+audit-output/
+nlp-output/

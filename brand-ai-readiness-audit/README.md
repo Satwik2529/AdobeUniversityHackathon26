@@ -261,6 +261,5 @@ brand-ai-readiness-audit/
 
 ## Related documentation
 
-- [Project root README](../README.md) — how this fits together with the frontend and Query Intelligence
+- [Project root README](../README.md) — how this fits together with Query Intelligence
 - [Query Intelligence](nlp-query-intelligence/README.md) — the NLP subsystem that reads this audit's own output
-- [User Manual](../docs/USER_MANUAL.md) — click-by-click guide to the running dashboard

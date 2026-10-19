@@ -16,15 +16,6 @@ actual query ("best laptop for students under ₹60,000 with 16GB RAM"), it
 checks whether the site's own already-captured evidence could support that
 specific answer — and shows exactly why or why not.
 
-### Run an audit
-
-Either from the dashboard (enter a URL and submit), or from the command line:
-
-```bash
-cd brand-ai-readiness-audit
-python audit.py https://example.com
-```
-
 ## Two systems, one direction of dependency
 
 ```
@@ -48,7 +39,7 @@ can be deleted without changing anything the audit does — it only ever
   on-site engagement — each owned by its own Agent Skill.
 - **Evidence-backed findings only** — no concrete URL and observed value, no
   finding. Nothing is asserted without a citation.
-- **Query Intelligence**: type a real question, see it decomposed into
+- **Query Intelligence**: give it a real question, see it decomposed into
   requirements, each checked against the site's own evidence, with an
   explainable, multi-dimensional score — not a single opaque percentage.
 - **Cross-entity consistency checking** so a query isn't marked "supported"
@@ -102,7 +93,7 @@ can be deleted without changing anything the audit does — it only ever
         Score + Explanation  (Coverage · Answerability · Quality · Opportunity)
                        │
                        ▼
-                   DASHBOARD
+               query-result.json
 ```
 
 ### Brand AI Readiness Audit
@@ -226,31 +217,28 @@ and links down to the detail:
 | Modify or add an audit check (an Agent Skill) | [brand-ai-readiness-audit/README.md](brand-ai-readiness-audit/README.md) |
 | Modify the NLP / Query Intelligence engine | [nlp-query-intelligence/README.md](brand-ai-readiness-audit/nlp-query-intelligence/README.md) |
 | Understand Query Intelligence's test suite and fixtures | [nlp-query-intelligence/tests/README.md](brand-ai-readiness-audit/nlp-query-intelligence/tests/README.md) |
-| Work on the dashboard (Next.js/React) | [frontend/README.md](frontend/README.md) |
-| Use the running app as an end user | [docs/USER_MANUAL.md](docs/USER_MANUAL.md) |
+| Read the design rationale and supporting material | [docs/SUPPORTING_DOCS.md](docs/SUPPORTING_DOCS.md) |
+| See the backend architecture diagram | [Backend-Architecture.pdf](Backend-Architecture.pdf) |
 
 ## Project structure
 
 ```
-brandaireadinessauditproject/
+AdobeUniversityHackathon26/
 ├── brand-ai-readiness-audit/          the 9-skill audit                                         → brand-ai-readiness-audit/README.md
 │   ├── marketplace.json                 manifest: 9 skills, 1 entrypoint
 │   ├── audit.py                         CLI: runs the full audit pipeline
 │   ├── skills/                          the 9 Agent Skills, each with its own SKILL.md
 │   ├── tests/                           audit fixtures + test harness
-│   ├── tools/validate_marketplace.py    Agent Skills spec conformance
-│   ├── audit-output/                    example output from a real run (checked in)
+│   ├── tools/                           marketplace validator + report summary helpers
 │   └── nlp-query-intelligence/          Query Intelligence — separate subsystem                 → nlp-query-intelligence/README.md
 │       ├── pipeline.py                    CLI: profile | generate | test | compare | dataset
 │       ├── lib/                           NLP engine, domain vocabularies, scoring, evidence
 │       ├── assets/                        JSON Schemas for its own output files
 │       └── tests/                         its own test suite + synthetic fixtures              → nlp-query-intelligence/tests/README.md
-├── frontend/                          Next.js dashboard for both systems                         → frontend/README.md
-│   ├── src/app/                         pages + API routes
-│   ├── src/components/report/           audit dashboard tabs
-│   ├── src/components/query-intelligence/  Query Intelligence dashboard
-│   └── e2e/                             Playwright specs
-└── docs/USER_MANUAL.md                How to use the running dashboard
+├── dry-runs/books-toscrape/           a complete example audit of books.toscrape.com (checked in)
+├── docs/                              supporting docs, project explainer, Round 4 video plan
+├── Backend-Architecture.pdf           architecture diagram
+└── REPLAY_TEAMNAME.txt                Round 4 reproduction manifest (template)
 ```
 
 `nlp-query-intelligence/` is **not** in `marketplace.json` — it's an
@@ -260,31 +248,20 @@ application subsystem, not a tenth Agent Skill.
 
 ## Prerequisites
 
-- **Python 3.9+** — no pip dependencies for either backend (stdlib only).
-- **Node.js** (for the frontend — `npm install` pulls everything it needs).
+- **Python 3.9+** — no pip dependencies (standard library only).
+- *Optional:* Playwright + Chromium for the headless-render half of the
+  render checks (see [Limitations](#limitations)).
 
 ---
 
 ## Quick Start
 
 ```bash
-git clone <this-repository-url>
-cd brandaireadinessauditproject
+git clone https://github.com/psp2535/AdobeUniversityHackathon26.git
+cd AdobeUniversityHackathon26
 ```
-
-### Run the application
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Open **http://localhost:3000**.
 
 ### Run an audit
-
-Either from the dashboard (enter a URL and submit), or from the command line:
 
 ```bash
 cd brand-ai-readiness-audit
@@ -292,37 +269,43 @@ python audit.py https://example.com
 ```
 
 Writes `audit-output/snapshot.json`, `report.json` and `report.md`. Each run
-overwrites the last unless you pass `--out DIR`.
+overwrites the last unless you pass `--out DIR`. Other useful flags:
+`--max-pages N`, `--render auto|on|off`, `--quiet`.
 
-No live site handy? Load the checked-in example instead — on the landing
-page, click **"Load a saved report.json instead"** and select
-`brand-ai-readiness-audit/audit-output/report.json` (and its `snapshot.json`).
+You can also run it through an agent harness (e.g. Claude Code) by pointing
+the agent at `skills/brand-ai-readiness-audit/SKILL.md` as the marketplace
+entrypoint.
+
+No live site handy? `dry-runs/books-toscrape/` holds a complete, checked-in
+run — read its `report.md`.
 
 ### Use Query Intelligence
 
-Once a report is open in the dashboard, click **Query Intelligence** in the
-left rail. From the command line instead:
+From the repository root, against the checked-in example run:
 
 ```bash
 cd brand-ai-readiness-audit/nlp-query-intelligence
-python pipeline.py profile  --snapshot ../audit-output/snapshot.json --out nlp-output/website-profile.json
-python pipeline.py generate --snapshot ../audit-output/snapshot.json --profile nlp-output/website-profile.json --out nlp-output/generated-queries.json
-python pipeline.py test     --query "Best laptop under $1000" --snapshot ../audit-output/snapshot.json --profile nlp-output/website-profile.json --report ../audit-output/report.json --out nlp-output/result.json
+python pipeline.py profile  --snapshot ../../dry-runs/books-toscrape/snapshot.json --out nlp-output/website-profile.json
+python pipeline.py generate --snapshot ../../dry-runs/books-toscrape/snapshot.json --profile nlp-output/website-profile.json --out nlp-output/generated-queries.json
+python pipeline.py test     --query "Is there a mystery book under 20 pounds" --snapshot ../../dry-runs/books-toscrape/snapshot.json --profile nlp-output/website-profile.json --report ../../dry-runs/books-toscrape/report.json --out nlp-output/result.json
 ```
 
-Full click-by-click walkthrough: **[docs/USER_MANUAL.md](docs/USER_MANUAL.md)**.
+To use your own audit instead, swap `../../dry-runs/books-toscrape/` for
+`../audit-output/`.
 
 ### Fresh-clone reproducibility
 
 | | |
 |---|---|
-| **Required after cloning** | The source tree as-is + `npm install` in `frontend/`. Nothing else to build. |
-| **Checked in for an immediate demo** | `brand-ai-readiness-audit/audit-output/` — a real, complete example run, so the dashboard and Query Intelligence can be explored without waiting on a live audit. |
-| **Generated, not committed** | `nlp-output/`, `.audit-jobs/`, `.next/`, `node_modules/`, `__pycache__/`, `test-results/` — all reproducible by running the commands above. |
+| **Required after cloning** | Python 3.9+. Nothing to install or build. |
+| **Checked in for an immediate demo** | `dry-runs/books-toscrape/` — a real, complete example run. |
+| **Generated, not committed** | `audit-output/`, `nlp-output/`, `__pycache__/` — all reproducible by running the commands above. |
 
 ---
 
 ## Testing
+
+From the repository root:
 
 ```bash
 # Existing 9-skill audit
@@ -331,15 +314,8 @@ python tools/validate_marketplace.py --root . --strict   # Agent Skills spec con
 python tests/run_tests.py                                 # fixtures, scoring, determinism, schema
 
 # Query Intelligence
-cd brand-ai-readiness-audit/nlp-query-intelligence
+cd nlp-query-intelligence
 python tests/run_tests.py                                 # its own layered harness + fixtures
-
-# Frontend
-cd frontend
-npm run typecheck
-npm run lint
-npm run test        # vitest, unit tests
-npm run test:e2e     # Playwright — needs the dev server reachable on :3000
 ```
 
 ---
@@ -348,12 +324,9 @@ npm run test:e2e     # Playwright — needs the dev server reachable on :3000
 
 | Problem | Fix |
 |---|---|
-| `port 3000 already in use` | Another process is using it — stop it, or run `npm run dev -- -p 3001`. |
 | `python: command not found` | Some systems only expose `python3`, or need the Python launcher (`py`) on Windows. |
-| Playwright browser missing | `npx playwright install chromium` (only needed for `npm run test:e2e`). |
-| "Query Intelligence is unavailable" in the dashboard | The audit job has no `snapshot.json` yet — wait for the audit to finish, or load a saved report that includes one. |
-| Frontend can't reach the backend | The frontend spawns `audit.py` / `pipeline.py` itself as subprocesses — make sure `python` (or `py`) resolves on PATH in the same shell `npm run dev` runs in. |
 | `audit.py` produces 0 findings | That can be a genuinely clean result, not an error — check the report's coverage section for what was actually assessed. |
+| Render checks listed under `coverage.not_assessed` | No headless browser is installed — see [Limitations](#limitations). The rest of the audit still runs. |
 
 ---
 
