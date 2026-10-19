@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "collector_version": "test-fixture",
+  "site": "example-electronics.test",
+  "origin": "https://example-electronics.test",
+  "entry_url": "https://example-electronics.test/",
+  "audited_at": "2026-01-01T00:00:00Z",
+  "pages": [
+    {
+      "url": "https://example-electronics.test/",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "homepage",
+      "lang": "en",
+      "title": "Example Electronics — Laptops and Keyboards",
+      "meta_description": "Shop laptops and keyboards online.",
+      "headings": [{"level": 1, "text": "Example Electronics"}],
+      "main_text": "Example Electronics sells laptops and keyboards online.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://example-electronics.test/products/pro-laptop",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "en",
+      "title": "Pro Laptop X — Laptop for Professionals",
+      "meta_description": "A laptop with a fast processor and large display.",
+      "headings": [
+        {"level": 1, "text": "Pro Laptop X"},
+        {"level": 2, "text": "Built for programming and development"}
+      ],
+      "main_text": "The Pro Laptop X is a laptop priced at INR 95000. It ships with 16GB RAM, 512GB storage and a fast processor, making it excellent for programming and software development. Popular with professionals and developers. Battery life lasts a full day.",
+      "structured_data": {
+        "jsonld": [
+          {"parse_ok": true, "data": {"@type": "Product", "name": "Pro Laptop X",
+            "offers": {"@type": "Offer", "price": "95000", "priceCurrency": "INR"}}}
+        ]
+      }
+    },
+    {
+      "url": "https://example-electronics.test/products/campus-laptop",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "en",
+      "title": "Campus Laptop 13 — Laptop with 16GB RAM",
+      "meta_description": "Laptop with 16GB RAM and long battery life for students.",
+      "headings": [
+        {"level": 1, "text": "Campus Laptop 13"},
+        {"level": 2, "text": "Great for students on a budget"}
+      ],
+      "main_text": "Campus Laptop 13 comes with 16GB RAM and 512GB storage, priced at INR 58000. Long battery life for a full day of classes. Ideal for students.",
+      "structured_data": {
+        "jsonld": [
+          {"parse_ok": true, "data": {"@type": "Product", "name": "Campus Laptop 13",
+            "offers": {"@type": "Offer", "price": "58000", "priceCurrency": "INR"}}}
+        ]
+      }
+    },
+    {
+      "url": "https://example-electronics.test/products/wireless-keyboard",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "en",
+      "title": "Wireless Keyboard Pro — Keyboard for Professionals",
+      "meta_description": "A wireless keyboard with backlighting and mechanical switches.",
+      "headings": [
+        {"level": 1, "text": "Wireless Keyboard Pro"},
+        {"level": 2, "text": "Built for programming and typing comfort"}
+      ],
+      "main_text": "The Wireless Keyboard Pro connects over Bluetooth and features RGB backlighting and mechanical switches with a full-size layout. Priced at INR 4500. Battery life lasts two weeks on a single charge. Popular with professionals and programmers.",
+      "structured_data": {
+        "jsonld": [
+          {"parse_ok": true, "data": {"@type": "Product", "name": "Wireless Keyboard Pro",
+            "offers": {"@type": "Offer", "price": "4500", "priceCurrency": "INR"}}}
+        ]
+      }
+    },
+    {
+      "url": "https://example-electronics.test/products/gaming-keyboard",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "en",
+      "title": "Gaming Keyboard Mech — Keyboard for Gaming",
+      "meta_description": "A wired mechanical gaming keyboard with RGB lighting.",
+      "headings": [
+        {"level": 1, "text": "Gaming Keyboard Mech"},
+        {"level": 2, "text": "Built for gaming"}
+      ],
+      "main_text": "The Gaming Keyboard Mech is a wired keyboard with linear mechanical switches and RGB backlighting, priced at INR 3200. Tenkeyless layout for extra mouse space. Popular with gamers.",
+      "structured_data": {
+        "jsonld": [
+          {"parse_ok": true, "data": {"@type": "Product", "name": "Gaming Keyboard Mech",
+            "offers": {"@type": "Offer", "price": "3200", "priceCurrency": "INR"}}}
+        ]
+      }
+    }
+  ],
+  "clusters": [
+    {"id": "c01", "skeleton": "/products/{slug}", "page_type": "product"}
+  ],
+  "coverage": {"pages_discovered": 5, "pages_sampled": 5, "pages_fetched": 5}
+}

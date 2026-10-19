@@ -1,0 +1,13 @@
+{
+  "negative_control": true,
+  "must_include": [],
+  "must_not_include": [
+    "FRC.STALE_CLAIM",
+    "FRC.DATE_SIGNAL_CONFLICT",
+    "FRC.INTRA_SITE_FACT_CONFLICT"
+  ],
+  "allowed": [],
+  "notes": "A product page genuinely claims to be the 'latest' model, but its own date signal is the most recent on the site (or ties with the others) -- the opposite of the stale-claim scenario. Injected dateModified values match each page's own real sitemap lastmod exactly, so no incidental DATE_SIGNAL_CONFLICT is introduced either.",
+  "forbid_any_above": "info",
+  "fixture": "F30-current-and-dated-clean"
+}

@@ -1,0 +1,55 @@
+{
+  "name": "brand-ai-readiness-audit",
+  "version": "1.0.0",
+  "description": "Audits any website for the technical causes of poor AI discoverability (getting found and cited by AI assistants) and poor on-site engagement (keeping the visitor who arrives), and emits one structured report of evidence-backed findings plus prioritized, mechanism-sound suggested actions. Recommend-only and read-only.",
+  "license": "Apache-2.0",
+  "entrypoint": "brand-ai-readiness-audit",
+  "skills": [
+    {
+      "id": "brand-ai-readiness-audit",
+      "path": "skills/brand-ai-readiness-audit",
+      "entrypoint": true,
+      "role": "Entrypoint. Plans the audit, dispatches the collector and the six detectors, correlates and deduplicates their findings, applies the severity and priority models, and emits the single audit report."
+    },
+    {
+      "id": "site-snapshot-collector",
+      "path": "skills/site-snapshot-collector",
+      "role": "Acquisition. The only skill that makes network requests. Parses robots.txt, discovers URLs, samples deterministically by page template, and dual-fetches each page as a non-rendering crawler and as a browser. Emits snapshot.json."
+    },
+    {
+      "id": "crawl-access-audit",
+      "path": "skills/crawl-access-audit",
+      "role": "Detector for the discovered and accessible funnel gates: robots policy by crawler role, noindex, sitemap health, status and redirect integrity, canonical correctness, user-agent differential blocking, gated content."
+    },
+    {
+      "id": "render-readability-audit",
+      "path": "skills/render-readability-audit",
+      "role": "Detector for the readable funnel gate: client-side-rendering gaps between raw HTML and rendered DOM, facts locked in images or PDFs, content behind interaction, semantic structure, interstitials present in the raw response."
+    },
+    {
+      "id": "structured-data-entity-audit",
+      "path": "skills/structured-data-entity-audit",
+      "role": "Detector for the understood funnel gate: structured-data presence, parse validity, per-page-type coverage, structured-versus-visible contradictions, organization entity identity, sameAs links, and entity ambiguity risk."
+    },
+    {
+      "id": "answer-retrievability-audit",
+      "path": "skills/answer-retrievability-audit",
+      "role": "Detector for the retrieved and selected funnel gates: whether a machine can locate and quote the specific fact a question asks for, including answer position, specification extractability, entity naming, units, and heading anchors."
+    },
+    {
+      "id": "freshness-corroboration-audit",
+      "path": "skills/freshness-corroboration-audit",
+      "role": "Detector for which version of a fact survives into an answer: intra-site fact conflicts, date-signal integrity, superseded content still live, and optional bounded off-site corroboration of the current facts."
+    },
+    {
+      "id": "engagement-audit",
+      "path": "skills/engagement-audit",
+      "role": "Detector for the post-click stage: deep-link landing integrity, answer proximity for a visitor arriving mid-journey with a specific question, interruption and gating, orientation, continuation, and inbound context preservation."
+    },
+    {
+      "id": "opportunity-and-monitoring",
+      "path": "skills/opportunity-and-monitoring",
+      "role": "Uplift. Produces capped, archetype-gated proactive improvements that go beyond detected defects, plus the measurement plan for tracking visibility, factual accuracy and engagement over time."
+    }
+  ]
+}

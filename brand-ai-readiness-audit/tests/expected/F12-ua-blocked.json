@@ -1,0 +1,18 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "ACC.UA_BLOCKED",
+      "min_severity": "high"
+    }
+  ],
+  "must_not_include": [
+    "RND.CSR_SHELL",
+    "SDE.NO_STRUCTURED_DATA",
+    "FRC.INTRA_SITE_FACT_CONFLICT"
+  ],
+  "allowed": [],
+  "notes": "Nothing could be read, so no content finding may be invented. Everything except the access finding belongs in coverage.not_assessed. This is the fabricated-evidence test. Removed stale references to ENG.NO_ORIENTATION: check_ids from an early-planning 'arriving visitor' model for engagement-audit that Milestone K's authoritative, redefined scope does not implement.",
+  "fixture": "F12-ua-blocked",
+  "forbid_any_above": null
+}

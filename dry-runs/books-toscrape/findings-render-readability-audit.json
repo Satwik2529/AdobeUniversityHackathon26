@@ -1,0 +1,323 @@
+{
+  "detector": "render-readability-audit",
+  "findings": [
+    {
+      "check_id": "RND.CSR_SHELL",
+      "title": "Content appears to exist only after JavaScript runs",
+      "gate_impact": "degrades",
+      "reach": "page",
+      "certainty": "measured",
+      "funnel_stage": "readable",
+      "detector": "render-readability-audit",
+      "evidence": "4 pages show the structural signature of a client-rendered shell in the raw HTML: https://books.toscrape.com/catalogue/category/books/academic_40/index.html (empty-or-thin-main-content/high, external-bundle-with-no-text/medium). No headless browser was available in this run to confirm directly by comparison, so this is inferred from structure rather than measured against a render.",
+      "affected_urls": [
+        "https://books.toscrape.com/catalogue/category/books/academic_40/index.html",
+        "https://books.toscrape.com/catalogue/category/books/crime_51/index.html",
+        "https://books.toscrape.com/catalogue/category/books/cultural_49/index.html",
+        "https://books.toscrape.com/catalogue/category/books/erotica_50/index.html"
+      ],
+      "evidence_detail": {
+        "method": "static structural signals computed by the collector: an empty framework mount point, thin main content, a noscript notice, or a script-to-text ratio far above normal",
+        "observed": {
+          "pages": [
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/academic_40/index.html",
+              "signals": [
+                {
+                  "signal": "empty-or-thin-main-content",
+                  "weight": "high",
+                  "detail": "main content held 229 characters of text in the raw HTML, below the 250 character floor"
+                },
+                {
+                  "signal": "external-bundle-with-no-text",
+                  "weight": "medium",
+                  "detail": "5 external scripts referenced with almost no readable text"
+                }
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/crime_51/index.html",
+              "signals": [
+                {
+                  "signal": "empty-or-thin-main-content",
+                  "weight": "high",
+                  "detail": "main content held 217 characters of text in the raw HTML, below the 250 character floor"
+                },
+                {
+                  "signal": "external-bundle-with-no-text",
+                  "weight": "medium",
+                  "detail": "5 external scripts referenced with almost no readable text"
+                }
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/cultural_49/index.html",
+              "signals": [
+                {
+                  "signal": "empty-or-thin-main-content",
+                  "weight": "high",
+                  "detail": "main content held 215 characters of text in the raw HTML, below the 250 character floor"
+                },
+                {
+                  "signal": "external-bundle-with-no-text",
+                  "weight": "medium",
+                  "detail": "5 external scripts referenced with almost no readable text"
+                }
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/erotica_50/index.html",
+              "signals": [
+                {
+                  "signal": "empty-or-thin-main-content",
+                  "weight": "high",
+                  "detail": "main content held 209 characters of text in the raw HTML, below the 250 character floor"
+                },
+                {
+                  "signal": "external-bundle-with-no-text",
+                  "weight": "medium",
+                  "detail": "5 external scripts referenced with almost no readable text"
+                }
+              ]
+            }
+          ]
+        },
+        "expected": "no combination of these signals on a content page",
+        "sample": {
+          "checked": 25,
+          "failing": 4
+        },
+        "confidence": "medium",
+        "nondeterministic": false,
+        "note": "confirm with a real render comparison when a browser is available; this fallback trades recall for the ability to screen without one",
+        "check_id": "RND.CSR_SHELL",
+        "detector": "render-readability-audit"
+      },
+      "suggested_action": {
+        "summary": "Confirm with a real browser render comparison, then server-render or pre-render the core content if confirmed.",
+        "how": [
+          "Run this audit with a headless browser available, or manually compare `curl` output against a browser's view-source for these URLs.",
+          "If confirmed, enable server-side rendering or static pre-rendering for the template.",
+          "Keep interactive enhancement client-side."
+        ],
+        "mechanism": "The same mechanism as a confirmed shell: crawlers that do not execute JavaScript receive only what is in the raw response. This is flagged at reduced confidence because it was inferred from structure, not measured directly.",
+        "effort": "platform-change",
+        "owner": "engineering",
+        "verification": "Re-run with a browser available and confirm the raw versus rendered comparison."
+      }
+    },
+    {
+      "check_id": "RND.HEADING_LEVEL_JUMPS",
+      "title": "Heading levels skip, breaking the outline",
+      "gate_impact": "weakens",
+      "reach": "template",
+      "certainty": "measured",
+      "funnel_stage": "readable",
+      "detector": "render-readability-audit",
+      "evidence": "17 pages with 4 or more headings have at least one level jump of more than one step, for example h2 directly to h4. Example: https://books.toscrape.com/.",
+      "affected_urls": [
+        "https://books.toscrape.com/",
+        "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+        "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+        "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+        "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+        "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+        "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+        "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+        "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+        "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html",
+        "https://books.toscrape.com/catalogue/category/books/default_15/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fiction_10/index.html",
+        "https://books.toscrape.com/catalogue/category/books/health_47/index.html",
+        "https://books.toscrape.com/catalogue/category/books_1/index.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/index.html"
+      ],
+      "evidence_detail": {
+        "method": "sequence of heading levels extracted from the raw HTML, checked for jumps greater than one level, on pages with at least 4 headings",
+        "observed": {
+          "pages": [
+            {
+              "url": "https://books.toscrape.com/",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3
+              ]
+            }
+          ]
+        },
+        "expected": "heading levels increase by at most one step at a time",
+        "sample": {
+          "checked": 21,
+          "failing": 17
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "RND.HEADING_LEVEL_JUMPS",
+        "detector": "render-readability-audit"
+      },
+      "suggested_action": {
+        "summary": "Fill in the skipped heading levels so the outline descends one step at a time.",
+        "how": [
+          "Replace a jump such as h2 to h4 with h2 to h3 to h4, or demote the deeper heading if no intermediate section exists."
+        ],
+        "mechanism": "A skipped level breaks the outline a machine would otherwise use to navigate straight to the section that answers a question.",
+        "effort": "template-change",
+        "owner": "content",
+        "verification": "List the heading levels on the page and confirm no step exceeds one."
+      },
+      "severity_ceiling": "low"
+    }
+  ],
+  "not_assessed": [
+    {
+      "dimension": "browser render comparison",
+      "reason": "no headless browser was available in this run, so the checks that compare raw HTML against a rendered DOM either used the collector's static structural signals at reduced confidence, or could not run at all",
+      "detector": "render-readability-audit"
+    },
+    {
+      "dimension": "content behind interaction",
+      "reason": "this marketplace's collector never clicks, submits or interacts with a page by design, so content that only appears after a tab, accordion or similar interaction cannot be distinguished from content that was never going to appear at all. This is a permanent architectural limit, not a capability that a browser being available would remove.",
+      "detector": "render-readability-audit"
+    }
+  ]
+}

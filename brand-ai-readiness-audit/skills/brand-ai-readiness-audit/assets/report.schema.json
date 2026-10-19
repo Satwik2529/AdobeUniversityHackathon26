@@ -1,0 +1,260 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Brand AI-Readiness Audit Report",
+  "description": "The required shape is the contest floor: site, audited_at, a counts-by-severity summary, and findings each carrying id, title, severity, evidence and suggested_action. Everything else is an additive extension.",
+  "type": "object",
+  "required": [
+    "site",
+    "audited_at",
+    "summary",
+    "findings"
+  ],
+  "properties": {
+    "site": {
+      "type": "string"
+    },
+    "audited_at": {
+      "type": "string",
+      "description": "ISO-8601 UTC, Z suffix"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "total_findings",
+        "critical",
+        "high",
+        "medium"
+      ],
+      "properties": {
+        "total_findings": {
+          "type": "integer"
+        },
+        "critical": {
+          "type": "integer"
+        },
+        "high": {
+          "type": "integer"
+        },
+        "medium": {
+          "type": "integer"
+        },
+        "low": {
+          "type": "integer"
+        },
+        "info": {
+          "type": "integer"
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "properties": {
+        "marketplace_version": {
+          "type": "string"
+        },
+        "entrypoint": {
+          "type": "string"
+        },
+        "duration_seconds": {
+          "type": "number"
+        },
+        "phase_timings": {
+          "type": "object"
+        },
+        "no_changes_made": {
+          "type": "boolean"
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "pages_discovered": {
+          "type": "integer"
+        },
+        "pages_sampled": {
+          "type": "integer"
+        },
+        "pages_fetched": {
+          "type": "integer"
+        },
+        "pages_rendered": {
+          "type": "integer"
+        },
+        "blocked_by_robots": {
+          "type": "integer"
+        },
+        "fetch_failures": {
+          "type": "integer"
+        },
+        "template_clusters": {
+          "type": "array"
+        },
+        "site_archetype": {
+          "type": "string"
+        },
+        "capabilities": {
+          "type": "object"
+        },
+        "not_assessed": {
+          "type": "array"
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "severity",
+          "evidence",
+          "suggested_action"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^F-[0-9]{3,}$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low",
+              "info"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "suggested_action": {
+            "type": "object",
+            "required": [
+              "summary",
+              "priority"
+            ],
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "priority": {
+                "type": "string",
+                "enum": [
+                  "critical",
+                  "high",
+                  "medium",
+                  "low",
+                  "info"
+                ]
+              },
+              "how": {
+                "type": "array"
+              },
+              "mechanism": {
+                "type": "string"
+              },
+              "effort": {
+                "type": "string",
+                "enum": [
+                  "trivial",
+                  "config",
+                  "content",
+                  "template-change",
+                  "platform-change"
+                ]
+              },
+              "owner": {
+                "type": "string",
+                "enum": [
+                  "engineering",
+                  "content",
+                  "brand-ops",
+                  "marketing",
+                  "mixed"
+                ]
+              },
+              "verification": {
+                "type": "string"
+              }
+            }
+          },
+          "check_id": {
+            "type": "string"
+          },
+          "funnel_stage": {
+            "type": "string",
+            "enum": [
+              "discovered",
+              "accessible",
+              "readable",
+              "understood",
+              "retrieved",
+              "selected",
+              "engagement"
+            ]
+          },
+          "detector": {
+            "type": "string"
+          },
+          "affected_urls": {
+            "type": "array"
+          },
+          "related_checks": {
+            "type": "array"
+          },
+          "evidence_detail": {
+            "type": "object",
+            "properties": {
+              "check_id": {
+                "type": "string"
+              },
+              "method": {
+                "type": "string"
+              },
+              "observed": {},
+              "expected": {},
+              "sample": {
+                "type": "object"
+              },
+              "urls": {
+                "type": "array"
+              },
+              "excerpt": {
+                "type": "string"
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              },
+              "nondeterministic": {
+                "type": "boolean"
+              },
+              "detector": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "opportunities": {
+      "type": "array"
+    },
+    "measurement_plan": {
+      "type": "object"
+    },
+    "action_sequence": {
+      "type": "array"
+    }
+  }
+}

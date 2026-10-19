@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NLP Query Intelligence — query-result.json",
+  "type": "object",
+  "required": [
+    "query_id", "pipeline_version", "generated_at", "snapshot_hash", "assessable",
+    "nlp", "requirements", "scoring", "query_quality", "opportunity_score",
+    "overall_query_health", "difficulty"
+  ],
+  "properties": {
+    "query_id": { "type": "string" },
+    "pipeline_version": { "type": "string" },
+    "generated_at": { "type": "string" },
+    "snapshot_hash": { "type": "string" },
+    "site": { "type": ["string", "null"] },
+    "assessable": { "type": "boolean" },
+    "not_assessable_reason": { "type": ["string", "null"] },
+    "difficulty": { "enum": ["L1", "L2", "L3", "L4", "L5"] },
+    "opportunity_score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "overall_query_health": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "nlp": {
+      "type": "object",
+      "required": ["raw_query", "normalized_query", "intent", "requirements", "unrecognized_terms"],
+      "properties": {
+        "raw_query": { "type": "string" },
+        "normalized_query": { "type": "string" },
+        "intent": { "enum": ["recommendation", "comparison", "availability", "specification", "general"] },
+        "entity": { "type": ["object", "null"] },
+        "audience": { "type": "array" },
+        "use_case": { "type": "array" },
+        "attributes": { "type": "array" },
+        "constraints": { "type": "array" },
+        "qualifiers": { "type": "array" },
+        "unrecognized_terms": { "type": "array" },
+        "requirements": { "type": "array" }
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "key", "evidence"],
+        "properties": {
+          "id": { "type": "string" },
+          "category": {
+            "enum": ["entity", "price_constraint", "attribute", "audience", "use_case",
+                     "quality_qualifier", "unrecognized_term", "combination"]
+          },
+          "key": { "type": "string" },
+          "raw": { "type": "string" },
+          "evidence": {
+            "type": "object",
+            "required": ["status"],
+            "properties": {
+              "status": {
+                "enum": ["SUPPORTED", "PARTIALLY_SUPPORTED", "NOT_FOUND", "CONTRADICTED",
+                         "NOT_ASSESSABLE", "INVALID_REQUIREMENT"]
+              },
+              "url": { "type": ["string", "null"] },
+              "field": { "type": ["string", "null"] },
+              "observed_value": {},
+              "evidence_type": { "type": ["string", "null"] },
+              "confidence": { "type": ["number", "null"] },
+              "note": { "type": ["string", "null"] },
+              "selectivity": { "type": ["number", "null"] },
+              "constraint_realism": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "required": ["overall_score", "evidence_coverage", "answerability", "confidence", "breakdown"],
+      "properties": {
+        "overall_score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "evidence_coverage": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "answerability": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "breakdown": { "type": "array" },
+        "not_assessable": { "type": "array" }
+      }
+    },
+    "query_quality": {
+      "type": "object",
+      "required": ["overall", "factors", "weights"],
+      "properties": {
+        "overall": { "type": "number", "minimum": 0, "maximum": 100 },
+        "factors": { "type": "object" },
+        "weights": { "type": "object" }
+      }
+    },
+    "reasoning_trace": { "type": "object" },
+    "recommendations": { "type": "array" },
+    "related_findings": { "type": "array" },
+    "report_available": { "type": "boolean" }
+  }
+}

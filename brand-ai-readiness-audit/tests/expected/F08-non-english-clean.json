@@ -1,0 +1,15 @@
+{
+  "negative_control": true,
+  "forbid_any_above": "info",
+  "must_include": [],
+  "must_not_include": [
+    "ANS.NO_DIRECT_ANSWER_LEAD",
+    "ANS.ENTITY_NEVER_NAMED",
+    "RND.THIN_CONTENT",
+    "FRC.INTRA_SITE_FACT_CONFLICT",
+    "ANS.NO_QA_SURFACE"
+  ],
+  "allowed": [],
+  "notes": "Language-neutrality test. A site is never penalised for not being in English; lexical checks must record not_assessed instead of firing. Note the comma decimal separator, which must not read as a price conflict.",
+  "fixture": "F08-non-english-clean"
+}

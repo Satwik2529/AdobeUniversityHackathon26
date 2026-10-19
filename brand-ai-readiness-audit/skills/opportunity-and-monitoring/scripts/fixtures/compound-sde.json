@@ -1,0 +1,43 @@
+{
+  "detector": "structured-data-entity-audit",
+  "findings": [
+    {
+      "check_id": "SDE.INCOMPLETE_REQUIRED_PROPS",
+      "title": "Finding for SDE.INCOMPLETE_REQUIRED_PROPS",
+      "gate_impact": "degrades",
+      "reach": "template",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "structured-data-entity-audit",
+      "evidence": "Synthetic fixture evidence for SDE.INCOMPLETE_REQUIRED_PROPS",
+      "affected_urls": [
+        "https://example.test/products/alpha.html",
+        "https://example.test/products/beta.html"
+      ],
+      "evidence_detail": {
+        "check_id": "SDE.INCOMPLETE_REQUIRED_PROPS",
+        "method": "m",
+        "observed": {},
+        "expected": "e",
+        "sample": {
+          "checked": 3,
+          "failing": 3
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "detector": "structured-data-entity-audit"
+      },
+      "suggested_action": {
+        "summary": "Fix SDE.INCOMPLETE_REQUIRED_PROPS",
+        "how": [
+          "step"
+        ],
+        "mechanism": "mechanism text",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "verify"
+      }
+    }
+  ],
+  "not_assessed": []
+}

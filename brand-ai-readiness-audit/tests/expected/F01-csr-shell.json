@@ -1,0 +1,25 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "RND.CSR_SHELL",
+      "min_severity": "high"
+    }
+  ],
+  "must_not_include": [
+    "ACC.ROBOTS_BLOCKS_RETRIEVAL",
+    "ACC.UA_BLOCKED"
+  ],
+  "allowed": [
+    "SDE.MISSING_TYPE_FOR_TEMPLATE",
+    "RND.THIN_CONTENT",
+    "RND.NO_H1",
+    "ANS.NO_DIRECT_ANSWER_LEAD",
+    "ANS.SPECS_NOT_EXTRACTABLE",
+    "ANS.ENTITY_NEVER_NAMED",
+    "ANS.NO_HEADING_ANCHORS"
+  ],
+  "notes": "Downstream findings are legitimate co-symptoms here, not false positives: the schema really is absent from the raw HTML. The render finding must outrank them. Removed stale references to ENG.ANSWER_BELOW_FOLD, ENG.DEAD_END, ENG.NO_HEADING_ANCHORS: check_ids from an early-planning 'arriving visitor' model for engagement-audit that Milestone K's authoritative, redefined scope does not implement.",
+  "fixture": "F01-csr-shell",
+  "forbid_any_above": null
+}

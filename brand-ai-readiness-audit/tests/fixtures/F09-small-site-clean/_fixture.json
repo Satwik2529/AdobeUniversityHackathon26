@@ -1,0 +1,12 @@
+{
+  "id": "F09-small-site-clean",
+  "description": "Negative control: a correct two-page site below the template threshold.",
+  "files": [
+    "_rules.json",
+    "contact.html",
+    "index.html",
+    "robots.txt",
+    "sitemap.xml"
+  ],
+  "negative_control": true
+}

@@ -1,0 +1,178 @@
+{
+  "detector": "structured-data-entity-audit",
+  "findings": [
+    {
+      "check_id": "SDE.BREADCRUMB_MISSING",
+      "title": "Pages below the homepage carry no breadcrumb markup",
+      "gate_impact": "weakens",
+      "reach": "sitewide",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "structured-data-entity-audit",
+      "evidence": "20 of 20 sampled non-homepage pages have no BreadcrumbList markup. Examples: https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html, https://books.toscrape.com/catalogue/category/books/art_25/index.html.",
+      "affected_urls": [
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+        "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+        "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+        "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+        "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+        "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+        "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+        "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+        "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+        "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html",
+        "https://books.toscrape.com/catalogue/category/books/default_15/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fiction_10/index.html",
+        "https://books.toscrape.com/catalogue/category/books/health_47/index.html",
+        "https://books.toscrape.com/catalogue/category/books/historical_42/index.html",
+        "https://books.toscrape.com/catalogue/category/books_1/index.html",
+        "https://books.toscrape.com/catalogue/olio_984/index.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/soumission_998/index.html",
+        "https://books.toscrape.com/index.html"
+      ],
+      "evidence_detail": {
+        "method": "presence of a BreadcrumbList node, after full @graph traversal, on pages other than the homepage",
+        "observed": {
+          "pages_missing": [
+            "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+            "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+            "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+            "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+            "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+            "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+            "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+            "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+            "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+            "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html"
+          ]
+        },
+        "expected": "BreadcrumbList markup below the homepage, where the site has a real hierarchy",
+        "sample": {
+          "checked": 20,
+          "failing": 20
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "SDE.BREADCRUMB_MISSING",
+        "detector": "structured-data-entity-audit"
+      },
+      "suggested_action": {
+        "summary": "Add BreadcrumbList markup reflecting each page's position in the site hierarchy.",
+        "how": [
+          "Generate it from the same navigation hierarchy the template already renders as a visible breadcrumb, if one exists.",
+          "Each ListItem needs position, name and item (the URL)."
+        ],
+        "mechanism": "Breadcrumb markup gives a machine an explicit statement of where a page sits in the site's structure, which is otherwise only inferable from the URL path.",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "Re-check the page and confirm BreadcrumbList markup parses and matches the page's actual position."
+      },
+      "severity_ceiling": "low"
+    },
+    {
+      "check_id": "SDE.NO_ORGANIZATION_NODE",
+      "title": "The homepage declares no organization or local-business entity",
+      "gate_impact": "degrades",
+      "reach": "sitewide",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "structured-data-entity-audit",
+      "evidence": "The homepage (https://books.toscrape.com/) has no Organization, LocalBusiness or equivalent entity in its JSON-LD, Microdata or RDFa, after traversing any @graph fully. There is no explicit machine-readable statement of which brand this site belongs to.",
+      "affected_urls": [
+        "https://books.toscrape.com/"
+      ],
+      "evidence_detail": {
+        "method": "JSON-LD @graph traversal, Microdata itemtype and RDFa typeof checked for an Organization, LocalBusiness or Corporation node on the homepage",
+        "observed": {
+          "jsonld_types_found": [],
+          "microdata_types_found": [],
+          "rdfa_types_found": []
+        },
+        "expected": "an Organization or LocalBusiness node on the homepage",
+        "sample": {
+          "checked": 1,
+          "failing": 1
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "SDE.NO_ORGANIZATION_NODE",
+        "detector": "structured-data-entity-audit"
+      },
+      "suggested_action": {
+        "summary": "Add one Organization (or LocalBusiness, if there is a physical location) node to the homepage, in JSON-LD, with a stable identifier.",
+        "how": [
+          "Include at minimum name, url, and logo.",
+          "Give it an @id so other structured data on the site can reference it rather than duplicating it.",
+          "Add sameAs links to profiles the brand actually controls."
+        ],
+        "mechanism": "This is the single node a system uses to resolve 'this site' into 'this real-world brand'. Without it, every other page's content is attributed to an inferred entity rather than a declared one.",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "Fetch the homepage and confirm an Organization node with a name and url parses successfully."
+      }
+    },
+    {
+      "check_id": "SDE.NO_STRUCTURED_DATA",
+      "title": "No structured data of any kind was found on the sampled pages",
+      "gate_impact": "degrades",
+      "reach": "sitewide",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "structured-data-entity-audit",
+      "evidence": "None of the 21 sampled content pages carry JSON-LD, Microdata or RDFa. A machine can read the text but has no explicit signal for what kind of thing each page describes or which entity it belongs to.",
+      "affected_urls": [
+        "https://books.toscrape.com/",
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+        "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+        "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+        "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+        "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+        "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+        "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+        "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+        "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+        "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html",
+        "https://books.toscrape.com/catalogue/category/books/default_15/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fiction_10/index.html",
+        "https://books.toscrape.com/catalogue/category/books/health_47/index.html",
+        "https://books.toscrape.com/catalogue/category/books/historical_42/index.html",
+        "https://books.toscrape.com/catalogue/category/books_1/index.html",
+        "https://books.toscrape.com/catalogue/olio_984/index.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/soumission_998/index.html"
+      ],
+      "evidence_detail": {
+        "method": "presence of any parseable JSON-LD, Microdata itemtype or RDFa typeof, checked across every sampled content page",
+        "observed": {
+          "pages_checked": 21,
+          "structured_data_found": 0
+        },
+        "expected": "at least some structured data, of any of the three formats",
+        "sample": {
+          "checked": 21,
+          "failing": 21
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "SDE.NO_STRUCTURED_DATA",
+        "detector": "structured-data-entity-audit"
+      },
+      "suggested_action": {
+        "summary": "Add structured data for at least the organisation identity and the page types this site actually has, in JSON-LD.",
+        "how": [
+          "Start with an Organization node on the homepage.",
+          "Add the type each template warrants: Product for product pages, Article for editorial content, and so on.",
+          "JSON-LD in a single script block in the page head is the easiest to maintain and validate."
+        ],
+        "mechanism": "Structured data lets a machine classify content and resolve which real-world entity a page is about, without inferring it from prose. Its absence does not block reading the page, but it leaves classification to inference, which is less reliable.",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "Run the page through a structured-data validator and confirm at least one recognised type is detected."
+      }
+    }
+  ],
+  "not_assessed": []
+}

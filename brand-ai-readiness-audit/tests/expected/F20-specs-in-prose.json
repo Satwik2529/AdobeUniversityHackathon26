@@ -1,0 +1,19 @@
+{
+  "must_include": [
+    {
+      "check_id": "ANS.SPECS_NOT_EXTRACTABLE",
+      "min_severity": "medium"
+    }
+  ],
+  "must_not_include": [
+    "ANS.NO_DIRECT_ANSWER_LEAD",
+    "ANS.UNITLESS_VALUES"
+  ],
+  "allowed": [
+    "RND.FACTS_IN_IMAGES"
+  ],
+  "notes": "The specification table is replaced by an equivalent prose sentence stating the same two measurements with explicit units; no table or dl remains. Removing the table also removes the only structured fact surface on the page, which means the base template's pre-existing decorative divider image (present on every product page, harmless when a table exists) now legitimately qualifies for RND.FACTS_IN_IMAGES's own no-table-plus-empty-alt gate. This is RND's existing, correct, already-documented behavior surfacing on a new fixture, not a defect introduced here.",
+  "negative_control": false,
+  "fixture": "F20-specs-in-prose",
+  "forbid_any_above": null
+}

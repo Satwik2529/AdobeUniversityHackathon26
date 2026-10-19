@@ -1,0 +1,18 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "RND.TITLE_DUPLICATE",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [
+    "RND.TITLE_MISSING",
+    "RND.CSR_SHELL"
+  ],
+  "allowed": [],
+  "notes": "Five distinct pages (three products, about, contact) share one static title. Severity is deliberately ceilinged at low: a duplicate title is real hygiene, not a block.",
+  "fixture": "F14-duplicate-titles",
+  "forbid_any_above": null
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "collector_version": "test-fixture",
+  "site": "sparse.test",
+  "origin": "https://sparse.test",
+  "entry_url": "https://sparse.test/",
+  "audited_at": "2026-01-01T00:00:00Z",
+  "pages": [
+    {
+      "url": "https://sparse.test/",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "homepage",
+      "lang": "en",
+      "title": "Sparse Site",
+      "meta_description": "A minimal two-page site.",
+      "headings": [{"level": 1, "text": "Sparse Site"}],
+      "main_text": "Welcome to Sparse Site. We are a small company.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://sparse.test/about",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "about",
+      "lang": "en",
+      "title": "About Sparse Site",
+      "meta_description": "About us.",
+      "headings": [{"level": 1, "text": "About"}],
+      "main_text": "Sparse Site was founded recently. We do not sell any products online.",
+      "structured_data": {"jsonld": []}
+    }
+  ],
+  "clusters": [],
+  "coverage": {"pages_discovered": 2, "pages_sampled": 2, "pages_fetched": 2}
+}

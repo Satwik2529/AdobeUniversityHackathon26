@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "_comment": "Every threshold the collector uses lives here, with a rationale, so the audit can be tuned in one place rather than by editing logic. Detectors have their own thresholds; these govern acquisition only.",
+
+  "user_agent": {
+    "product_token": "BrandAIReadinessAudit",
+    "template": "BrandAIReadinessAudit/1.0 (+read-only site audit; respects robots.txt%s)",
+    "_rationale": "Identifies honestly and never impersonates a real crawler. The single control fetch is the only exception and it is disclosed in the snapshot.",
+    "control_fetch_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    "_control_rationale": "A mainstream browser string used once per page purely to detect user-agent differential blocking. Without it a 403 cannot be distinguished from 'the site blocked this audit'."
+  },
+
+  "budgets": {
+    "max_pages_default": 25,
+    "max_pages_cap": 40,
+    "acquisition_time_budget_s": 150,
+    "request_timeout_s": 10,
+    "render_timeout_s": 15,
+    "total_request_cap": 120,
+    "concurrency": 4,
+    "concurrency_after_throttle": 1,
+    "retry_attempts": 1,
+    "retry_backoff_s": 1.5,
+    "max_redirects": 5,
+    "response_size_cap_bytes": 3145728,
+    "stored_html_cap_bytes": 400000,
+    "crawl_delay_cap_s": 2.0,
+    "max_render_pages": 6,
+    "_rationale": "Sized so a typical site finishes inside the five-minute limit with headroom. crawl_delay_cap_s does not ignore a larger declared delay: the delay is honoured and the sample is reduced instead."
+  },
+
+  "discovery": {
+    "sitemap_fallback_paths": ["/sitemap.xml", "/sitemap_index.xml", "/sitemap-index.xml"],
+    "max_sitemap_index_depth": 3,
+    "max_sitemap_documents": 12,
+    "max_sitemap_urls": 5000,
+    "sitemap_size_cap_bytes": 10485760,
+    "crawl_max_depth": 3,
+    "crawl_max_urls": 400,
+    "crawl_max_fetches": 30,
+    "max_query_params": 2,
+    "max_path_depth": 8,
+    "_rationale": "Caps bound both runtime and the blast radius of a crawl trap. max_query_params keeps faceted navigation from consuming the sample. crawl_max_fetches gives link discovery its own sub-budget so it cannot exhaust the request cap before a single sampled page is fetched; discovery only needs enough pages to see the link graph."
+  },
+
+  "sampling": {
+    "per_cluster_cap": 3,
+    "min_cluster_for_template_finding": 3,
+    "_rationale": "Three pages per template is enough to distinguish a template-wide problem from a one-page anomaly, and is the threshold detectors use before reporting at template reach."
+  },
+
+  "classification": {
+    "short_page_text_floor": 400,
+    "thin_content_floor": 250,
+    "long_page_text_floor": 3000,
+    "min_confidence_signals": 2,
+    "_rationale": "short_page_text_floor exempts legitimately short pages such as contact and legal notices from answer-position and thin-content judgements."
+  },
+
+  "spa_signals": {
+    "empty_mount_ids": ["root", "app", "__next", "__nuxt", "main-app", "application"],
+    "empty_mount_tags": ["app-root", "ng-app"],
+    "script_to_text_ratio": 20.0,
+    "_rationale": "Mount points are matched structurally: an element with no text content whose id or tag follows a common framework root convention. The lists are conventions, not a single framework's selectors, and an unlisted convention simply contributes no signal rather than producing a wrong one."
+  },
+
+  "url_normalization": {
+    "tracking_params": [
+      "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_id",
+      "gclid", "gclsrc", "dclid", "gbraid", "wbraid", "fbclid", "msclkid", "twclid",
+      "ttclid", "igshid", "mc_cid", "mc_eid", "yclid", "_ga", "_gl", "s_kwcid",
+      "ref_src", "spm", "scm", "vero_id", "hsa_acc", "hsa_cam", "hsa_grp", "_hsenc",
+      "_hsmi", "mkt_tok", "piwik_campaign", "pk_campaign", "pk_kwd"
+    ],
+    "session_params": [
+      "sid", "sessionid", "session_id", "phpsessid", "jsessionid", "aspsessionid",
+      "sessid", "zenid", "cfid", "cftoken", "oscsid", "s_id"
+    ],
+    "_rationale": "Only parameters that are known not to change the resource are stripped. Everything else is preserved, because dropping a meaningful parameter would make the audit describe a page the site does not serve."
+  },
+
+  "agent_verdict_tokens": [
+    "*", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot",
+    "Claude-User", "anthropic-ai", "Claude-Web", "PerplexityBot", "Perplexity-User",
+    "Googlebot", "Google-Extended", "Bingbot", "Applebot", "Applebot-Extended",
+    "CCBot", "Meta-ExternalAgent", "Bytespider", "Amazonbot", "cohere-ai", "Diffbot"
+  ],
+  "_agent_rationale": "The collector only resolves robots verdicts for these tokens. It attaches no meaning to them. Interpreting a verdict as a defect, an info note, or nothing at all is the access detector's job, using its own role table."
+}

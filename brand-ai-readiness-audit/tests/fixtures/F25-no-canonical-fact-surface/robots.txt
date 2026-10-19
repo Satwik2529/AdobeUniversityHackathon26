@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /search.html
+Allow: /
+
+Sitemap: http://localhost:8099/sitemap.xml

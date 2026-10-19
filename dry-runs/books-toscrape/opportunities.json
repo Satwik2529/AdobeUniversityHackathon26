@@ -1,0 +1,144 @@
+{
+  "opportunities": [
+    {
+      "id": "OPP-001",
+      "category": "freshness-source-of-truth",
+      "title": "Establish one canonical entity/fact source and propagate it",
+      "summary": "Decide which value is current and correct.",
+      "description": "Findings from freshness-corroboration-audit and structured-data-entity-audit co-occur on overlapping pages: FRC.COPYRIGHT_YEAR_LAG, SDE.BREADCRUMB_MISSING, SDE.NO_STRUCTURED_DATA.",
+      "rationale": "Both detectors independently flagged overlapping pages (https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html), which is stronger evidence of a compound, template-level problem than either finding alone.",
+      "related_findings": [
+        "FRC.COPYRIGHT_YEAR_LAG",
+        "SDE.BREADCRUMB_MISSING",
+        "SDE.NO_STRUCTURED_DATA"
+      ],
+      "scope": "Observed across 10 overlapping sampled page(s): https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html (and more)",
+      "mechanism": "A fact contradicted across the site's own pages, alongside structured data that does not agree with itself either, means there is no single version of this fact a machine could trust even if it wanted to.",
+      "expected_effect": "Every surface stating this fact, structured or visible, states the same current value.",
+      "recommended_actions": [
+        "Decide which value is current and correct.",
+        "Update every surface named in the underlying findings to match it, and reference a single source (a stable @id, or one field) going forward rather than maintaining separate copies."
+      ],
+      "verification": "Re-run the audit against the URLs named in scope and confirm none of FRC.COPYRIGHT_YEAR_LAG, SDE.BREADCRUMB_MISSING, SDE.NO_STRUCTURED_DATA fire again.",
+      "owner": "mixed",
+      "effort": "template-change",
+      "dependencies": []
+    },
+    {
+      "id": "OPP-002",
+      "category": "cross-detector-template",
+      "title": "Treat access and render problems on the same template as one compound gate",
+      "summary": "Confirm both issues affect the same template cluster, not merely the same site.",
+      "description": "Findings from crawl-access-audit and render-readability-audit co-occur on overlapping pages: ACC.CANONICAL_MISSING, RND.HEADING_LEVEL_JUMPS.",
+      "rationale": "Both detectors independently flagged overlapping pages (https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html), which is stronger evidence of a compound, template-level problem than either finding alone.",
+      "related_findings": [
+        "ACC.CANONICAL_MISSING",
+        "RND.HEADING_LEVEL_JUMPS"
+      ],
+      "scope": "Observed across 10 overlapping sampled page(s): https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html (and more)",
+      "mechanism": "A page an agent cannot reach and a page it can reach but cannot read are two different symptoms of the same outcome: the content never reaches an answer. Fixing access without fixing render, or the reverse, still leaves the gate shut.",
+      "expected_effect": "Once both are addressed on the same template, the pages in that cluster stop failing at either the accessible or the readable gate.",
+      "recommended_actions": [
+        "Confirm both issues affect the same template cluster, not merely the same site.",
+        "Sequence the access fix first, since a render fix cannot be verified by an agent that cannot reach the page at all.",
+        "Re-run the audit against representative URLs from the cluster after both changes ship."
+      ],
+      "verification": "Re-run the audit against the URLs named in scope and confirm none of ACC.CANONICAL_MISSING, RND.HEADING_LEVEL_JUMPS fire again.",
+      "owner": "mixed",
+      "effort": "template-change",
+      "dependencies": []
+    },
+    {
+      "id": "OPP-003",
+      "category": "deferred-capability",
+      "title": "Deferred: Actual AI referral traffic and citation frequency",
+      "summary": "Run a fixed panel of prompts across assistants in clean sessions, repeated, and record the rate at which the brand is named and cited.",
+      "description": "no assistant, search engine, or analytics platform is queried by this marketplace.",
+      "rationale": "This is a capability gap in what can be measured from a snapshot, not a defect found on the site.",
+      "related_findings": [],
+      "scope": "Sitewide, not tied to a specific sampled page",
+      "mechanism": "Without this data, the audit can recommend but cannot confirm outcome, only mechanism.",
+      "expected_effect": "Establishes a baseline for a capability this audit cannot measure directly.",
+      "recommended_actions": [
+        "Run a fixed panel of prompts across assistants in clean sessions, repeated, and record the rate at which the brand is named and cited."
+      ],
+      "verification": "Not applicable: this is a measurement gap, not a fix to verify.",
+      "owner": "mixed",
+      "effort": "platform-change",
+      "dependencies": []
+    },
+    {
+      "id": "OPP-004",
+      "category": "deferred-capability",
+      "title": "Deferred: Actual behavioural engagement (click-through, conversion, bounce, time on page)",
+      "summary": "Track conversion or engagement from answer-bearing pages to the relevant action, segmented by referrer, after implementing any recommended action pathway.",
+      "description": "answer-retrievability-audit and engagement-audit reason from structural evidence only; no behavioural data exists in this snapshot.",
+      "rationale": "This is a capability gap in what can be measured from a snapshot, not a defect found on the site.",
+      "related_findings": [],
+      "scope": "Sitewide, not tied to a specific sampled page",
+      "mechanism": "Without this data, the audit can recommend but cannot confirm outcome, only mechanism.",
+      "expected_effect": "Establishes a baseline for a capability this audit cannot measure directly.",
+      "recommended_actions": [
+        "Track conversion or engagement from answer-bearing pages to the relevant action, segmented by referrer, after implementing any recommended action pathway."
+      ],
+      "verification": "Not applicable: this is a measurement gap, not a fix to verify.",
+      "owner": "mixed",
+      "effort": "platform-change",
+      "dependencies": []
+    },
+    {
+      "id": "OPP-005",
+      "category": "deferred-capability",
+      "title": "Deferred: External/off-site corroboration of key facts",
+      "summary": "Periodically check whether independent sources still state a superseded value for each canonical fact.",
+      "description": "freshness-corroboration-audit is a pure snapshot consumer by explicit architectural rule; it cannot query external sources.",
+      "rationale": "This is a capability gap in what can be measured from a snapshot, not a defect found on the site.",
+      "related_findings": [],
+      "scope": "Sitewide, not tied to a specific sampled page",
+      "mechanism": "Without this data, the audit can recommend but cannot confirm outcome, only mechanism.",
+      "expected_effect": "Establishes a baseline for a capability this audit cannot measure directly.",
+      "recommended_actions": [
+        "Periodically check whether independent sources still state a superseded value for each canonical fact."
+      ],
+      "verification": "Not applicable: this is a measurement gap, not a fix to verify.",
+      "owner": "mixed",
+      "effort": "platform-change",
+      "dependencies": []
+    }
+  ],
+  "measurement_plan": {
+    "tracks": [
+      {
+        "track": "Visibility",
+        "what": "Whether the brand is named, and cited, in assistant answers to category, brand-direct, comparison and long-tail questions",
+        "how": "A fixed panel of 30 to 50 prompts, run across several assistants in clean sessions, several repeats each; record the rate the brand is named and cited, not a single outcome",
+        "cadence": "monthly"
+      },
+      {
+        "track": "Accessibility",
+        "what": "Whether the agents that matter are actually reaching the site",
+        "how": "Server-log monitoring of crawler activity (request counts, status codes and paths per agent), verified against each operator's published address ranges rather than the user-agent header alone",
+        "cadence": "weekly"
+      },
+      {
+        "track": "Factual accuracy",
+        "what": "Whether the current version of each canonical fact is the one that exists in the world",
+        "how": "For each canonical fact, check independent sources state the current value; alert when a superseded version resurfaces",
+        "cadence": "monthly"
+      },
+      {
+        "track": "Regression",
+        "what": "Whether the fixes from this audit held",
+        "how": "Re-run this audit on a schedule and diff the reports by check_id: resolved, new, regressed",
+        "cadence": "monthly"
+      },
+      {
+        "track": "Engagement pathway coverage",
+        "what": "Whether representative high-value pages continue to expose an observable next step",
+        "how": "Re-run the engagement check on a schedule against the same sampled page set and diff by check_id",
+        "cadence": "monthly"
+      }
+    ],
+    "caveat": "Assistants personalise: two people asking the same question can get different brands and framing. A single prompt on a single day is not a measurement. Run clean sessions, repeat each prompt, and report rates with the sample size attached. The report carries a stable check_id on every finding precisely so consecutive audits can be diffed; the sequential id shifts as findings are added or resolved, check_id does not."
+  }
+}

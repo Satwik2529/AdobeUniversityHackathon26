@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "collector_version": "test-fixture",
+  "site": "example-consulting.test",
+  "origin": "https://example-consulting.test",
+  "entry_url": "https://example-consulting.test/",
+  "audited_at": "2026-01-01T00:00:00Z",
+  "pages": [
+    {
+      "url": "https://example-consulting.test/",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "homepage",
+      "lang": "en",
+      "title": "Bright Path Consulting — Strategy and Design Services",
+      "meta_description": "Strategy and design consulting services.",
+      "headings": [{"level": 1, "text": "Bright Path Consulting"}],
+      "main_text": "Bright Path Consulting offers strategy consulting and design consulting services.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://example-consulting.test/services/strategy-consulting",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "unknown",
+      "lang": "en",
+      "title": "Strategy Consulting",
+      "meta_description": "Growth strategy consulting for businesses.",
+      "headings": [{"level": 1, "text": "Strategy Consulting"}],
+      "main_text": "We help businesses and professionals develop growth strategy. Our clients include startups and enterprises. Strategy consulting engagements start at $5,000.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://example-consulting.test/services/design-consulting",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "unknown",
+      "lang": "en",
+      "title": "Design Consulting",
+      "meta_description": "Branding and product design consulting.",
+      "headings": [{"level": 1, "text": "Design Consulting"}],
+      "main_text": "Our design consulting service helps clients with branding and product design for professional use. Design consulting engagements start at $3,000.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://example-consulting.test/about",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "about",
+      "lang": "en",
+      "title": "About Bright Path",
+      "meta_description": "About Bright Path Consulting.",
+      "headings": [{"level": 1, "text": "About"}],
+      "main_text": "Bright Path Consulting is a boutique firm serving professionals and businesses worldwide.",
+      "structured_data": {"jsonld": []}
+    }
+  ],
+  "clusters": [],
+  "coverage": {"pages_discovered": 4, "pages_sampled": 4, "pages_fetched": 4}
+}

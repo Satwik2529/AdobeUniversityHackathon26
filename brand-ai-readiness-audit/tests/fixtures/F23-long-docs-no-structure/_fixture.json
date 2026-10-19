@@ -1,0 +1,21 @@
+{
+  "id": "F23-long-docs-no-structure",
+  "description": "A long documentation page with no heading ids and no lead summary.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "docs/reference.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}

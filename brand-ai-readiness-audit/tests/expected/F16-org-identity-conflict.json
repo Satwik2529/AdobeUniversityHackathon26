@@ -1,0 +1,17 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "SDE.ORG_IDENTITY_CONFLICT",
+      "min_severity": "high"
+    }
+  ],
+  "must_not_include": [
+    "SDE.NAME_INCONSISTENT",
+    "SDE.NO_ORGANIZATION_NODE"
+  ],
+  "allowed": [],
+  "notes": "The homepage's Organization node (@id=#organization) is untouched. Contact.html's own embedded mainEntity Organization, sharing the same @id, disagrees on telephone. This is a same-page-pair, cross-page identity conflict, not a name inconsistency (the name is never touched) and not a missing-organization case (both pages declare one).",
+  "fixture": "F16-org-identity-conflict",
+  "forbid_any_above": null
+}

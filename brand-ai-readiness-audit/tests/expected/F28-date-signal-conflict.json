@@ -1,0 +1,15 @@
+{
+  "must_include": [
+    {
+      "check_id": "FRC.DATE_SIGNAL_CONFLICT",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [],
+  "allowed": [],
+  "notes": "The Alpha product page's own JSON-LD dateModified (2026-01-15) disagrees by months with the same page's sitemap lastmod entry (2026-08-01), well beyond the 2-day tolerance.",
+  "negative_control": false,
+  "fixture": "F28-date-signal-conflict",
+  "forbid_any_above": null
+}

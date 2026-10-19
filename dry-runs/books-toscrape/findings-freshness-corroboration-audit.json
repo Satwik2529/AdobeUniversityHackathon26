@@ -1,0 +1,50 @@
+{
+  "detector": "freshness-corroboration-audit",
+  "findings": [
+    {
+      "check_id": "FRC.COPYRIGHT_YEAR_LAG",
+      "title": "The copyright year lags the site's own newest content by more than a year",
+      "gate_impact": "weakens",
+      "reach": "template",
+      "certainty": "measured",
+      "funnel_stage": "selected",
+      "detector": "freshness-corroboration-audit",
+      "evidence": "1 pages show a copyright year of 2003, while the newest date signal observed anywhere in the sample is 2023 -- a gap of 20 years. Example: https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html.",
+      "affected_urls": [
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html"
+      ],
+      "evidence_detail": {
+        "method": "a copyright year (matched via the \u00a9 symbol or the word 'copyright') compared against the newest date signal (structured data, sitemap, or Last-Modified header) found anywhere in the sample, or the audit's own crawl date if no other signal exists",
+        "observed": {
+          "pages": [
+            {
+              "url": "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+              "copyright_year": 2003
+            }
+          ],
+          "reference_year": 2023
+        },
+        "expected": "the copyright year within a year of the site's own newest content",
+        "sample": {
+          "checked": 21,
+          "failing": 1
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "FRC.COPYRIGHT_YEAR_LAG",
+        "detector": "freshness-corroboration-audit"
+      },
+      "suggested_action": {
+        "summary": "Update the copyright year, ideally driven automatically from the current date rather than a hand-maintained value.",
+        "how": [
+          "Generate the footer copyright year from the server's own clock at render time, so it never needs manual updating."
+        ],
+        "mechanism": "A lagging copyright year is a weak but real signal a system may use when judging how actively a site is maintained, independent of whether the content itself is still accurate.",
+        "effort": "trivial",
+        "owner": "engineering",
+        "verification": "Re-check the footer and confirm the year matches or exceeds the site's own newest content date."
+      }
+    }
+  ],
+  "not_assessed": []
+}

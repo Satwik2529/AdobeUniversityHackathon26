@@ -1,0 +1,1180 @@
+{
+  "site": "books.toscrape.com",
+  "audited_at": "2026-10-08T08:51:42Z",
+  "summary": {
+    "total_findings": 10,
+    "critical": 0,
+    "high": 2,
+    "medium": 6,
+    "low": 2,
+    "info": 0
+  },
+  "audit": {
+    "marketplace_version": "1.0.0",
+    "entrypoint": "brand-ai-readiness-audit",
+    "duration_seconds": 69.9,
+    "phase_timings": {
+      "robots": 1.357,
+      "discovery": 34.602,
+      "sampling": 0.039,
+      "fetch": 6.765,
+      "control_fetch": 22.675,
+      "query_preservation": 0.0,
+      "classify": 0.004,
+      "render": 0.927
+    },
+    "no_changes_made": true,
+    "duplicate_findings_merged": 0
+  },
+  "coverage": {
+    "pages_discovered": 412,
+    "pages_sampled": 25,
+    "pages_fetched": 25,
+    "pages_rendered": 0,
+    "blocked_by_robots": 0,
+    "fetch_failures": 0,
+    "requests_made": 69,
+    "request_cap": 120,
+    "template_clusters": [
+      "/",
+      "/catalogue/arena_587/index.html",
+      "/catalogue/beowulf_126/index.html",
+      "/catalogue/bossypants_883/index.html",
+      "/catalogue/burning_884/index.html",
+      "/catalogue/candide_316/index.html",
+      "/catalogue/category/books/academic_40/index.html",
+      "/catalogue/category/books/art_25/index.html",
+      "/catalogue/category/books/autobiography_27/index.html",
+      "/catalogue/category/books/biography_36/index.html",
+      "/catalogue/category/books/business_35/index.html",
+      "/catalogue/category/books/childrens_11/index.html",
+      "/catalogue/category/books/childrens_11/page-2.html",
+      "/catalogue/category/books/christian_43/index.html",
+      "/catalogue/category/books/classics_6/index.html",
+      "/catalogue/category/books/contemporary_38/index.html",
+      "/catalogue/category/books/crime_51/index.html",
+      "/catalogue/category/books/cultural_49/index.html",
+      "/catalogue/category/books/default_15/index.html",
+      "/catalogue/category/books/default_15/page-2.html",
+      "/catalogue/category/books/erotica_50/index.html",
+      "/catalogue/category/books/fantasy_19/index.html",
+      "/catalogue/category/books/fantasy_19/page-2.html",
+      "/catalogue/category/books/fiction_10/index.html",
+      "/catalogue/category/books/fiction_10/page-2.html",
+      "/catalogue/category/books/health_47/index.html",
+      "/catalogue/category/books/historical_42/index.html",
+      "/catalogue/category/books/history_32/index.html",
+      "/catalogue/category/books/horror_31/index.html",
+      "/catalogue/category/books/humor_30/index.html",
+      "/catalogue/category/books/music_14/index.html",
+      "/catalogue/category/books/mystery_3/index.html",
+      "/catalogue/category/books/mystery_3/page-2.html",
+      "/catalogue/category/books/nonfiction_13/index.html",
+      "/catalogue/category/books/nonfiction_13/page-2.html",
+      "/catalogue/category/books/novels_46/index.html",
+      "/catalogue/category/books/paranormal_24/index.html",
+      "/catalogue/category/books/parenting_28/index.html",
+      "/catalogue/category/books/philosophy_7/index.html",
+      "/catalogue/category/books/poetry_23/index.html",
+      "/catalogue/category/books/politics_48/index.html",
+      "/catalogue/category/books/psychology_26/index.html",
+      "/catalogue/category/books/religion_12/index.html",
+      "/catalogue/category/books/romance_8/index.html",
+      "/catalogue/category/books/romance_8/page-2.html",
+      "/catalogue/category/books/science_22/index.html",
+      "/catalogue/category/books/spirituality_39/index.html",
+      "/catalogue/category/books/suspense_44/index.html",
+      "/catalogue/category/books/thriller_37/index.html",
+      "/catalogue/category/books/travel_2/index.html",
+      "/catalogue/category/books/{slug}/index.html",
+      "/catalogue/category/books/{slug}/page-2.html",
+      "/catalogue/category/books_1/index.html",
+      "/catalogue/category/books_1/page-2.html",
+      "/catalogue/cell_674/index.html",
+      "/catalogue/emma_17/index.html",
+      "/catalogue/join_902/index.html",
+      "/catalogue/life_104/index.html",
+      "/catalogue/meditations_33/index.html",
+      "/catalogue/meternity_478/index.html",
+      "/catalogue/olio_984/index.html",
+      "/catalogue/page-2.html",
+      "/catalogue/patience_916/index.html",
+      "/catalogue/rook_647/index.html",
+      "/catalogue/shameless_52/index.html",
+      "/catalogue/shtum_733/index.html",
+      "/catalogue/soumission_998/index.html",
+      "/catalogue/thirst_946/index.html",
+      "/catalogue/{slug}/index.html",
+      "/index.html"
+    ],
+    "site_archetype": "mixed",
+    "page_type_counts": {
+      "homepage": 1,
+      "unknown": 6,
+      "contact": 8,
+      "category": 10
+    },
+    "capabilities": {
+      "headless_render": false,
+      "external_search": false
+    },
+    "not_assessed": [
+      {
+        "dimension": "inbound parameter preservation",
+        "reason": "no sampled URL redirected, so there was nothing to probe"
+      },
+      {
+        "dimension": "browser render comparison",
+        "reason": "a headless browser is installed but would not start: BrowserType.launch: Executable doesn't exist at C:\\Users\\patha\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1234\\chrome-headless-shell-win64\\chrome-headless-shell.exe\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550"
+      },
+      {
+        "dimension": "off-site corroboration",
+        "reason": "no external search capability was made available to this run"
+      },
+      {
+        "dimension": "content behind interaction",
+        "reason": "this marketplace's collector never clicks, submits or interacts with a page by design, so content that only appears after a tab, accordion or similar interaction cannot be distinguished from content that was never going to appear at all. This is a permanent architectural limit, not a capability that a browser being available would remove.",
+        "detector": "render-readability-audit"
+      }
+    ],
+    "degradations": [],
+    "blocked_urls": [],
+    "failures": []
+  },
+  "findings": [
+    {
+      "check_id": "SDE.NO_ORGANIZATION_NODE",
+      "title": "The homepage declares no organization or local-business entity",
+      "reach": "sitewide",
+      "funnel_stage": "understood",
+      "detector": "structured-data-entity-audit",
+      "evidence": "The homepage (https://books.toscrape.com/) has no Organization, LocalBusiness or equivalent entity in its JSON-LD, Microdata or RDFa, after traversing any @graph fully. There is no explicit machine-readable statement of which brand this site belongs to.",
+      "affected_urls": [
+        "https://books.toscrape.com/"
+      ],
+      "evidence_detail": {
+        "method": "JSON-LD @graph traversal, Microdata itemtype and RDFa typeof checked for an Organization, LocalBusiness or Corporation node on the homepage",
+        "observed": {
+          "jsonld_types_found": [],
+          "microdata_types_found": [],
+          "rdfa_types_found": []
+        },
+        "expected": "an Organization or LocalBusiness node on the homepage",
+        "sample": {
+          "checked": 1,
+          "failing": 1
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "SDE.NO_ORGANIZATION_NODE",
+        "detector": "structured-data-entity-audit"
+      },
+      "suggested_action": {
+        "summary": "Add one Organization (or LocalBusiness, if there is a physical location) node to the homepage, in JSON-LD, with a stable identifier.",
+        "how": [
+          "Include at minimum name, url, and logo.",
+          "Give it an @id so other structured data on the site can reference it rather than duplicating it.",
+          "Add sameAs links to profiles the brand actually controls."
+        ],
+        "mechanism": "This is the single node a system uses to resolve 'this site' into 'this real-world brand'. Without it, every other page's content is attributed to an inferred entity rather than a declared one.",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "Fetch the homepage and confirm an Organization node with a name and url parses successfully.",
+        "priority": "high"
+      },
+      "severity": "high",
+      "id": "F-001"
+    },
+    {
+      "check_id": "SDE.NO_STRUCTURED_DATA",
+      "title": "No structured data of any kind was found on the sampled pages",
+      "reach": "sitewide",
+      "funnel_stage": "understood",
+      "detector": "structured-data-entity-audit",
+      "evidence": "None of the 21 sampled content pages carry JSON-LD, Microdata or RDFa. A machine can read the text but has no explicit signal for what kind of thing each page describes or which entity it belongs to.",
+      "affected_urls": [
+        "https://books.toscrape.com/",
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+        "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+        "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+        "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+        "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+        "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+        "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+        "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+        "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+        "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html",
+        "https://books.toscrape.com/catalogue/category/books/default_15/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fiction_10/index.html",
+        "https://books.toscrape.com/catalogue/category/books/health_47/index.html",
+        "https://books.toscrape.com/catalogue/category/books/historical_42/index.html",
+        "https://books.toscrape.com/catalogue/category/books_1/index.html",
+        "https://books.toscrape.com/catalogue/olio_984/index.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/soumission_998/index.html"
+      ],
+      "evidence_detail": {
+        "method": "presence of any parseable JSON-LD, Microdata itemtype or RDFa typeof, checked across every sampled content page",
+        "observed": {
+          "pages_checked": 21,
+          "structured_data_found": 0
+        },
+        "expected": "at least some structured data, of any of the three formats",
+        "sample": {
+          "checked": 21,
+          "failing": 21
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "SDE.NO_STRUCTURED_DATA",
+        "detector": "structured-data-entity-audit"
+      },
+      "suggested_action": {
+        "summary": "Add structured data for at least the organisation identity and the page types this site actually has, in JSON-LD.",
+        "how": [
+          "Start with an Organization node on the homepage.",
+          "Add the type each template warrants: Product for product pages, Article for editorial content, and so on.",
+          "JSON-LD in a single script block in the page head is the easiest to maintain and validate."
+        ],
+        "mechanism": "Structured data lets a machine classify content and resolve which real-world entity a page is about, without inferring it from prose. Its absence does not block reading the page, but it leaves classification to inference, which is less reliable.",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "Run the page through a structured-data validator and confirm at least one recognised type is detected.",
+        "priority": "high"
+      },
+      "severity": "high",
+      "id": "F-002"
+    },
+    {
+      "check_id": "ACC.CANONICAL_MISSING",
+      "title": "Content pages declare no canonical URL",
+      "reach": "sitewide",
+      "funnel_stage": "discovered",
+      "detector": "crawl-access-audit",
+      "evidence": "21 of 21 sampled content pages carry no rel=canonical link. Without one, a crawler that reaches the same content through a different URL, for example with a tracking parameter or a trailing slash, has to guess which address is the real one. Examples: https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html.",
+      "affected_urls": [
+        "https://books.toscrape.com/",
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+        "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+        "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+        "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+        "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+        "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+        "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+        "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+        "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+        "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html",
+        "https://books.toscrape.com/catalogue/category/books/default_15/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fiction_10/index.html",
+        "https://books.toscrape.com/catalogue/category/books/health_47/index.html",
+        "https://books.toscrape.com/catalogue/category/books/historical_42/index.html",
+        "https://books.toscrape.com/catalogue/category/books_1/index.html",
+        "https://books.toscrape.com/catalogue/olio_984/index.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/soumission_998/index.html"
+      ],
+      "evidence_detail": {
+        "method": "presence of a parsed rel=canonical link on sampled content pages",
+        "observed": {
+          "missing": [
+            "https://books.toscrape.com/",
+            "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+            "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+            "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+            "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+            "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+            "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+            "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+            "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+            "https://books.toscrape.com/catalogue/category/books/classics_6/index.html"
+          ]
+        },
+        "expected": "a self-referencing canonical on every content page",
+        "sample": {
+          "checked": 21,
+          "failing": 21,
+          "clusters_affected": [
+            "c01",
+            "c08",
+            "c09",
+            "c10",
+            "c11",
+            "c12",
+            "c14",
+            "c15",
+            "c16",
+            "c19",
+            "c22",
+            "c24",
+            "c26",
+            "c27",
+            "c51",
+            "c53",
+            "c61",
+            "c62",
+            "c67",
+            "c69",
+            "c70"
+          ]
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "ACC.CANONICAL_MISSING",
+        "detector": "crawl-access-audit"
+      },
+      "suggested_action": {
+        "summary": "Add a self-referencing rel=canonical to every content template, pointing at the absolute preferred URL of that page.",
+        "how": [
+          "Emit the canonical from the route's own definition so it is always the page's preferred absolute URL.",
+          "Use the same scheme, host and trailing-slash form as the sitemap, so the two do not disagree."
+        ],
+        "mechanism": "A canonical consolidates the signals for one piece of content onto one address. Without it, parameterised and duplicated variants compete with each other and none accumulates the full weight.",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "Request each URL and confirm the canonical matches the URL that was requested.",
+        "priority": "medium"
+      },
+      "severity": "medium",
+      "id": "F-003"
+    },
+    {
+      "check_id": "ACC.ROBOTS_MISSING",
+      "title": "No robots.txt is published",
+      "reach": "sitewide",
+      "funnel_stage": "discovered",
+      "detector": "crawl-access-audit",
+      "evidence": "A request for https://books.toscrape.com/robots.txt returned 404. No robots.txt means no crawler restrictions, so this does not block anything. It does mean there is nowhere to declare a sitemap or to state a deliberate policy for training versus retrieval crawlers.",
+      "affected_urls": [
+        "https://books.toscrape.com/robots.txt"
+      ],
+      "evidence_detail": {
+        "method": "single request for /robots.txt recorded in the snapshot",
+        "observed": {
+          "status": 404
+        },
+        "expected": "a robots.txt returning 200 with text/plain",
+        "sample": {
+          "checked": 1,
+          "failing": 1
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "ACC.ROBOTS_MISSING",
+        "detector": "crawl-access-audit"
+      },
+      "suggested_action": {
+        "summary": "Publish a robots.txt that declares the sitemap and states an explicit policy for training and retrieval crawlers.",
+        "how": [
+          "Serve /robots.txt as text/plain.",
+          "Add a Sitemap: line pointing at the sitemap index.",
+          "Decide deliberately whether to allow training crawlers; leaving it undeclared is a decision made by default rather than on purpose.",
+          "Keep retrieval and user-triggered agents allowed unless there is a specific reason not to."
+        ],
+        "mechanism": "Absence does not shut the discovered gate, but it forfeits the one place to declare a sitemap and to record an intentional crawler policy, so a future change can silently remove citation eligibility.",
+        "effort": "trivial",
+        "owner": "engineering",
+        "verification": "Request /robots.txt and confirm a 200 with text/plain and a resolvable Sitemap line.",
+        "priority": "high"
+      },
+      "severity": "medium",
+      "id": "F-004"
+    },
+    {
+      "check_id": "ACC.SITEMAP_MISSING",
+      "title": "No usable sitemap was found",
+      "reach": "sitewide",
+      "funnel_stage": "discovered",
+      "detector": "crawl-access-audit",
+      "evidence": "No sitemap could be read. Locations tried: https://books.toscrape.com/sitemap.xml (status 404), https://books.toscrape.com/sitemap_index.xml (status 404), https://books.toscrape.com/sitemap-index.xml (status 404). Discovery fell back to following links, which found 412 URLs. This is a crawl-efficiency problem rather than a block: pages linked from the site are still reachable.",
+      "affected_urls": [
+        "https://books.toscrape.com/sitemap-index.xml",
+        "https://books.toscrape.com/sitemap.xml",
+        "https://books.toscrape.com/sitemap_index.xml"
+      ],
+      "evidence_detail": {
+        "method": "sitemap locations from robots.txt, then conventional paths",
+        "observed": {
+          "candidates": [
+            {
+              "url": "https://books.toscrape.com/sitemap.xml",
+              "source": "conventional location",
+              "status": 404,
+              "kind": null,
+              "url_count": 0,
+              "lastmod_distinct": 0,
+              "parse_ok": false,
+              "error": "HTTP 404",
+              "truncated": false
+            },
+            {
+              "url": "https://books.toscrape.com/sitemap_index.xml",
+              "source": "conventional location",
+              "status": 404,
+              "kind": null,
+              "url_count": 0,
+              "lastmod_distinct": 0,
+              "parse_ok": false,
+              "error": "HTTP 404",
+              "truncated": false
+            },
+            {
+              "url": "https://books.toscrape.com/sitemap-index.xml",
+              "source": "conventional location",
+              "status": 404,
+              "kind": null,
+              "url_count": 0,
+              "lastmod_distinct": 0,
+              "parse_ok": false,
+              "error": "HTTP 404",
+              "truncated": false
+            }
+          ],
+          "discovery_method": "crawl",
+          "urls_discovered": 412
+        },
+        "expected": "at least one sitemap returning 200 and parsing as a urlset",
+        "sample": {
+          "checked": 3,
+          "failing": 3
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "ACC.SITEMAP_MISSING",
+        "detector": "crawl-access-audit"
+      },
+      "suggested_action": {
+        "summary": "Publish a sitemap with accurate lastmod values and declare it in robots.txt.",
+        "how": [
+          "Generate a sitemap from the publishing pipeline so lastmod reflects the real content change date rather than the build clock.",
+          "Segment it by template (products, articles, static pages) so a crawler can recrawl the fast-changing parts without refetching the rest.",
+          "Add a `Sitemap:` line to robots.txt pointing at the index."
+        ],
+        "mechanism": "A sitemap does not unblock anything; it tells a crawler which URLs exist and which have changed, so pages that are weakly linked internally get discovered and changed pages get recrawled sooner.",
+        "effort": "config",
+        "owner": "engineering",
+        "verification": "Fetch the sitemap URL and confirm it returns 200, parses, and lists the canonical URL of every template.",
+        "priority": "high"
+      },
+      "severity": "medium",
+      "id": "F-005"
+    },
+    {
+      "check_id": "RND.CSR_SHELL",
+      "title": "Content appears to exist only after JavaScript runs",
+      "reach": "page",
+      "funnel_stage": "readable",
+      "detector": "render-readability-audit",
+      "evidence": "4 pages show the structural signature of a client-rendered shell in the raw HTML: https://books.toscrape.com/catalogue/category/books/academic_40/index.html (empty-or-thin-main-content/high, external-bundle-with-no-text/medium). No headless browser was available in this run to confirm directly by comparison, so this is inferred from structure rather than measured against a render.",
+      "affected_urls": [
+        "https://books.toscrape.com/catalogue/category/books/academic_40/index.html",
+        "https://books.toscrape.com/catalogue/category/books/crime_51/index.html",
+        "https://books.toscrape.com/catalogue/category/books/cultural_49/index.html",
+        "https://books.toscrape.com/catalogue/category/books/erotica_50/index.html"
+      ],
+      "evidence_detail": {
+        "method": "static structural signals computed by the collector: an empty framework mount point, thin main content, a noscript notice, or a script-to-text ratio far above normal",
+        "observed": {
+          "pages": [
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/academic_40/index.html",
+              "signals": [
+                {
+                  "signal": "empty-or-thin-main-content",
+                  "weight": "high",
+                  "detail": "main content held 229 characters of text in the raw HTML, below the 250 character floor"
+                },
+                {
+                  "signal": "external-bundle-with-no-text",
+                  "weight": "medium",
+                  "detail": "5 external scripts referenced with almost no readable text"
+                }
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/crime_51/index.html",
+              "signals": [
+                {
+                  "signal": "empty-or-thin-main-content",
+                  "weight": "high",
+                  "detail": "main content held 217 characters of text in the raw HTML, below the 250 character floor"
+                },
+                {
+                  "signal": "external-bundle-with-no-text",
+                  "weight": "medium",
+                  "detail": "5 external scripts referenced with almost no readable text"
+                }
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/cultural_49/index.html",
+              "signals": [
+                {
+                  "signal": "empty-or-thin-main-content",
+                  "weight": "high",
+                  "detail": "main content held 215 characters of text in the raw HTML, below the 250 character floor"
+                },
+                {
+                  "signal": "external-bundle-with-no-text",
+                  "weight": "medium",
+                  "detail": "5 external scripts referenced with almost no readable text"
+                }
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/erotica_50/index.html",
+              "signals": [
+                {
+                  "signal": "empty-or-thin-main-content",
+                  "weight": "high",
+                  "detail": "main content held 209 characters of text in the raw HTML, below the 250 character floor"
+                },
+                {
+                  "signal": "external-bundle-with-no-text",
+                  "weight": "medium",
+                  "detail": "5 external scripts referenced with almost no readable text"
+                }
+              ]
+            }
+          ]
+        },
+        "expected": "no combination of these signals on a content page",
+        "sample": {
+          "checked": 25,
+          "failing": 4
+        },
+        "confidence": "medium",
+        "nondeterministic": false,
+        "note": "confirm with a real render comparison when a browser is available; this fallback trades recall for the ability to screen without one",
+        "check_id": "RND.CSR_SHELL",
+        "detector": "render-readability-audit"
+      },
+      "suggested_action": {
+        "summary": "Confirm with a real browser render comparison, then server-render or pre-render the core content if confirmed.",
+        "how": [
+          "Run this audit with a headless browser available, or manually compare `curl` output against a browser's view-source for these URLs.",
+          "If confirmed, enable server-side rendering or static pre-rendering for the template.",
+          "Keep interactive enhancement client-side."
+        ],
+        "mechanism": "The same mechanism as a confirmed shell: crawlers that do not execute JavaScript receive only what is in the raw response. This is flagged at reduced confidence because it was inferred from structure, not measured directly.",
+        "effort": "platform-change",
+        "owner": "engineering",
+        "verification": "Re-run with a browser available and confirm the raw versus rendered comparison.",
+        "priority": "low"
+      },
+      "severity": "medium",
+      "severity_notes": [
+        "single page, lowered one level"
+      ],
+      "id": "F-006"
+    },
+    {
+      "check_id": "FRC.COPYRIGHT_YEAR_LAG",
+      "title": "The copyright year lags the site's own newest content by more than a year",
+      "reach": "template",
+      "funnel_stage": "selected",
+      "detector": "freshness-corroboration-audit",
+      "evidence": "1 pages show a copyright year of 2003, while the newest date signal observed anywhere in the sample is 2023 -- a gap of 20 years. Example: https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html.",
+      "affected_urls": [
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html"
+      ],
+      "evidence_detail": {
+        "method": "a copyright year (matched via the \u00a9 symbol or the word 'copyright') compared against the newest date signal (structured data, sitemap, or Last-Modified header) found anywhere in the sample, or the audit's own crawl date if no other signal exists",
+        "observed": {
+          "pages": [
+            {
+              "url": "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+              "copyright_year": 2003
+            }
+          ],
+          "reference_year": 2023
+        },
+        "expected": "the copyright year within a year of the site's own newest content",
+        "sample": {
+          "checked": 21,
+          "failing": 1
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "FRC.COPYRIGHT_YEAR_LAG",
+        "detector": "freshness-corroboration-audit"
+      },
+      "suggested_action": {
+        "summary": "Update the copyright year, ideally driven automatically from the current date rather than a hand-maintained value.",
+        "how": [
+          "Generate the footer copyright year from the server's own clock at render time, so it never needs manual updating."
+        ],
+        "mechanism": "A lagging copyright year is a weak but real signal a system may use when judging how actively a site is maintained, independent of whether the content itself is still accurate.",
+        "effort": "trivial",
+        "owner": "engineering",
+        "verification": "Re-check the footer and confirm the year matches or exceeds the site's own newest content date.",
+        "priority": "medium"
+      },
+      "severity": "medium",
+      "id": "F-007"
+    },
+    {
+      "check_id": "ENG.ORPHAN_LIKE_SAMPLED_PAGE",
+      "title": "Sampled pages have no inbound link from any other sampled page",
+      "reach": "template",
+      "funnel_stage": "engagement",
+      "detector": "engagement-audit",
+      "evidence": "1 sampled pages are not linked to by any other page in this sample -- orphan-like within the sampled graph. This does not establish that the page is globally unreachable, only that no other page this audit observed points to it. Examples: https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html.",
+      "affected_urls": [
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html"
+      ],
+      "evidence_detail": {
+        "method": "every internal link URL across every sampled page, normalised and compared against each sampled page's own URL",
+        "observed": {
+          "orphan_like_pages": [
+            "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html"
+          ]
+        },
+        "expected": "at least one other sampled page links to this page",
+        "sample": {
+          "checked": 21,
+          "failing": 1
+        },
+        "confidence": "medium",
+        "nondeterministic": false,
+        "note": "scoped explicitly to the sampled graph; a page reached only through pages outside the sample, or through a sitemap alone, would appear orphan-like here without genuinely being orphaned",
+        "check_id": "ENG.ORPHAN_LIKE_SAMPLED_PAGE",
+        "detector": "engagement-audit"
+      },
+      "suggested_action": {
+        "summary": "Link to these pages from at least one other relevant page in the site's own content or navigation.",
+        "how": [
+          "Identify a relevant category, hub or related-content page for each listed URL.",
+          "Add a direct link to it from there."
+        ],
+        "mechanism": "A page with no inbound link from anything else this audit sampled is reachable only through a sitemap or direct URL knowledge, which is a weaker discovery and continuation path than an in-content link from a related page.",
+        "effort": "content",
+        "owner": "content",
+        "verification": "Re-check the site's sampled link graph and confirm at least one other page now links to this URL.",
+        "priority": "low"
+      },
+      "severity": "medium",
+      "id": "F-008"
+    },
+    {
+      "check_id": "RND.HEADING_LEVEL_JUMPS",
+      "title": "Heading levels skip, breaking the outline",
+      "reach": "template",
+      "funnel_stage": "readable",
+      "detector": "render-readability-audit",
+      "evidence": "17 pages with 4 or more headings have at least one level jump of more than one step, for example h2 directly to h4. Example: https://books.toscrape.com/.",
+      "affected_urls": [
+        "https://books.toscrape.com/",
+        "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+        "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+        "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+        "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+        "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+        "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+        "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+        "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+        "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html",
+        "https://books.toscrape.com/catalogue/category/books/default_15/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fiction_10/index.html",
+        "https://books.toscrape.com/catalogue/category/books/health_47/index.html",
+        "https://books.toscrape.com/catalogue/category/books_1/index.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/index.html"
+      ],
+      "evidence_detail": {
+        "method": "sequence of heading levels extracted from the raw HTML, checked for jumps greater than one level, on pages with at least 4 headings",
+        "observed": {
+          "pages": [
+            {
+              "url": "https://books.toscrape.com/",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ]
+            },
+            {
+              "url": "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+              "levels": [
+                1,
+                3,
+                3,
+                3
+              ]
+            }
+          ]
+        },
+        "expected": "heading levels increase by at most one step at a time",
+        "sample": {
+          "checked": 21,
+          "failing": 17
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "RND.HEADING_LEVEL_JUMPS",
+        "detector": "render-readability-audit"
+      },
+      "suggested_action": {
+        "summary": "Fill in the skipped heading levels so the outline descends one step at a time.",
+        "how": [
+          "Replace a jump such as h2 to h4 with h2 to h3 to h4, or demote the deeper heading if no intermediate section exists."
+        ],
+        "mechanism": "A skipped level breaks the outline a machine would otherwise use to navigate straight to the section that answers a question.",
+        "effort": "template-change",
+        "owner": "content",
+        "verification": "List the heading levels on the page and confirm no step exceeds one.",
+        "priority": "low"
+      },
+      "severity": "low",
+      "severity_notes": [
+        "detector capped this check at low"
+      ],
+      "id": "F-009"
+    },
+    {
+      "check_id": "SDE.BREADCRUMB_MISSING",
+      "title": "Pages below the homepage carry no breadcrumb markup",
+      "reach": "sitewide",
+      "funnel_stage": "understood",
+      "detector": "structured-data-entity-audit",
+      "evidence": "20 of 20 sampled non-homepage pages have no BreadcrumbList markup. Examples: https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html, https://books.toscrape.com/catalogue/category/books/art_25/index.html.",
+      "affected_urls": [
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+        "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+        "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+        "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+        "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+        "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+        "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+        "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+        "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+        "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html",
+        "https://books.toscrape.com/catalogue/category/books/default_15/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fiction_10/index.html",
+        "https://books.toscrape.com/catalogue/category/books/health_47/index.html",
+        "https://books.toscrape.com/catalogue/category/books/historical_42/index.html",
+        "https://books.toscrape.com/catalogue/category/books_1/index.html",
+        "https://books.toscrape.com/catalogue/olio_984/index.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/soumission_998/index.html",
+        "https://books.toscrape.com/index.html"
+      ],
+      "evidence_detail": {
+        "method": "presence of a BreadcrumbList node, after full @graph traversal, on pages other than the homepage",
+        "observed": {
+          "pages_missing": [
+            "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+            "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+            "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+            "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+            "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+            "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+            "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+            "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+            "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+            "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html"
+          ]
+        },
+        "expected": "BreadcrumbList markup below the homepage, where the site has a real hierarchy",
+        "sample": {
+          "checked": 20,
+          "failing": 20
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "SDE.BREADCRUMB_MISSING",
+        "detector": "structured-data-entity-audit"
+      },
+      "suggested_action": {
+        "summary": "Add BreadcrumbList markup reflecting each page's position in the site hierarchy.",
+        "how": [
+          "Generate it from the same navigation hierarchy the template already renders as a visible breadcrumb, if one exists.",
+          "Each ListItem needs position, name and item (the URL)."
+        ],
+        "mechanism": "Breadcrumb markup gives a machine an explicit statement of where a page sits in the site's structure, which is otherwise only inferable from the URL path.",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "Re-check the page and confirm BreadcrumbList markup parses and matches the page's actual position.",
+        "priority": "low"
+      },
+      "severity": "low",
+      "severity_notes": [
+        "detector capped this check at low"
+      ],
+      "id": "F-010"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP-001",
+      "category": "freshness-source-of-truth",
+      "title": "Establish one canonical entity/fact source and propagate it",
+      "summary": "Decide which value is current and correct.",
+      "description": "Findings from freshness-corroboration-audit and structured-data-entity-audit co-occur on overlapping pages: FRC.COPYRIGHT_YEAR_LAG, SDE.BREADCRUMB_MISSING, SDE.NO_STRUCTURED_DATA.",
+      "rationale": "Both detectors independently flagged overlapping pages (https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html), which is stronger evidence of a compound, template-level problem than either finding alone.",
+      "related_findings": [
+        "FRC.COPYRIGHT_YEAR_LAG",
+        "SDE.BREADCRUMB_MISSING",
+        "SDE.NO_STRUCTURED_DATA"
+      ],
+      "scope": "Observed across 10 overlapping sampled page(s): https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html (and more)",
+      "mechanism": "A fact contradicted across the site's own pages, alongside structured data that does not agree with itself either, means there is no single version of this fact a machine could trust even if it wanted to.",
+      "expected_effect": "Every surface stating this fact, structured or visible, states the same current value.",
+      "recommended_actions": [
+        "Decide which value is current and correct.",
+        "Update every surface named in the underlying findings to match it, and reference a single source (a stable @id, or one field) going forward rather than maintaining separate copies."
+      ],
+      "verification": "Re-run the audit against the URLs named in scope and confirm none of FRC.COPYRIGHT_YEAR_LAG, SDE.BREADCRUMB_MISSING, SDE.NO_STRUCTURED_DATA fire again.",
+      "owner": "mixed",
+      "effort": "template-change",
+      "dependencies": []
+    },
+    {
+      "id": "OPP-002",
+      "category": "cross-detector-template",
+      "title": "Treat access and render problems on the same template as one compound gate",
+      "summary": "Confirm both issues affect the same template cluster, not merely the same site.",
+      "description": "Findings from crawl-access-audit and render-readability-audit co-occur on overlapping pages: ACC.CANONICAL_MISSING, RND.HEADING_LEVEL_JUMPS.",
+      "rationale": "Both detectors independently flagged overlapping pages (https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html), which is stronger evidence of a compound, template-level problem than either finding alone.",
+      "related_findings": [
+        "ACC.CANONICAL_MISSING",
+        "RND.HEADING_LEVEL_JUMPS"
+      ],
+      "scope": "Observed across 10 overlapping sampled page(s): https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html (and more)",
+      "mechanism": "A page an agent cannot reach and a page it can reach but cannot read are two different symptoms of the same outcome: the content never reaches an answer. Fixing access without fixing render, or the reverse, still leaves the gate shut.",
+      "expected_effect": "Once both are addressed on the same template, the pages in that cluster stop failing at either the accessible or the readable gate.",
+      "recommended_actions": [
+        "Confirm both issues affect the same template cluster, not merely the same site.",
+        "Sequence the access fix first, since a render fix cannot be verified by an agent that cannot reach the page at all.",
+        "Re-run the audit against representative URLs from the cluster after both changes ship."
+      ],
+      "verification": "Re-run the audit against the URLs named in scope and confirm none of ACC.CANONICAL_MISSING, RND.HEADING_LEVEL_JUMPS fire again.",
+      "owner": "mixed",
+      "effort": "template-change",
+      "dependencies": []
+    },
+    {
+      "id": "OPP-003",
+      "category": "deferred-capability",
+      "title": "Deferred: Actual AI referral traffic and citation frequency",
+      "summary": "Run a fixed panel of prompts across assistants in clean sessions, repeated, and record the rate at which the brand is named and cited.",
+      "description": "no assistant, search engine, or analytics platform is queried by this marketplace.",
+      "rationale": "This is a capability gap in what can be measured from a snapshot, not a defect found on the site.",
+      "related_findings": [],
+      "scope": "Sitewide, not tied to a specific sampled page",
+      "mechanism": "Without this data, the audit can recommend but cannot confirm outcome, only mechanism.",
+      "expected_effect": "Establishes a baseline for a capability this audit cannot measure directly.",
+      "recommended_actions": [
+        "Run a fixed panel of prompts across assistants in clean sessions, repeated, and record the rate at which the brand is named and cited."
+      ],
+      "verification": "Not applicable: this is a measurement gap, not a fix to verify.",
+      "owner": "mixed",
+      "effort": "platform-change",
+      "dependencies": []
+    },
+    {
+      "id": "OPP-004",
+      "category": "deferred-capability",
+      "title": "Deferred: Actual behavioural engagement (click-through, conversion, bounce, time on page)",
+      "summary": "Track conversion or engagement from answer-bearing pages to the relevant action, segmented by referrer, after implementing any recommended action pathway.",
+      "description": "answer-retrievability-audit and engagement-audit reason from structural evidence only; no behavioural data exists in this snapshot.",
+      "rationale": "This is a capability gap in what can be measured from a snapshot, not a defect found on the site.",
+      "related_findings": [],
+      "scope": "Sitewide, not tied to a specific sampled page",
+      "mechanism": "Without this data, the audit can recommend but cannot confirm outcome, only mechanism.",
+      "expected_effect": "Establishes a baseline for a capability this audit cannot measure directly.",
+      "recommended_actions": [
+        "Track conversion or engagement from answer-bearing pages to the relevant action, segmented by referrer, after implementing any recommended action pathway."
+      ],
+      "verification": "Not applicable: this is a measurement gap, not a fix to verify.",
+      "owner": "mixed",
+      "effort": "platform-change",
+      "dependencies": []
+    },
+    {
+      "id": "OPP-005",
+      "category": "deferred-capability",
+      "title": "Deferred: External/off-site corroboration of key facts",
+      "summary": "Periodically check whether independent sources still state a superseded value for each canonical fact.",
+      "description": "freshness-corroboration-audit is a pure snapshot consumer by explicit architectural rule; it cannot query external sources.",
+      "rationale": "This is a capability gap in what can be measured from a snapshot, not a defect found on the site.",
+      "related_findings": [],
+      "scope": "Sitewide, not tied to a specific sampled page",
+      "mechanism": "Without this data, the audit can recommend but cannot confirm outcome, only mechanism.",
+      "expected_effect": "Establishes a baseline for a capability this audit cannot measure directly.",
+      "recommended_actions": [
+        "Periodically check whether independent sources still state a superseded value for each canonical fact."
+      ],
+      "verification": "Not applicable: this is a measurement gap, not a fix to verify.",
+      "owner": "mixed",
+      "effort": "platform-change",
+      "dependencies": []
+    }
+  ],
+  "measurement_plan": {
+    "tracks": [
+      {
+        "track": "Visibility",
+        "what": "Whether the brand is named, and cited, in assistant answers to category, brand-direct, comparison and long-tail questions",
+        "how": "A fixed panel of 30 to 50 prompts, run across several assistants in clean sessions, several repeats each; record the rate the brand is named and cited, not a single outcome",
+        "cadence": "monthly"
+      },
+      {
+        "track": "Accessibility",
+        "what": "Whether the agents that matter are actually reaching the site",
+        "how": "Server-log monitoring of crawler activity (request counts, status codes and paths per agent), verified against each operator's published address ranges rather than the user-agent header alone",
+        "cadence": "weekly"
+      },
+      {
+        "track": "Factual accuracy",
+        "what": "Whether the current version of each canonical fact is the one that exists in the world",
+        "how": "For each canonical fact, check independent sources state the current value; alert when a superseded version resurfaces",
+        "cadence": "monthly"
+      },
+      {
+        "track": "Regression",
+        "what": "Whether the fixes from this audit held",
+        "how": "Re-run this audit on a schedule and diff the reports by check_id: resolved, new, regressed",
+        "cadence": "monthly"
+      },
+      {
+        "track": "Engagement pathway coverage",
+        "what": "Whether representative high-value pages continue to expose an observable next step",
+        "how": "Re-run the engagement check on a schedule against the same sampled page set and diff by check_id",
+        "cadence": "monthly"
+      }
+    ],
+    "caveat": "Assistants personalise: two people asking the same question can get different brands and framing. A single prompt on a single day is not a measurement. Run clean sessions, repeat each prompt, and report rates with the sample size attached. The report carries a stable check_id on every finding precisely so consecutive audits can be diffed; the sequential id shifts as findings are added or resolved, check_id does not."
+  },
+  "action_sequence": [
+    {
+      "band": "Unblock (do first)",
+      "rationale": "These shut a gate. Nothing downstream can help until they are open.",
+      "actions": [
+        {
+          "finding_id": "F-003",
+          "check_id": "ACC.CANONICAL_MISSING",
+          "action": "Add a self-referencing rel=canonical to every content template, pointing at the absolute preferred URL of that page.",
+          "priority": "medium",
+          "effort": "template-change",
+          "owner": "engineering"
+        },
+        {
+          "finding_id": "F-004",
+          "check_id": "ACC.ROBOTS_MISSING",
+          "action": "Publish a robots.txt that declares the sitemap and states an explicit policy for training and retrieval crawlers.",
+          "priority": "high",
+          "effort": "trivial",
+          "owner": "engineering"
+        },
+        {
+          "finding_id": "F-005",
+          "check_id": "ACC.SITEMAP_MISSING",
+          "action": "Publish a sitemap with accurate lastmod values and declare it in robots.txt.",
+          "priority": "high",
+          "effort": "config",
+          "owner": "engineering"
+        }
+      ]
+    },
+    {
+      "band": "Make readable and quotable (next)",
+      "rationale": "The content can be reached but a machine cannot read, understand or quote it.",
+      "actions": [
+        {
+          "finding_id": "F-001",
+          "check_id": "SDE.NO_ORGANIZATION_NODE",
+          "action": "Add one Organization (or LocalBusiness, if there is a physical location) node to the homepage, in JSON-LD, with a stable identifier.",
+          "priority": "high",
+          "effort": "template-change",
+          "owner": "engineering"
+        },
+        {
+          "finding_id": "F-002",
+          "check_id": "SDE.NO_STRUCTURED_DATA",
+          "action": "Add structured data for at least the organisation identity and the page types this site actually has, in JSON-LD.",
+          "priority": "high",
+          "effort": "template-change",
+          "owner": "engineering"
+        },
+        {
+          "finding_id": "F-006",
+          "check_id": "RND.CSR_SHELL",
+          "action": "Confirm with a real browser render comparison, then server-render or pre-render the core content if confirmed.",
+          "priority": "low",
+          "effort": "platform-change",
+          "owner": "engineering"
+        },
+        {
+          "finding_id": "F-007",
+          "check_id": "FRC.COPYRIGHT_YEAR_LAG",
+          "action": "Update the copyright year, ideally driven automatically from the current date rather than a hand-maintained value.",
+          "priority": "medium",
+          "effort": "trivial",
+          "owner": "engineering"
+        },
+        {
+          "finding_id": "F-009",
+          "check_id": "RND.HEADING_LEVEL_JUMPS",
+          "action": "Fill in the skipped heading levels so the outline descends one step at a time.",
+          "priority": "low",
+          "effort": "template-change",
+          "owner": "content"
+        },
+        {
+          "finding_id": "F-010",
+          "check_id": "SDE.BREADCRUMB_MISSING",
+          "action": "Add BreadcrumbList markup reflecting each page's position in the site hierarchy.",
+          "priority": "low",
+          "effort": "template-change",
+          "owner": "engineering"
+        }
+      ]
+    },
+    {
+      "band": "Keep them and keep it true (ongoing)",
+      "rationale": "Hold the visitor who arrives, and keep the facts current everywhere.",
+      "actions": [
+        {
+          "finding_id": "F-008",
+          "check_id": "ENG.ORPHAN_LIKE_SAMPLED_PAGE",
+          "action": "Link to these pages from at least one other relevant page in the site's own content or navigation.",
+          "priority": "low",
+          "effort": "content",
+          "owner": "content"
+        }
+      ]
+    }
+  ]
+}

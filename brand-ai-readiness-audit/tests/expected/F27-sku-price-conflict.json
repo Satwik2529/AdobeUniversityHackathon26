@@ -1,0 +1,19 @@
+{
+  "must_include": [
+    {
+      "check_id": "FRC.INTRA_SITE_FACT_CONFLICT",
+      "min_severity": "medium",
+      "max_severity": "medium"
+    }
+  ],
+  "must_not_include": [
+    "SDE.ORG_IDENTITY_CONFLICT"
+  ],
+  "allowed": [
+    "SDE.SCHEMA_VISIBLE_MISMATCH"
+  ],
+  "notes": "The homepage features the Alpha Caliper (sku ALPHA) at 49.00 GBP; the product's own page still says 59.00 GBP. Matched by sku, not by @id, so this is distinct from SDE.ORG_IDENTITY_CONFLICT's territory. Only 2 of the sampled pages carry this sku, so reach is correctly 'page', not sitewide. SDE.SCHEMA_VISIBLE_MISMATCH also legitimately fires: the injected featured-Product JSON-LD on the homepage names 'Alpha Caliper', which does not match the homepage's own h1 ('Larkspur Instruments') -- a genuine, correct finding from SDE's own name-vs-h1 comparison, not a duplicate of the price conflict this fixture targets.",
+  "negative_control": false,
+  "fixture": "F27-sku-price-conflict",
+  "forbid_any_above": null
+}

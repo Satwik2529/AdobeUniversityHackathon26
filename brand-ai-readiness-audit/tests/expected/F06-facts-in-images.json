@@ -1,0 +1,22 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "RND.FACTS_IN_IMAGES",
+      "min_severity": "medium"
+    }
+  ],
+  "must_not_include": [
+    "RND.CSR_SHELL",
+    "SDE.NO_STRUCTURED_DATA"
+  ],
+  "allowed": [
+    "RND.FACTS_IN_DOCUMENTS_ONLY",
+    "ANS.SPECS_NOT_EXTRACTABLE",
+    "SDE.SCHEMA_ONLY_NO_VISIBLE",
+    "RND.THIN_CONTENT"
+  ],
+  "notes": "The structured price now has no visible counterpart, so the schema-only check may legitimately co-fire. Removed stale references to ENG.MISSING_ALT_ON_INFORMATIONAL_IMAGES: check_ids from an early-planning 'arriving visitor' model for engagement-audit that Milestone K's authoritative, redefined scope does not implement.",
+  "fixture": "F06-facts-in-images",
+  "forbid_any_above": null
+}

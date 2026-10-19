@@ -1,0 +1,15 @@
+{
+  "must_include": [
+    {
+      "check_id": "ANS.NO_QA_SURFACE",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [],
+  "allowed": [],
+  "notes": "The FAQ page's two headings are rewritten as statements instead of questions; ids are left intact, since only the heading wording is under test.",
+  "negative_control": false,
+  "fixture": "F24-faq-not-questions",
+  "forbid_any_above": null
+}

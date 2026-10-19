@@ -1,0 +1,20 @@
+{
+  "id": "F03-robots-blocks-training-only",
+  "description": "Negative control: a deliberate training opt-out with retrieval allowed.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": true
+}

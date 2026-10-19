@@ -1,0 +1,18 @@
+{
+  "description": "published product deep links bounce to the homepage, discarding the query",
+  "redirects": {
+    "/products/alpha.html": {
+      "to": "/",
+      "code": 302
+    },
+    "/products/beta.html": {
+      "to": "/",
+      "code": 302
+    },
+    "/products/gamma.html": {
+      "to": "/",
+      "code": 302
+    }
+  },
+  "drop_query": true
+}

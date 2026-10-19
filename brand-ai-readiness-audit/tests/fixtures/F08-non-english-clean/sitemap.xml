@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>http://localhost:8099/</loc><lastmod>2026-08-10</lastmod></url>
+<url><loc>http://localhost:8099/about.html</loc><lastmod>2026-08-11</lastmod></url>
+<url><loc>http://localhost:8099/contact.html</loc><lastmod>2026-08-12</lastmod></url>
+<url><loc>http://localhost:8099/faq.html</loc><lastmod>2026-08-13</lastmod></url>
+<url><loc>http://localhost:8099/products/</loc><lastmod>2026-08-14</lastmod></url>
+<url><loc>http://localhost:8099/products/alpha.html</loc><lastmod>2026-08-15</lastmod></url>
+</urlset>

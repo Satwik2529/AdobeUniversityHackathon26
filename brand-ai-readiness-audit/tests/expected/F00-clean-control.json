@@ -1,0 +1,17 @@
+{
+  "negative_control": true,
+  "forbid_any_above": "info",
+  "must_include": [],
+  "must_not_include": [
+    "ACC.NOINDEX_ON_CONTENT",
+    "ACC.ROBOTS_BLOCKS_RETRIEVAL",
+    "ACC.ROBOTS_BLOCKS_ALL",
+    "RND.CSR_SHELL",
+    "SDE.NO_STRUCTURED_DATA",
+    "SDE.MICRODATA_ONLY",
+    "FRC.INTRA_SITE_FACT_CONFLICT"
+  ],
+  "allowed": [],
+  "notes": "The precision test. Contains three deliberate traps a naive auditor fires on: a correctly noindexed /search.html, a decorative image with an empty alt, and an evergreen legal page last reviewed in 2019. Removed stale references to ENG.DEEPLINK_LANDING_MISMATCH, ENG.NO_ORIENTATION: check_ids from an early-planning 'arriving visitor' model for engagement-audit that Milestone K's authoritative, redefined scope does not implement.",
+  "fixture": "F00-clean-control"
+}

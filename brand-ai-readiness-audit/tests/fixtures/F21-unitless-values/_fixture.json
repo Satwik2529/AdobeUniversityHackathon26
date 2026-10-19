@@ -1,0 +1,20 @@
+{
+  "id": "F21-unitless-values",
+  "description": "A decimal rating value with no unit anywhere nearby.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}

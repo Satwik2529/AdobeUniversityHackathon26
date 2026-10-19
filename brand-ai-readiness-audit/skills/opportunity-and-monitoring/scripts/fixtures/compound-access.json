@@ -1,0 +1,43 @@
+{
+  "detector": "crawl-access-audit",
+  "findings": [
+    {
+      "check_id": "ACC.UA_BLOCKED",
+      "title": "Finding for ACC.UA_BLOCKED",
+      "gate_impact": "blocks",
+      "reach": "sitewide",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "crawl-access-audit",
+      "evidence": "Synthetic fixture evidence for ACC.UA_BLOCKED",
+      "affected_urls": [
+        "https://example.test/products/alpha.html",
+        "https://example.test/products/beta.html"
+      ],
+      "evidence_detail": {
+        "check_id": "ACC.UA_BLOCKED",
+        "method": "m",
+        "observed": {},
+        "expected": "e",
+        "sample": {
+          "checked": 3,
+          "failing": 3
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "detector": "crawl-access-audit"
+      },
+      "suggested_action": {
+        "summary": "Fix ACC.UA_BLOCKED",
+        "how": [
+          "step"
+        ],
+        "mechanism": "mechanism text",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "verify"
+      }
+    }
+  ],
+  "not_assessed": []
+}

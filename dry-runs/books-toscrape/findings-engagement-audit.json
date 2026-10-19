@@ -1,0 +1,48 @@
+{
+  "detector": "engagement-audit",
+  "findings": [
+    {
+      "check_id": "ENG.ORPHAN_LIKE_SAMPLED_PAGE",
+      "title": "Sampled pages have no inbound link from any other sampled page",
+      "gate_impact": "weakens",
+      "reach": "template",
+      "certainty": "measured",
+      "funnel_stage": "engagement",
+      "detector": "engagement-audit",
+      "evidence": "1 sampled pages are not linked to by any other page in this sample -- orphan-like within the sampled graph. This does not establish that the page is globally unreachable, only that no other page this audit observed points to it. Examples: https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html.",
+      "affected_urls": [
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html"
+      ],
+      "evidence_detail": {
+        "method": "every internal link URL across every sampled page, normalised and compared against each sampled page's own URL",
+        "observed": {
+          "orphan_like_pages": [
+            "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html"
+          ]
+        },
+        "expected": "at least one other sampled page links to this page",
+        "sample": {
+          "checked": 21,
+          "failing": 1
+        },
+        "confidence": "medium",
+        "nondeterministic": false,
+        "note": "scoped explicitly to the sampled graph; a page reached only through pages outside the sample, or through a sitemap alone, would appear orphan-like here without genuinely being orphaned",
+        "check_id": "ENG.ORPHAN_LIKE_SAMPLED_PAGE",
+        "detector": "engagement-audit"
+      },
+      "suggested_action": {
+        "summary": "Link to these pages from at least one other relevant page in the site's own content or navigation.",
+        "how": [
+          "Identify a relevant category, hub or related-content page for each listed URL.",
+          "Add a direct link to it from there."
+        ],
+        "mechanism": "A page with no inbound link from anything else this audit sampled is reachable only through a sitemap or direct URL knowledge, which is a weaker discovery and continuation path than an in-content link from a related page.",
+        "effort": "content",
+        "owner": "content",
+        "verification": "Re-check the site's sampled link graph and confirm at least one other page now links to this URL."
+      }
+    }
+  ],
+  "not_assessed": []
+}

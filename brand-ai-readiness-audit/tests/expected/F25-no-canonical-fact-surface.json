@@ -1,0 +1,16 @@
+{
+  "must_include": [
+    {
+      "check_id": "ANS.NO_CANONICAL_FACT_SURFACE",
+      "min_severity": "high"
+    }
+  ],
+  "must_not_include": [],
+  "allowed": [
+    "FRC.NO_CANONICAL_FACT_SURFACE"
+  ],
+  "notes": "The founding year is removed from the about page and homepage, the phone number is removed from the contact page, and an incidental 'Updated' date is also removed from the about page's Key facts list, so no single page combines the brand name with two or more key-fact signals. FRC.NO_CANONICAL_FACT_SURFACE also legitimately fires: it is the authoritative owner of this finding per merge_findings.DUPLICATE_OWNERSHIP, which suppresses ANS's version once both are merged centrally. This harness scores each detector's raw output independently (no deduplication step), so both are expected here.",
+  "negative_control": false,
+  "fixture": "F25-no-canonical-fact-surface",
+  "forbid_any_above": null
+}

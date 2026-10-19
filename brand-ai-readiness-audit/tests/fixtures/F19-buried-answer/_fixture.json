@@ -1,0 +1,20 @@
+{
+  "id": "F19-buried-answer",
+  "description": "The price appears only after several paragraphs of unrelated narrative.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}

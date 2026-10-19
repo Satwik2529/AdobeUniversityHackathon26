@@ -1,0 +1,43 @@
+{
+  "detector": "freshness-corroboration-audit",
+  "findings": [
+    {
+      "check_id": "FRC.INTRA_SITE_FACT_CONFLICT",
+      "title": "Finding for FRC.INTRA_SITE_FACT_CONFLICT",
+      "gate_impact": "degrades",
+      "reach": "sitewide",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "freshness-corroboration-audit",
+      "evidence": "Synthetic fixture evidence for FRC.INTRA_SITE_FACT_CONFLICT",
+      "affected_urls": [
+        "https://example.test/",
+        "https://example.test/about.html"
+      ],
+      "evidence_detail": {
+        "check_id": "FRC.INTRA_SITE_FACT_CONFLICT",
+        "method": "m",
+        "observed": {},
+        "expected": "e",
+        "sample": {
+          "checked": 3,
+          "failing": 3
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "detector": "freshness-corroboration-audit"
+      },
+      "suggested_action": {
+        "summary": "Fix FRC.INTRA_SITE_FACT_CONFLICT",
+        "how": [
+          "step"
+        ],
+        "mechanism": "mechanism text",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "verify"
+      }
+    }
+  ],
+  "not_assessed": []
+}

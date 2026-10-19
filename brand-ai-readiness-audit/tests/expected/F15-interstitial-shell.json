@@ -1,0 +1,20 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "RND.INTERSTITIAL_IN_RAW",
+      "min_severity": "high"
+    }
+  ],
+  "must_not_include": [
+    "RND.CSR_SHELL",
+    "RND.FACTS_IN_IMAGES"
+  ],
+  "allowed": [
+    "RND.THIN_CONTENT",
+    "ANS.NO_DIRECT_ANSWER_LEAD"
+  ],
+  "notes": "The raw response for each product page is dominated by a role=dialog/aria-modal consent gate with almost no other content. Confidence is capped at medium (interpretation from a structural marker, not a certainty), which is what keeps this at high rather than critical despite blocks impact and sitewide-eligible reach.",
+  "fixture": "F15-interstitial-shell",
+  "forbid_any_above": null
+}

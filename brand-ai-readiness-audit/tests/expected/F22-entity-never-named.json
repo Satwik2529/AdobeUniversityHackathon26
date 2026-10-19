@@ -1,0 +1,16 @@
+{
+  "must_include": [
+    {
+      "check_id": "ANS.ENTITY_NEVER_NAMED",
+      "min_severity": "medium"
+    }
+  ],
+  "must_not_include": [
+    "ANS.NO_DIRECT_ANSWER_LEAD"
+  ],
+  "allowed": [],
+  "notes": "Every mention of each product's own name is replaced with a pronoun or generic reference ('this instrument'), on all three product pages, including the previously-overlooked 'In the box' paragraph.",
+  "negative_control": false,
+  "fixture": "F22-entity-never-named",
+  "forbid_any_above": null
+}

@@ -1,0 +1,23 @@
+{
+  "must_include": [
+    {
+      "check_id": "ANS.NO_HEADING_ANCHORS",
+      "min_severity": "low",
+      "max_severity": "low"
+    },
+    {
+      "check_id": "ANS.NO_SUMMARY_BLOCK",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [],
+  "allowed": [
+    "ENG.DEAD_END_HIGH_VALUE_PAGE",
+    "ENG.ORPHAN_LIKE_SAMPLED_PAGE"
+  ],
+  "notes": "A single long docs page (over the long-page floor) with 5 h2 headings, none carrying an id, and the first section heading appearing within the opening 80 characters of main text. ENG.DEAD_END_HIGH_VALUE_PAGE and ENG.ORPHAN_LIKE_SAMPLED_PAGE also legitimately fire: this docs page was added (Milestone I) to test heading-anchor and summary-block behaviour and has no in-content links and no inbound link from any other sampled page. Both findings are genuine, correct observations.",
+  "negative_control": false,
+  "fixture": "F23-long-docs-no-structure",
+  "forbid_any_above": null
+}

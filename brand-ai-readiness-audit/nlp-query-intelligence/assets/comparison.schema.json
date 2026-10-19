@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NLP Query Intelligence — comparison.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["query_a", "query_b", "score_delta"],
+      "properties": {
+        "query_a": { "type": "object" },
+        "query_b": { "type": "object" },
+        "score_delta": { "type": "number" },
+        "added_requirements": { "type": "array" },
+        "removed_requirements": { "type": "array" },
+        "top_contributors": { "type": "array" }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["queries"],
+      "properties": {
+        "queries": { "type": "array" }
+      }
+    }
+  ]
+}

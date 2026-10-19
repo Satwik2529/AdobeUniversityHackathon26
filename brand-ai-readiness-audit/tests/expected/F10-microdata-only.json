@@ -1,0 +1,24 @@
+{
+  "negative_control": true,
+  "forbid_any_above": "low",
+  "must_include": [
+    {
+      "check_id": "SDE.MICRODATA_ONLY",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [
+    "SDE.NO_STRUCTURED_DATA",
+    "SDE.INVALID_JSONLD",
+    "SDE.MISSING_TYPE_FOR_TEMPLATE",
+    "SDE.NO_ORGANIZATION_NODE"
+  ],
+  "allowed": [
+    "SDE.NO_SAMEAS",
+    "SDE.NO_STABLE_ID",
+    "SDE.BREADCRUMB_MISSING"
+  ],
+  "notes": "Microdata is valid markup. Reporting its use as a defect would be wrong; a low-severity migration suggestion is correct.",
+  "fixture": "F10-microdata-only"
+}

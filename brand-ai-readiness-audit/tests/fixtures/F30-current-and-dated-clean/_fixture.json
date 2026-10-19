@@ -1,0 +1,20 @@
+{
+  "id": "F30-current-and-dated-clean",
+  "description": "A genuinely current page claiming to be the latest model, with a date signal that is not older than the rest of the site -- negative control.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": true
+}

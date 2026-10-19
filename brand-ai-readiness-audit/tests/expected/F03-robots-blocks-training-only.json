@@ -1,0 +1,18 @@
+{
+  "negative_control": true,
+  "forbid_any_above": "info",
+  "must_include": [
+    {
+      "check_id": "ACC.TRAINING_ONLY_BLOCK",
+      "min_severity": "info",
+      "max_severity": "info"
+    }
+  ],
+  "must_not_include": [
+    "ACC.ROBOTS_BLOCKS_RETRIEVAL",
+    "ACC.ROBOTS_BLOCKS_ALL"
+  ],
+  "allowed": [],
+  "notes": "The most important false-positive test in the suite. Blocking training crawlers while allowing retrieval crawlers is a coherent policy, not a defect.",
+  "fixture": "F03-robots-blocks-training-only"
+}

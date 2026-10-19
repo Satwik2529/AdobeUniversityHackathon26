@@ -1,0 +1,15 @@
+{
+  "must_include": [
+    {
+      "check_id": "ENG.ORPHAN_LIKE_SAMPLED_PAGE",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [],
+  "allowed": [],
+  "notes": "The about page's link is removed from every other sampled page's markup (navigation and content alike), leaving it reachable only via the sitemap -- orphan-like within the sampled graph, worded carefully as such rather than as a claim of global orphaning.",
+  "negative_control": false,
+  "fixture": "F33-eng-orphan-page",
+  "forbid_any_above": null
+}

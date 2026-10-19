@@ -1,0 +1,14 @@
+{
+  "must_include": [
+    {
+      "check_id": "FRC.NO_AVAILABILITY_SIGNAL",
+      "min_severity": "medium"
+    }
+  ],
+  "must_not_include": [],
+  "allowed": [],
+  "notes": "All three product pages lose their availability property from the Offer node, in both JSON-LD (verified fixed after a format-blindness bug was found and corrected during Milestone J: the check must also look at Microdata's Offer items, not only JSON-LD).",
+  "negative_control": false,
+  "fixture": "F29-availability-missing",
+  "forbid_any_above": null
+}

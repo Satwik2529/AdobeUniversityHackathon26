@@ -1,0 +1,17 @@
+{
+  "must_include": [
+    {
+      "check_id": "ANS.NO_DIRECT_ANSWER_LEAD",
+      "min_severity": "medium"
+    }
+  ],
+  "must_not_include": [
+    "ANS.SPECS_NOT_EXTRACTABLE",
+    "ANS.ENTITY_NEVER_NAMED"
+  ],
+  "allowed": [],
+  "notes": "The price sentence is pushed behind six paragraphs of unrelated filler on all three product pages; specs and entity naming are untouched.",
+  "negative_control": false,
+  "fixture": "F19-buried-answer",
+  "forbid_any_above": null
+}

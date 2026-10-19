@@ -1,0 +1,18 @@
+{
+  "must_include": [
+    {
+      "check_id": "ANS.KEY_FACT_OUTSIDE_MAIN_CONTENT",
+      "min_severity": "high"
+    }
+  ],
+  "must_not_include": [
+    "ANS.NO_DIRECT_ANSWER_LEAD"
+  ],
+  "allowed": [
+    "SDE.SCHEMA_ONLY_NO_VISIBLE"
+  ],
+  "notes": "The price is removed from both the opening sentence and the specification table (so it is genuinely absent from <main>) and added only to the page footer. SDE.SCHEMA_ONLY_NO_VISIBLE also legitimately fires: from SDE's own evidence lens (main_text only, no visibility into raw_text or the footer), the structured price genuinely has no visible counterpart. This is a correct, complementary finding, not a duplicate of ANS.KEY_FACT_OUTSIDE_MAIN_CONTENT -- SDE observes 'no visible price anywhere we looked'; ANS additionally establishes that the price does exist in the full page, specifically outside the main-content region.",
+  "negative_control": false,
+  "fixture": "F26-key-fact-outside-main",
+  "forbid_any_above": null
+}

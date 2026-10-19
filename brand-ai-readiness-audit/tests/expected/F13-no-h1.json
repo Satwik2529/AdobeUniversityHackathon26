@@ -1,0 +1,19 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "RND.NO_H1",
+      "min_severity": "medium"
+    }
+  ],
+  "must_not_include": [
+    "RND.CSR_SHELL",
+    "RND.MULTIPLE_H1"
+  ],
+  "allowed": [
+    "ANS.NO_DIRECT_ANSWER_LEAD"
+  ],
+  "notes": "Single-variable: h1 removed from product templates only, replaced by an equivalent div holding the same text so nothing else about the page changes.",
+  "fixture": "F13-no-h1",
+  "forbid_any_above": null
+}

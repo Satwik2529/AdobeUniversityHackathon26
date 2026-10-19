@@ -1,0 +1,20 @@
+{
+  "id": "F13-no-h1",
+  "description": "Product templates lose their h1 heading, nothing else changes.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}

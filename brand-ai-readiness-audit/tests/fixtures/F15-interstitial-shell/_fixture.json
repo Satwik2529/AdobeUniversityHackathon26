@@ -1,0 +1,20 @@
+{
+  "id": "F15-interstitial-shell",
+  "description": "A consent dialog replaces the product pages' real content in the raw response.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}

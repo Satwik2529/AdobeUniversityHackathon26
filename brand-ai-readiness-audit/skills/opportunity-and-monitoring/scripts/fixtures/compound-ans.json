@@ -1,0 +1,43 @@
+{
+  "detector": "answer-retrievability-audit",
+  "findings": [
+    {
+      "check_id": "ANS.SPECS_NOT_EXTRACTABLE",
+      "title": "Finding for ANS.SPECS_NOT_EXTRACTABLE",
+      "gate_impact": "degrades",
+      "reach": "template",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "answer-retrievability-audit",
+      "evidence": "Synthetic fixture evidence for ANS.SPECS_NOT_EXTRACTABLE",
+      "affected_urls": [
+        "https://example.test/products/alpha.html",
+        "https://example.test/products/beta.html"
+      ],
+      "evidence_detail": {
+        "check_id": "ANS.SPECS_NOT_EXTRACTABLE",
+        "method": "m",
+        "observed": {},
+        "expected": "e",
+        "sample": {
+          "checked": 3,
+          "failing": 3
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "detector": "answer-retrievability-audit"
+      },
+      "suggested_action": {
+        "summary": "Fix ANS.SPECS_NOT_EXTRACTABLE",
+        "how": [
+          "step"
+        ],
+        "mechanism": "mechanism text",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "verify"
+      }
+    }
+  ],
+  "not_assessed": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "F08-non-english-clean",
+  "description": "Negative control: a valid site that is not in English.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "products/alpha.html",
+    "products/index.html",
+    "robots.txt",
+    "sitemap.xml"
+  ],
+  "negative_control": true
+}

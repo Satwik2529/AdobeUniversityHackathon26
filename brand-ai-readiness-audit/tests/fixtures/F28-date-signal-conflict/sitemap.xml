@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>http://localhost:8099/</loc><lastmod>2026-08-12</lastmod></url>
+<url><loc>http://localhost:8099/about.html</loc><lastmod>2026-08-12</lastmod></url>
+<url><loc>http://localhost:8099/contact.html</loc><lastmod>2026-07-30</lastmod></url>
+<url><loc>http://localhost:8099/faq.html</loc><lastmod>2026-08-01</lastmod></url>
+<url><loc>http://localhost:8099/legal.html</loc><lastmod>2019-02-03</lastmod></url>
+<url><loc>http://localhost:8099/products/</loc><lastmod>2026-08-14</lastmod></url>
+<url><loc>http://localhost:8099/products/alpha.html</loc><lastmod>2026-08-01</lastmod></url>
+<url><loc>http://localhost:8099/products/beta.html</loc><lastmod>2026-08-09</lastmod></url>
+<url><loc>http://localhost:8099/products/gamma.html</loc><lastmod>2026-08-11</lastmod></url>
+</urlset>

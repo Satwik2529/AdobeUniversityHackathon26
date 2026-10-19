@@ -1,0 +1,44 @@
+{
+  "_comment": "Machine-readable companion to ai-crawler-agents.md. ROLE, not vendor, decides whether a robots block is a defect. A token absent from this table has role 'unknown' and must never be the sole basis for a finding. This list ages: new agents appear a few times a year, and the correct failure mode is silence, not a guess.",
+  "roles": {
+    "GPTBot": "training",
+    "OAI-SearchBot": "retrieval",
+    "ChatGPT-User": "user-triggered",
+    "ClaudeBot": "training",
+    "Claude-SearchBot": "retrieval",
+    "Claude-User": "user-triggered",
+    "anthropic-ai": "training",
+    "Claude-Web": "training",
+    "PerplexityBot": "retrieval",
+    "Perplexity-User": "user-triggered",
+    "Googlebot": "retrieval",
+    "Google-Extended": "training",
+    "Bingbot": "retrieval",
+    "Applebot": "retrieval",
+    "Applebot-Extended": "training",
+    "CCBot": "training",
+    "Meta-ExternalAgent": "training",
+    "Bytespider": "training",
+    "Amazonbot": "training",
+    "cohere-ai": "training",
+    "Diffbot": "training"
+  },
+  "operators": {
+    "GPTBot": "OpenAI", "OAI-SearchBot": "OpenAI", "ChatGPT-User": "OpenAI",
+    "ClaudeBot": "Anthropic", "Claude-SearchBot": "Anthropic", "Claude-User": "Anthropic",
+    "anthropic-ai": "Anthropic", "Claude-Web": "Anthropic",
+    "PerplexityBot": "Perplexity", "Perplexity-User": "Perplexity",
+    "Googlebot": "Google", "Google-Extended": "Google", "Bingbot": "Microsoft",
+    "Applebot": "Apple", "Applebot-Extended": "Apple", "CCBot": "Common Crawl",
+    "Meta-ExternalAgent": "Meta", "Bytespider": "ByteDance", "Amazonbot": "Amazon",
+    "cohere-ai": "Cohere", "Diffbot": "Diffbot"
+  },
+  "cost_of_blocking": {
+    "training": "nothing in citations; it is a legitimate content-licensing choice",
+    "retrieval": "eligibility for AI answers and search citations, entirely",
+    "user-triggered": "answers about a page a user explicitly asked the assistant to read"
+  },
+  "special_cases": {
+    "Googlebot": "Also gates Google's AI surfaces. There is no way to opt out of AI Overviews separately from Google Search; Google-Extended only affects training."
+  }
+}

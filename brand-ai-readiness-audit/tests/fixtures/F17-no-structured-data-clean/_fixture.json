@@ -1,0 +1,20 @@
+{
+  "id": "F17-no-structured-data-clean",
+  "description": "A well-built, valid site with all structured data removed.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": true
+}

@@ -1,0 +1,20 @@
+{
+  "id": "F28-date-signal-conflict",
+  "description": "A product page's structured dateModified disagrees by months with its own sitemap lastmod entry.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}

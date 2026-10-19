@@ -1,0 +1,18 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "SDE.SCHEMA_VISIBLE_MISMATCH",
+      "min_severity": "medium"
+    }
+  ],
+  "must_not_include": [
+    "SDE.NO_STRUCTURED_DATA",
+    "SDE.INVALID_JSONLD",
+    "SDE.MISSING_TYPE_FOR_TEMPLATE"
+  ],
+  "allowed": [],
+  "notes": "Only the alpha product contradicts itself; beta must not be flagged, which means this is correctly a single-page finding (reach=page), not a template-wide one. min_severity was originally authored as 'high' before the detector existed. With only one of three sampled products affected, the approved severity architecture from Milestone F (reach=page always steps severity down one level, preserved here rather than special-cased) legitimately produces 'medium': degrades-impact, page-reach, measured. This is a corrected expectation, not a weakened one -- confidence and certainty both remain 'high'/'measured'.",
+  "fixture": "F04-schema-visible-mismatch",
+  "forbid_any_above": null
+}

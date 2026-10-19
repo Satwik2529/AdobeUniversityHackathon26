@@ -1,0 +1,217 @@
+{
+  "detector": "crawl-access-audit",
+  "findings": [
+    {
+      "check_id": "ACC.CANONICAL_MISSING",
+      "title": "Content pages declare no canonical URL",
+      "gate_impact": "weakens",
+      "reach": "sitewide",
+      "certainty": "measured",
+      "funnel_stage": "discovered",
+      "detector": "crawl-access-audit",
+      "evidence": "21 of 21 sampled content pages carry no rel=canonical link. Without one, a crawler that reaches the same content through a different URL, for example with a tracking parameter or a trailing slash, has to guess which address is the real one. Examples: https://books.toscrape.com/, https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html, https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html.",
+      "affected_urls": [
+        "https://books.toscrape.com/",
+        "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+        "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+        "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+        "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+        "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+        "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+        "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+        "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+        "https://books.toscrape.com/catalogue/category/books/classics_6/index.html",
+        "https://books.toscrape.com/catalogue/category/books/contemporary_38/index.html",
+        "https://books.toscrape.com/catalogue/category/books/default_15/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html",
+        "https://books.toscrape.com/catalogue/category/books/fiction_10/index.html",
+        "https://books.toscrape.com/catalogue/category/books/health_47/index.html",
+        "https://books.toscrape.com/catalogue/category/books/historical_42/index.html",
+        "https://books.toscrape.com/catalogue/category/books_1/index.html",
+        "https://books.toscrape.com/catalogue/olio_984/index.html",
+        "https://books.toscrape.com/catalogue/page-2.html",
+        "https://books.toscrape.com/catalogue/soumission_998/index.html"
+      ],
+      "evidence_detail": {
+        "method": "presence of a parsed rel=canonical link on sampled content pages",
+        "observed": {
+          "missing": [
+            "https://books.toscrape.com/",
+            "https://books.toscrape.com/catalogue/1000-places-to-see-before-you-die_1/index.html",
+            "https://books.toscrape.com/catalogue/category/books/add-a-comment_18/index.html",
+            "https://books.toscrape.com/catalogue/category/books/art_25/index.html",
+            "https://books.toscrape.com/catalogue/category/books/autobiography_27/index.html",
+            "https://books.toscrape.com/catalogue/category/books/biography_36/index.html",
+            "https://books.toscrape.com/catalogue/category/books/business_35/index.html",
+            "https://books.toscrape.com/catalogue/category/books/childrens_11/index.html",
+            "https://books.toscrape.com/catalogue/category/books/christian_43/index.html",
+            "https://books.toscrape.com/catalogue/category/books/classics_6/index.html"
+          ]
+        },
+        "expected": "a self-referencing canonical on every content page",
+        "sample": {
+          "checked": 21,
+          "failing": 21,
+          "clusters_affected": [
+            "c01",
+            "c08",
+            "c09",
+            "c10",
+            "c11",
+            "c12",
+            "c14",
+            "c15",
+            "c16",
+            "c19",
+            "c22",
+            "c24",
+            "c26",
+            "c27",
+            "c51",
+            "c53",
+            "c61",
+            "c62",
+            "c67",
+            "c69",
+            "c70"
+          ]
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "ACC.CANONICAL_MISSING",
+        "detector": "crawl-access-audit"
+      },
+      "suggested_action": {
+        "summary": "Add a self-referencing rel=canonical to every content template, pointing at the absolute preferred URL of that page.",
+        "how": [
+          "Emit the canonical from the route's own definition so it is always the page's preferred absolute URL.",
+          "Use the same scheme, host and trailing-slash form as the sitemap, so the two do not disagree."
+        ],
+        "mechanism": "A canonical consolidates the signals for one piece of content onto one address. Without it, parameterised and duplicated variants compete with each other and none accumulates the full weight.",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "Request each URL and confirm the canonical matches the URL that was requested."
+      }
+    },
+    {
+      "check_id": "ACC.ROBOTS_MISSING",
+      "title": "No robots.txt is published",
+      "gate_impact": "weakens",
+      "reach": "sitewide",
+      "certainty": "measured",
+      "funnel_stage": "discovered",
+      "detector": "crawl-access-audit",
+      "evidence": "A request for https://books.toscrape.com/robots.txt returned 404. No robots.txt means no crawler restrictions, so this does not block anything. It does mean there is nowhere to declare a sitemap or to state a deliberate policy for training versus retrieval crawlers.",
+      "affected_urls": [
+        "https://books.toscrape.com/robots.txt"
+      ],
+      "evidence_detail": {
+        "method": "single request for /robots.txt recorded in the snapshot",
+        "observed": {
+          "status": 404
+        },
+        "expected": "a robots.txt returning 200 with text/plain",
+        "sample": {
+          "checked": 1,
+          "failing": 1
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "ACC.ROBOTS_MISSING",
+        "detector": "crawl-access-audit"
+      },
+      "suggested_action": {
+        "summary": "Publish a robots.txt that declares the sitemap and states an explicit policy for training and retrieval crawlers.",
+        "how": [
+          "Serve /robots.txt as text/plain.",
+          "Add a Sitemap: line pointing at the sitemap index.",
+          "Decide deliberately whether to allow training crawlers; leaving it undeclared is a decision made by default rather than on purpose.",
+          "Keep retrieval and user-triggered agents allowed unless there is a specific reason not to."
+        ],
+        "mechanism": "Absence does not shut the discovered gate, but it forfeits the one place to declare a sitemap and to record an intentional crawler policy, so a future change can silently remove citation eligibility.",
+        "effort": "trivial",
+        "owner": "engineering",
+        "verification": "Request /robots.txt and confirm a 200 with text/plain and a resolvable Sitemap line."
+      }
+    },
+    {
+      "check_id": "ACC.SITEMAP_MISSING",
+      "title": "No usable sitemap was found",
+      "gate_impact": "weakens",
+      "reach": "sitewide",
+      "certainty": "measured",
+      "funnel_stage": "discovered",
+      "detector": "crawl-access-audit",
+      "evidence": "No sitemap could be read. Locations tried: https://books.toscrape.com/sitemap.xml (status 404), https://books.toscrape.com/sitemap_index.xml (status 404), https://books.toscrape.com/sitemap-index.xml (status 404). Discovery fell back to following links, which found 412 URLs. This is a crawl-efficiency problem rather than a block: pages linked from the site are still reachable.",
+      "affected_urls": [
+        "https://books.toscrape.com/sitemap-index.xml",
+        "https://books.toscrape.com/sitemap.xml",
+        "https://books.toscrape.com/sitemap_index.xml"
+      ],
+      "evidence_detail": {
+        "method": "sitemap locations from robots.txt, then conventional paths",
+        "observed": {
+          "candidates": [
+            {
+              "url": "https://books.toscrape.com/sitemap.xml",
+              "source": "conventional location",
+              "status": 404,
+              "kind": null,
+              "url_count": 0,
+              "lastmod_distinct": 0,
+              "parse_ok": false,
+              "error": "HTTP 404",
+              "truncated": false
+            },
+            {
+              "url": "https://books.toscrape.com/sitemap_index.xml",
+              "source": "conventional location",
+              "status": 404,
+              "kind": null,
+              "url_count": 0,
+              "lastmod_distinct": 0,
+              "parse_ok": false,
+              "error": "HTTP 404",
+              "truncated": false
+            },
+            {
+              "url": "https://books.toscrape.com/sitemap-index.xml",
+              "source": "conventional location",
+              "status": 404,
+              "kind": null,
+              "url_count": 0,
+              "lastmod_distinct": 0,
+              "parse_ok": false,
+              "error": "HTTP 404",
+              "truncated": false
+            }
+          ],
+          "discovery_method": "crawl",
+          "urls_discovered": 412
+        },
+        "expected": "at least one sitemap returning 200 and parsing as a urlset",
+        "sample": {
+          "checked": 3,
+          "failing": 3
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "check_id": "ACC.SITEMAP_MISSING",
+        "detector": "crawl-access-audit"
+      },
+      "suggested_action": {
+        "summary": "Publish a sitemap with accurate lastmod values and declare it in robots.txt.",
+        "how": [
+          "Generate a sitemap from the publishing pipeline so lastmod reflects the real content change date rather than the build clock.",
+          "Segment it by template (products, articles, static pages) so a crawler can recrawl the fast-changing parts without refetching the rest.",
+          "Add a `Sitemap:` line to robots.txt pointing at the index."
+        ],
+        "mechanism": "A sitemap does not unblock anything; it tells a crawler which URLs exist and which have changed, so pages that are weakly linked internally get discovered and changed pages get recrawled sooner.",
+        "effort": "config",
+        "owner": "engineering",
+        "verification": "Fetch the sitemap URL and confirm it returns 200, parses, and lists the canonical URL of every template."
+      }
+    }
+  ],
+  "not_assessed": []
+}

@@ -1,0 +1,23 @@
+{
+  "id": "F11-noindex-utility-ok",
+  "description": "Negative control: correctly noindexed utility pages.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "account.html",
+    "cart.html",
+    "checkout.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": true
+}

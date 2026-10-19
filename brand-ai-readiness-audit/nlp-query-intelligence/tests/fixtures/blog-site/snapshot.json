@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "collector_version": "test-fixture",
+  "site": "blog.test",
+  "origin": "https://blog.test",
+  "entry_url": "https://blog.test/",
+  "audited_at": "2026-01-01T00:00:00Z",
+  "pages": [
+    {
+      "url": "https://blog.test/",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "homepage",
+      "lang": "en",
+      "title": "Travel Notes",
+      "meta_description": "A travel blog.",
+      "headings": [{"level": 1, "text": "Travel Notes"}],
+      "main_text": "Travel Notes is a blog about backpacking and budget travel.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://blog.test/posts/kyoto",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "article",
+      "lang": "en",
+      "title": "A Week in Kyoto",
+      "meta_description": "Backpacking through Kyoto on a budget.",
+      "headings": [{"level": 1, "text": "A Week in Kyoto"}],
+      "main_text": "This article covers a week backpacking through Kyoto for students on a budget trip.",
+      "structured_data": {
+        "jsonld": [{"parse_ok": true, "data": {"@type": "BlogPosting", "headline": "A Week in Kyoto"}}]
+      }
+    },
+    {
+      "url": "https://blog.test/posts/lisbon",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "article",
+      "lang": "en",
+      "title": "Lisbon on a Budget",
+      "meta_description": "Budget travel guide to Lisbon.",
+      "headings": [{"level": 1, "text": "Lisbon on a Budget"}],
+      "main_text": "A guide to backpacking Lisbon cheaply, popular with students.",
+      "structured_data": {
+        "jsonld": [{"parse_ok": true, "data": {"@type": "Article", "headline": "Lisbon on a Budget"}}]
+      }
+    }
+  ],
+  "clusters": [
+    {"id": "c01", "skeleton": "/posts/{slug}", "page_type": "article"}
+  ],
+  "coverage": {"pages_discovered": 3, "pages_sampled": 3, "pages_fetched": 3}
+}

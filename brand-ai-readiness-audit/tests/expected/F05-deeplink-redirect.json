@@ -1,0 +1,19 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "ACC.DEEPLINK_TO_HOME_REDIRECT",
+      "min_severity": "high"
+    }
+  ],
+  "must_not_include": [
+    "ACC.STATUS_ERRORS"
+  ],
+  "allowed": [
+    "ACC.SITEMAP_DEAD_ENTRIES",
+    "ACC.REDIRECT_CHAIN"
+  ],
+  "notes": "URL fragments are never transmitted to a server, so only query loss is observable here. This manifest originally required ENG.DEEPLINK_LANDING_MISMATCH, authored during early Milestone D planning under an 'arriving visitor' model for engagement-audit. Milestone K's authoritative, much more detailed instructions redefined engagement-audit's scope entirely around observable on-site action and continuation pathways, and explicitly do not include landing-integrity/redirect checks -- that territory remains owned by crawl-access-audit's ACC.DEEPLINK_TO_HOME_REDIRECT, exactly as merge_findings.DUPLICATE_OWNERSHIP already designates it (ACC authoritative, a never-implemented ENG.DEEPLINK_LANDING_MISMATCH as the subordinate, inert slot). This is a corrected expectation, not a weakened one: the underlying defect is still correctly required and detected, by the detector that actually owns it. Removed stale references to ENG.FRAGMENT_OR_PARAM_DROPPED: check_ids from an early-planning 'arriving visitor' model for engagement-audit that Milestone K's authoritative, redefined scope does not implement. Removed orphan expectations referencing ACC.SOFT_404: check_ids that no detector implements (ACC.SOFT_404 was never built; the FRC entries belong to the off-site corroboration capability Milestone J permanently declined to implement). They could never fire, so listing them proved nothing.",
+  "fixture": "F05-deeplink-redirect",
+  "forbid_any_above": null
+}

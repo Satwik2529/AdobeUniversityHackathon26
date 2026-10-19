@@ -1,0 +1,80 @@
+{
+  "detector": "render-readability-audit",
+  "findings": [
+    {
+      "check_id": "RND.NO_H1",
+      "title": "Finding for RND.NO_H1",
+      "gate_impact": "degrades",
+      "reach": "template",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "render-readability-audit",
+      "evidence": "Synthetic fixture evidence for RND.NO_H1",
+      "affected_urls": [
+        "https://example.test/products/alpha.html",
+        "https://example.test/products/beta.html"
+      ],
+      "evidence_detail": {
+        "check_id": "RND.NO_H1",
+        "method": "m",
+        "observed": {},
+        "expected": "e",
+        "sample": {
+          "checked": 3,
+          "failing": 3
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "detector": "render-readability-audit"
+      },
+      "suggested_action": {
+        "summary": "Fix RND.NO_H1",
+        "how": [
+          "step"
+        ],
+        "mechanism": "mechanism text",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "verify"
+      }
+    },
+    {
+      "check_id": "RND.THIN_CONTENT",
+      "title": "Finding for RND.THIN_CONTENT",
+      "gate_impact": "degrades",
+      "reach": "template",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "render-readability-audit",
+      "evidence": "Synthetic fixture evidence for RND.THIN_CONTENT",
+      "affected_urls": [
+        "https://example.test/products/alpha.html",
+        "https://example.test/products/beta.html"
+      ],
+      "evidence_detail": {
+        "check_id": "RND.THIN_CONTENT",
+        "method": "m",
+        "observed": {},
+        "expected": "e",
+        "sample": {
+          "checked": 3,
+          "failing": 3
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "detector": "render-readability-audit"
+      },
+      "suggested_action": {
+        "summary": "Fix RND.THIN_CONTENT",
+        "how": [
+          "step"
+        ],
+        "mechanism": "mechanism text",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "verify"
+      }
+    }
+  ],
+  "not_assessed": []
+}

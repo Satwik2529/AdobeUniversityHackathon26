@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "collector_version": "test-fixture",
+  "site": "boutique.test",
+  "origin": "https://boutique.test",
+  "entry_url": "https://boutique.test/",
+  "audited_at": "2026-01-01T00:00:00Z",
+  "pages": [
+    {
+      "url": "https://boutique.test/",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "homepage",
+      "lang": "fr",
+      "title": "Boutique de Chaussures",
+      "meta_description": "Chaussures pour tous.",
+      "headings": [{"level": 1, "text": "Boutique de Chaussures"}],
+      "main_text": "Bienvenue dans notre boutique de chaussures en ligne.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://boutique.test/produits/chaussure-premium",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "fr",
+      "title": "Chaussure Premium",
+      "meta_description": "Une chaussure premium en cuir.",
+      "headings": [{"level": 1, "text": "Chaussure Premium"}],
+      "main_text": "Cette chaussure premium en cuir est fabriquee a la main, prix 12000 INR.",
+      "structured_data": {
+        "jsonld": [{"parse_ok": true, "data": {"@type": "Product", "name": "Chaussure Premium",
+          "offers": {"@type": "Offer", "price": "12000", "priceCurrency": "INR"}}}]
+      }
+    }
+  ],
+  "clusters": [
+    {"id": "c01", "skeleton": "/produits/{slug}", "page_type": "product"}
+  ],
+  "coverage": {"pages_discovered": 2, "pages_sampled": 2, "pages_fetched": 2}
+}

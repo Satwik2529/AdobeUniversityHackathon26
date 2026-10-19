@@ -1,0 +1,14 @@
+{
+  "negative_control": true,
+  "forbid_any_above": "info",
+  "must_include": [],
+  "must_not_include": [
+    "RND.NO_H1",
+    "SDE.MISSING_TYPE_FOR_TEMPLATE",
+    "ACC.SITEMAP_DEAD_ENTRIES",
+    "RND.TITLE_DUPLICATE"
+  ],
+  "allowed": [],
+  "notes": "Below the template threshold. Cluster-level checks must disable themselves rather than fire on a sample of one. Removed stale references to ENG.DEAD_END, ENG.NO_ORIENTATION: check_ids from an early-planning 'arriving visitor' model for engagement-audit that Milestone K's authoritative, redefined scope does not implement.",
+  "fixture": "F09-small-site-clean"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "F31-eng-dead-end-product",
+  "description": "A product page loses all in-content links, leaving an unambiguous dead end.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}

@@ -1,0 +1,702 @@
+{
+  "fixtures": [
+    {
+      "id": "F00-clean-control",
+      "description": "Correctly built site. The precision test: nothing above info may fire.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": true
+    },
+    {
+      "id": "F01-csr-shell",
+      "description": "Product content only exists after JavaScript runs.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "bundle.js",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F02-robots-blocks-retrieval",
+      "description": "Retrieval and user-triggered agents disallowed sitewide.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F03-robots-blocks-training-only",
+      "description": "Negative control: a deliberate training opt-out with retrieval allowed.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": true
+    },
+    {
+      "id": "F04-schema-visible-mismatch",
+      "description": "Structured price contradicts the visible price.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F05-deeplink-redirect",
+      "description": "Published deep links bounce to the homepage and drop the fragment.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F06-facts-in-images",
+      "description": "Specifications exist only as an image and a PDF.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml",
+        "specs-alpha.pdf",
+        "specs-beta.pdf",
+        "specs-gamma.pdf"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F07-stale-conflict",
+      "description": "The site contradicts itself on tagline, founding year, price and telephone.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F08-non-english-clean",
+      "description": "Negative control: a valid site that is not in English.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "products/alpha.html",
+        "products/index.html",
+        "robots.txt",
+        "sitemap.xml"
+      ],
+      "negative_control": true
+    },
+    {
+      "id": "F09-small-site-clean",
+      "description": "Negative control: a correct two-page site below the template threshold.",
+      "files": [
+        "_rules.json",
+        "contact.html",
+        "index.html",
+        "robots.txt",
+        "sitemap.xml"
+      ],
+      "negative_control": true
+    },
+    {
+      "id": "F10-microdata-only",
+      "description": "Negative control: valid Microdata and no JSON-LD is not a defect.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": true
+    },
+    {
+      "id": "F11-noindex-utility-ok",
+      "description": "Negative control: correctly noindexed utility pages.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "account.html",
+        "cart.html",
+        "checkout.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": true
+    },
+    {
+      "id": "F12-ua-blocked",
+      "description": "The edge serves 403 to non-browser agents while browsers get 200.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F13-no-h1",
+      "description": "Product templates lose their h1 heading, nothing else changes.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F14-duplicate-titles",
+      "description": "Five distinct pages share one static title.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F15-interstitial-shell",
+      "description": "A consent dialog replaces the product pages' real content in the raw response.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F16-org-identity-conflict",
+      "description": "The contact page's own Organization node shares the homepage's @id but disagrees on telephone.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F17-no-structured-data-clean",
+      "description": "A well-built, valid site with all structured data removed.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": true
+    },
+    {
+      "id": "F18-article-pages",
+      "description": "Two article pages: one fully compliant, one missing a required property.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "articles/caring-for-instruments.html",
+        "articles/choosing-a-caliper.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F19-buried-answer",
+      "description": "The price appears only after several paragraphs of unrelated narrative.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F20-specs-in-prose",
+      "description": "Specification values stay in prose; no table exists to hold them.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F21-unitless-values",
+      "description": "A decimal rating value with no unit anywhere nearby.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F22-entity-never-named",
+      "description": "The body only ever refers to the product as 'it', never restating its name.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F23-long-docs-no-structure",
+      "description": "A long documentation page with no heading ids and no lead summary.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "docs/reference.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F24-faq-not-questions",
+      "description": "The FAQ page's headings are statements, not questions.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F25-no-canonical-fact-surface",
+      "description": "No single page combines the brand name with two or more key facts.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F26-key-fact-outside-main",
+      "description": "The price appears only in the page footer, outside the main content region.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F27-sku-price-conflict",
+      "description": "The homepage features the Alpha Caliper at a different price than its own product page, matched by sku.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F28-date-signal-conflict",
+      "description": "A product page's structured dateModified disagrees by months with its own sitemap lastmod entry.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F29-availability-missing",
+      "description": "Product pages state a price but no availability property at all.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F30-current-and-dated-clean",
+      "description": "A genuinely current page claiming to be the latest model, with a date signal that is not older than the rest of the site -- negative control.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": true
+    },
+    {
+      "id": "F31-eng-dead-end-product",
+      "description": "A product page loses all in-content links, leaving an unambiguous dead end.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F32-eng-healthy-action-and-related",
+      "description": "A product page with a clear action link and a genuine related-product link -- negative control.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F33-eng-orphan-page",
+      "description": "The about page is removed from every page's navigation and content links, remaining reachable only via the sitemap -- orphan-like within the sampled graph.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    },
+    {
+      "id": "F34-eng-ambiguous-action-surface",
+      "description": "Two in-content links on one page both say 'Learn more' but lead to different products.",
+      "files": [
+        "_rules.json",
+        "about.html",
+        "contact.html",
+        "faq.html",
+        "index.html",
+        "legal.html",
+        "products/alpha.html",
+        "products/beta.html",
+        "products/gamma.html",
+        "products/index.html",
+        "robots.txt",
+        "search.html",
+        "sitemap.xml"
+      ],
+      "negative_control": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "description": "edge blocks any user agent that is not a mainstream browser",
+  "ua_block": {
+    "allow_substrings": [
+      "Mozilla/5.0 (Windows",
+      "Mozilla/5.0 (Macintosh"
+    ],
+    "status": 403,
+    "body": "Forbidden"
+  }
+}

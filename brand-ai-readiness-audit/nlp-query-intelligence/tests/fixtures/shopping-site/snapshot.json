@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "collector_version": "test-fixture",
+  "site": "example-shop.test",
+  "origin": "https://example-shop.test",
+  "entry_url": "https://example-shop.test/",
+  "audited_at": "2026-01-01T00:00:00Z",
+  "pages": [
+    {
+      "url": "https://example-shop.test/",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "homepage",
+      "lang": "en",
+      "title": "Example Shop — Laptops, Phones and Tablets",
+      "meta_description": "Shop laptops, phones and tablets.",
+      "headings": [{"level": 1, "text": "Example Shop"}],
+      "main_text": "Example Shop sells laptops, phones and tablets online.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://example-shop.test/products/value-laptop",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "en",
+      "title": "Value Laptop 14 — Everyday Laptop",
+      "meta_description": "An affordable laptop for everyday use.",
+      "headings": [
+        {"level": 1, "text": "Value Laptop 14"},
+        {"level": 2, "text": "Great for students on a budget"}
+      ],
+      "main_text": "The Value Laptop 14 is a budget laptop for students. Priced at ₹45,000, it comes with 8GB RAM and 256GB storage. Ideal for browsing and everyday use. Affordable and reliable.",
+      "structured_data": {
+        "jsonld": [
+          {"parse_ok": true, "data": {"@type": "Product", "name": "Value Laptop 14",
+            "offers": {"@type": "Offer", "price": "45000", "priceCurrency": "INR"}}}
+        ]
+      }
+    },
+    {
+      "url": "https://example-shop.test/products/pro-laptop",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "en",
+      "title": "Pro Laptop X — Premium Laptop for Professionals",
+      "meta_description": "A premium laptop with a flagship processor and OLED display.",
+      "headings": [
+        {"level": 1, "text": "Pro Laptop X"},
+        {"level": 2, "text": "Built for programming and development"}
+      ],
+      "main_text": "The Pro Laptop X is a premium laptop with an aluminium body and OLED display, priced at ₹95,000. It ships with 16GB RAM and a flagship processor, making it excellent for programming and software development. Popular with professionals and developers.",
+      "structured_data": {
+        "jsonld": [
+          {"parse_ok": true, "data": {"@type": "Product", "name": "Pro Laptop X",
+            "offers": {"@type": "Offer", "price": "95000", "priceCurrency": "INR"}}}
+        ]
+      }
+    },
+    {
+      "url": "https://example-shop.test/products/student-laptop",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "en",
+      "title": "Campus Laptop 13 — Laptop with 16GB RAM",
+      "meta_description": "Laptop with 16GB RAM and long battery life.",
+      "headings": [
+        {"level": 1, "text": "Campus Laptop 13"}
+      ],
+      "main_text": "Campus Laptop 13 comes with 16GB RAM and 512GB storage, priced at ₹58,000. Long battery life for a full day of classes.",
+      "structured_data": {
+        "jsonld": [
+          {"parse_ok": true, "data": {"@type": "Product", "name": "Campus Laptop 13",
+            "offers": {"@type": "Offer", "price": "58000", "priceCurrency": "INR"}}}
+        ]
+      }
+    },
+    {
+      "url": "https://example-shop.test/account/student-discount",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "utility",
+      "lang": "en",
+      "title": "Student Discount Program",
+      "meta_description": "Verify your student ID for a discount.",
+      "headings": [{"level": 1, "text": "Student Discount"}],
+      "main_text": "Get a student discount on any laptop purchase. Verify your student ID at checkout to receive the student pricing offer.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://example-shop.test/account/subscription",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "utility",
+      "lang": "en",
+      "title": "Premium Membership Subscription",
+      "meta_description": "Join our premium subscription plan for free shipping.",
+      "headings": [{"level": 1, "text": "Premium Membership"}],
+      "main_text": "Our premium subscription plan gives you free shipping and early access to sales. No laptop is included in this plan.",
+      "structured_data": {"jsonld": []}
+    }
+  ],
+  "clusters": [
+    {"id": "c01", "skeleton": "/products/{slug}", "page_type": "product"}
+  ],
+  "coverage": {"pages_discovered": 6, "pages_sampled": 6, "pages_fetched": 6}
+}

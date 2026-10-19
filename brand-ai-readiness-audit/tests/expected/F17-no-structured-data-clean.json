@@ -1,0 +1,24 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "SDE.NO_STRUCTURED_DATA",
+      "min_severity": "high"
+    },
+    {
+      "check_id": "SDE.NO_ORGANIZATION_NODE",
+      "min_severity": "high"
+    }
+  ],
+  "must_not_include": [
+    "SDE.INVALID_JSONLD",
+    "SDE.SCHEMA_VISIBLE_MISMATCH",
+    "SDE.MICRODATA_ONLY"
+  ],
+  "allowed": [
+    "SDE.BREADCRUMB_MISSING"
+  ],
+  "notes": "All JSON-LD removed; the page text, headings, titles and canonicals are otherwise untouched and valid. Known limitation surfaced by this fixture: removing all structured data also removes one of the collector's own page-type classification signals, so product pages here are reclassified away from 'product' (to a low-confidence 'contact' in practice), which means SDE.MISSING_TYPE_FOR_TEMPLATE and SDE.INCOMPLETE_REQUIRED_PROPS cannot engage their product-page population in this specific scenario. SDE.NO_STRUCTURED_DATA does not depend on page-type accuracy and still correctly reports the overall, most important defect.",
+  "fixture": "F17-no-structured-data-clean",
+  "forbid_any_above": null
+}

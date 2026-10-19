@@ -1,0 +1,14 @@
+{
+  "negative_control": true,
+  "must_include": [],
+  "must_not_include": [
+    "ENG.DEAD_END_HIGH_VALUE_PAGE",
+    "ENG.NO_RELATED_CONTENT_PATHWAY",
+    "ENG.WEAK_ACTION_PATHWAY",
+    "ENG.AMBIGUOUS_ACTION_SURFACE"
+  ],
+  "allowed": [],
+  "notes": "The Alpha Caliper product page gains a genuine contact/purchase action link and a genuine related-product link, alongside its existing category and FAQ links. A healthy page with clear action and continuation pathways must produce no engagement findings.",
+  "forbid_any_above": "info",
+  "fixture": "F32-eng-healthy-action-and-related"
+}

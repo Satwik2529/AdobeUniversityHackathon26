@@ -1,0 +1,17 @@
+{
+  "must_include": [
+    {
+      "check_id": "ANS.UNITLESS_VALUES",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [
+    "ANS.SPECS_NOT_EXTRACTABLE"
+  ],
+  "allowed": [],
+  "notes": "A rating value (4.8) is added in prose with no unit or currency nearby; the existing table is untouched, so SPECS_NOT_EXTRACTABLE must not also fire.",
+  "negative_control": false,
+  "fixture": "F21-unitless-values",
+  "forbid_any_above": null
+}

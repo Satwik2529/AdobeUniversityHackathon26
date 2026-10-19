@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Googlebot
+Disallow: /
+
+Sitemap: http://localhost:8099/sitemap.xml

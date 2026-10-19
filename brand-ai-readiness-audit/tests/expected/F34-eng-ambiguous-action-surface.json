@@ -1,0 +1,17 @@
+{
+  "must_include": [
+    {
+      "check_id": "ENG.AMBIGUOUS_ACTION_SURFACE",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [
+    "ENG.DEAD_END_HIGH_VALUE_PAGE"
+  ],
+  "allowed": [],
+  "notes": "Two in-content links on the Alpha Caliper page both use the generic text 'Learn more' but point to Beta and Gamma respectively -- the destination cannot be told from the link text alone.",
+  "negative_control": false,
+  "fixture": "F34-eng-ambiguous-action-surface",
+  "forbid_any_above": null
+}

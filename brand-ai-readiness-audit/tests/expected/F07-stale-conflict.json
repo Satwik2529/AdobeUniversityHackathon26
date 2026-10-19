@@ -1,0 +1,19 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "FRC.INTRA_SITE_FACT_CONFLICT",
+      "min_severity": "high"
+    }
+  ],
+  "must_not_include": [],
+  "allowed": [
+    "FRC.COPYRIGHT_YEAR_LAG",
+    "FRC.DATE_SIGNAL_CONFLICT",
+    "SDE.NAME_INCONSISTENT",
+    "SDE.ORG_IDENTITY_CONFLICT"
+  ],
+  "notes": "Off-site checks must not fire: no search capability is available in the harness, so they belong in coverage.not_assessed. The contact page's phone-number change also creates a genuine same-@id property conflict with the homepage's Organization node, correctly caught by SDE.ORG_IDENTITY_CONFLICT -- a real, separate detector legitimately firing on the same underlying mutation, not a false positive. Removed orphan expectations referencing FRC.LASTMOD_UNIFORM, FRC.STALE_IN_THE_WILD, FRC.UNCORROBORATED_FACT: check_ids that no detector implements (ACC.SOFT_404 was never built; the FRC entries belong to the off-site corroboration capability Milestone J permanently declined to implement). They could never fire, so listing them proved nothing.",
+  "fixture": "F07-stale-conflict",
+  "forbid_any_above": null
+}

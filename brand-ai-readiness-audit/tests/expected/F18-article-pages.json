@@ -1,0 +1,22 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "SDE.INCOMPLETE_REQUIRED_PROPS",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [
+    "SDE.MISSING_TYPE_FOR_TEMPLATE",
+    "SDE.NO_STRUCTURED_DATA",
+    "SDE.INVALID_JSONLD"
+  ],
+  "allowed": [
+    "ENG.DEAD_END_HIGH_VALUE_PAGE",
+    "ENG.ORPHAN_LIKE_SAMPLED_PAGE"
+  ],
+  "notes": "Two article pages: one fully compliant Article (headline+datePublished), one with Article markup present but missing the required datePublished. Both pages have Article type present, so MISSING_TYPE_FOR_TEMPLATE must never fire; only one of two pages is incomplete, so reach is correctly 'page' and severity steps down to 'low' per the same reach-based architecture established in Milestone F/G, not a weakened expectation. ENG.DEAD_END_HIGH_VALUE_PAGE and ENG.ORPHAN_LIKE_SAMPLED_PAGE also legitimately fire: these two article pages were built with no cross-article links and no inbound link from any other sampled page, since this fixture's purpose (Milestone I) was testing Article structured-data coverage, not engagement pathways. Both findings are genuine, correct observations of that real structural gap, not a defect in engagement-audit.",
+  "fixture": "F18-article-pages",
+  "forbid_any_above": null
+}

@@ -1,0 +1,17 @@
+{
+  "must_include": [
+    {
+      "check_id": "ENG.DEAD_END_HIGH_VALUE_PAGE",
+      "min_severity": "low",
+      "max_severity": "low"
+    }
+  ],
+  "must_not_include": [
+    "ENG.NO_RELATED_CONTENT_PATHWAY"
+  ],
+  "allowed": [],
+  "notes": "The Alpha Caliper product page's two in-content links are removed entirely, leaving zero in-content links -- an unambiguous dead end. Beta and Gamma are untouched, so reach is correctly 'page'. NO_RELATED_CONTENT_PATHWAY must not also fire: that check is only evaluated when in-content links exist but lead nowhere related, which is DEAD_END's territory once links are entirely absent.",
+  "negative_control": false,
+  "fixture": "F31-eng-dead-end-product",
+  "forbid_any_above": null
+}

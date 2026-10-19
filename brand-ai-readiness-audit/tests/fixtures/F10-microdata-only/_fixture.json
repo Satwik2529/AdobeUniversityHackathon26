@@ -1,0 +1,20 @@
+{
+  "id": "F10-microdata-only",
+  "description": "Negative control: valid Microdata and no JSON-LD is not a defect.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": true
+}

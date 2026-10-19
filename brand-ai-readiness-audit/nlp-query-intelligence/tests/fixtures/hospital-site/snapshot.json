@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "collector_version": "test-fixture",
+  "site": "example-hospital.test",
+  "origin": "https://example-hospital.test",
+  "entry_url": "https://example-hospital.test/",
+  "audited_at": "2026-01-01T00:00:00Z",
+  "pages": [
+    {
+      "url": "https://example-hospital.test/",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "homepage",
+      "lang": "en",
+      "title": "City Hospital — Cardiology and Pediatrics Departments",
+      "meta_description": "Cardiology and pediatrics care at City Hospital.",
+      "headings": [{"level": 1, "text": "City Hospital"}],
+      "main_text": "City Hospital offers Cardiology and Pediatrics departments.",
+      "structured_data": {"jsonld": []}
+    },
+    {
+      "url": "https://example-hospital.test/departments/cardiology",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "en",
+      "title": "Cardiology Department — Heart Specialists",
+      "meta_description": "Same-day cardiology appointments with heart specialists.",
+      "headings": [
+        {"level": 1, "text": "Cardiology Department"},
+        {"level": 2, "text": "For chronic condition management"}
+      ],
+      "main_text": "Our Cardiology department offers same-day appointments for heart specialist consultations. We accept insurance from most major providers. Popular with senior patients managing chronic conditions. Consultation fee is $150 without insurance.",
+      "structured_data": {
+        "jsonld": [
+          {"parse_ok": true, "data": {"@type": "MedicalClinic", "name": "Cardiology Department"}}
+        ]
+      },
+      "schema_types": ["MedicalClinic"]
+    },
+    {
+      "url": "https://example-hospital.test/departments/pediatrics",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "product",
+      "lang": "en",
+      "title": "Pediatrics Department — Care for Children",
+      "meta_description": "Routine checkups and vaccinations for children.",
+      "headings": [
+        {"level": 1, "text": "Pediatrics Department"},
+        {"level": 2, "text": "Routine checkups for children"}
+      ],
+      "main_text": "Our Pediatrics department provides routine checkups and vaccinations for children. We accept insurance. Telehealth video consultations are available for existing patients. Consultation fee is $100.",
+      "structured_data": {
+        "jsonld": [
+          {"parse_ok": true, "data": {"@type": "MedicalClinic", "name": "Pediatrics Department"}}
+        ]
+      },
+      "schema_types": ["MedicalClinic"]
+    },
+    {
+      "url": "https://example-hospital.test/new-patients",
+      "fetch_ok": true,
+      "status": 200,
+      "page_type": "utility",
+      "lang": "en",
+      "title": "New Patient Information",
+      "meta_description": "Information for new patients.",
+      "headings": [{"level": 1, "text": "New Patients"}],
+      "main_text": "New patients should bring identification and insurance information. We welcome new patients at all departments.",
+      "structured_data": {"jsonld": []}
+    }
+  ],
+  "clusters": [
+    {"id": "c01", "skeleton": "/departments/{slug}", "page_type": "product"}
+  ],
+  "coverage": {"pages_discovered": 4, "pages_sampled": 4, "pages_fetched": 4}
+}

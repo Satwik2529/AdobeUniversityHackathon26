@@ -1,0 +1,19 @@
+{
+  "negative_control": false,
+  "must_include": [
+    {
+      "check_id": "ACC.ROBOTS_BLOCKS_RETRIEVAL",
+      "min_severity": "critical"
+    }
+  ],
+  "must_not_include": [
+    "ACC.TRAINING_ONLY_BLOCK",
+    "ACC.ROBOTS_BLOCKS_ALL"
+  ],
+  "allowed": [
+    "ACC.ROBOTS_MISSING"
+  ],
+  "notes": "Evidence must quote the literal matched rule and its line number.",
+  "fixture": "F02-robots-blocks-retrieval",
+  "forbid_any_above": null
+}

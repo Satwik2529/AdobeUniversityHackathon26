@@ -1,0 +1,21 @@
+{
+  "id": "F01-csr-shell",
+  "description": "Product content only exists after JavaScript runs.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "bundle.js",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}

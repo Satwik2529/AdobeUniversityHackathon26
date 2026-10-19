@@ -1,0 +1,20 @@
+{
+  "id": "F32-eng-healthy-action-and-related",
+  "description": "A product page with a clear action link and a genuine related-product link -- negative control.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}

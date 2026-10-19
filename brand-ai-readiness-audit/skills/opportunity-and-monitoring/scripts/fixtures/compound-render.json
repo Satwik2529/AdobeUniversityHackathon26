@@ -1,0 +1,43 @@
+{
+  "detector": "render-readability-audit",
+  "findings": [
+    {
+      "check_id": "RND.CSR_SHELL",
+      "title": "Finding for RND.CSR_SHELL",
+      "gate_impact": "degrades",
+      "reach": "template",
+      "certainty": "measured",
+      "funnel_stage": "understood",
+      "detector": "render-readability-audit",
+      "evidence": "Synthetic fixture evidence for RND.CSR_SHELL",
+      "affected_urls": [
+        "https://example.test/products/alpha.html",
+        "https://example.test/products/beta.html"
+      ],
+      "evidence_detail": {
+        "check_id": "RND.CSR_SHELL",
+        "method": "m",
+        "observed": {},
+        "expected": "e",
+        "sample": {
+          "checked": 3,
+          "failing": 3
+        },
+        "confidence": "high",
+        "nondeterministic": false,
+        "detector": "render-readability-audit"
+      },
+      "suggested_action": {
+        "summary": "Fix RND.CSR_SHELL",
+        "how": [
+          "step"
+        ],
+        "mechanism": "mechanism text",
+        "effort": "template-change",
+        "owner": "engineering",
+        "verification": "verify"
+      }
+    }
+  ],
+  "not_assessed": []
+}

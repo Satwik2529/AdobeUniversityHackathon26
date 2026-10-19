@@ -1,0 +1,13 @@
+{
+  "negative_control": true,
+  "forbid_any_above": "info",
+  "must_include": [],
+  "must_not_include": [
+    "ACC.NOINDEX_ON_CONTENT",
+    "ACC.ROBOTS_BLOCKS_ALL",
+    "ACC.ROBOTS_BLOCKS_RETRIEVAL"
+  ],
+  "allowed": [],
+  "notes": "Cart, account, checkout and search are correctly excluded from indexing. Flagging them is the classic utility-page false positive.",
+  "fixture": "F11-noindex-utility-ok"
+}

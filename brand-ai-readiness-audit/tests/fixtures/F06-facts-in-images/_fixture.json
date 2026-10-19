@@ -1,0 +1,23 @@
+{
+  "id": "F06-facts-in-images",
+  "description": "Specifications exist only as an image and a PDF.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml",
+    "specs-alpha.pdf",
+    "specs-beta.pdf",
+    "specs-gamma.pdf"
+  ],
+  "negative_control": false
+}

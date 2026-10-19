@@ -1,0 +1,20 @@
+{
+  "id": "F02-robots-blocks-retrieval",
+  "description": "Retrieval and user-triggered agents disallowed sitewide.",
+  "files": [
+    "_rules.json",
+    "about.html",
+    "contact.html",
+    "faq.html",
+    "index.html",
+    "legal.html",
+    "products/alpha.html",
+    "products/beta.html",
+    "products/gamma.html",
+    "products/index.html",
+    "robots.txt",
+    "search.html",
+    "sitemap.xml"
+  ],
+  "negative_control": false
+}
