@@ -1,4 +1,4 @@
-# Brand AI Readiness Audit
+# Brand AI Readiness Audit and query processing
 
 **An Agent Skill marketplace that audits any public website, read-only, for why AI
 assistants can't find, read, understand or quote the brand — and emits one
