@@ -4,7 +4,7 @@
 assistants can't find, read, understand or quote the brand — and emits one
 evidence-backed report with prioritized fixes.**
 
-Built for the Adobe University Hackathon 2026.
+Built for the Adobe University Hackathon 2026 by a team of three — see [Team](#team).
 
 ---
 
@@ -246,6 +246,14 @@ Microdata-only site, and correctly noindexed utility pages.
 - Freshness checks compare the site only against itself — no off-site corroboration.
 - Lexical checks run only where the page language is detected and supported; structural
   checks run everywhere.
+
+## Team
+
+| Name | GitHub | LinkedIn |
+|---|---|---|
+| Pathange Sai Pranav | [@psp2535](https://github.com/psp2535) | [pathangesaipranav](https://www.linkedin.com/in/pathangesaipranav/) |
+| Chakali Surendra | [@suri5790](https://github.com/suri5790) | [surendrachakali](https://www.linkedin.com/in/surendrachakali/) |
+| Duppala Satwik | [@Satwik2529](https://github.com/Satwik2529) | [satwik2529dsk](https://www.linkedin.com/in/satwik2529dsk/) |
 
 ## License
 
