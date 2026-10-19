@@ -1,322 +1,220 @@
-# Brand AI Readiness Audit + Query Intelligence
+# Brand AI Readiness Audit
 
-Point it at a website. It tells you — with cited evidence, not guesses —
-whether AI assistants can find, read, understand and quote the brand, and
-whether the site could actually answer specific natural-language questions
-a real user might ask.
+**An Agent Skill marketplace that audits any public website, read-only, for why AI
+assistants can't find, read, understand or quote the brand — and emits one
+evidence-backed report with prioritized fixes.**
 
-## What problem does this solve?
-
-A website can genuinely contain the information a user wants and still fail
-an AI assistant: the fact might be locked in an image, blocked by robots.txt
-for retrieval bots, contradicted elsewhere on the site, or simply never
-tied together into one place. **Brand AI Readiness Audit** finds those
-structural gaps. **Query Intelligence** goes one step further: given an
-actual query ("best laptop for students under ₹60,000 with 16GB RAM"), it
-checks whether the site's own already-captured evidence could support that
-specific answer — and shows exactly why or why not.
-
-## Two systems, one direction of dependency
-
-```
-Brand AI-Readiness Audit  (9 Agent Skills, read-only, works standalone)
-          │
-          │  snapshot.json / report.json  — READ ONLY, never written to
-          ▼
-   Query Intelligence     (separate subsystem, reads the audit's output)
-```
-
-The audit works completely on its own. Query Intelligence is optional and
-can be deleted without changing anything the audit does — it only ever
-*reads* what the audit already produced.
+Built for the Adobe University Hackathon 2026.
 
 ---
 
+## What problem does this solve?
+
+A website can genuinely contain the information a user wants and still fail an AI
+assistant. The fact might be locked in an image, blocked by `robots.txt` for retrieval
+bots, contradicted elsewhere on the site, rendered only by JavaScript, or never tied to a
+clearly identified brand. "The page is indexed" does not mean "the assistant will mention
+it."
+
+This project finds those structural gaps, cites the exact evidence for each one, and
+tells the site owner what to fix first.
+
 ## Key capabilities
 
-- **Read-only audit** of any public website: crawl access, render/readability
-  gaps, structured data, answer retrievability, freshness/contradictions,
-  on-site engagement — each owned by its own Agent Skill.
-- **Evidence-backed findings only** — no concrete URL and observed value, no
-  finding. Nothing is asserted without a citation.
-- **Query Intelligence**: give it a real question, see it decomposed into
-  requirements, each checked against the site's own evidence, with an
-  explainable, multi-dimensional score — not a single opaque percentage.
-- **Cross-entity consistency checking** so a query isn't marked "supported"
-  by evidence assembled from three unrelated products (see [§ The
-  combination check](#the-combination-check)).
-- **Domain-aware** without being domain-*specific* — one NLP engine, four
-  pluggable vocabularies (shopping / education / healthcare / generic).
-- **No API key, no external LLM, no extra network access.** Query
-  Intelligence is deterministic rule-based extraction over a controlled
-  vocabulary, not a model call.
+- **Nine Agent Skills, one per gate of the discovery funnel** — crawl access,
+  render/readability, structured data and entity identity, answer retrievability,
+  freshness and contradictions, on-site engagement, plus opportunities and monitoring.
+- **Evidence-or-silence.** No concrete URL and observed value, no finding. Enforced by a
+  validator, so an unevidenced finding cannot even be emitted.
+- **Read-only and recommend-only.** GET/HEAD only, `robots.txt` respected, no
+  authentication, no bot-challenge circumvention, and nothing is ever written back to the
+  audited site.
+- **Precision-engineered.** Training-only crawler blocks, valid Microdata, correctly
+  noindexed utility pages and non-English sites are *not* reported as defects.
+- **Honest coverage.** Anything that could not be checked is listed under
+  `coverage.not_assessed` — never a silent pass or fail.
+- **Zero dependencies.** Python 3.9+ standard library only. No API keys, no LLM calls.
 
 ---
 
 ## How it works
 
-### System architecture
+### The discovery funnel
 
-```
-                    WEBSITE
-                       │
-                       ▼
-              SITE SNAPSHOT COLLECTOR        ← the only step that touches the network
-                       │
-                       ▼
-              EXISTING AUDIT · 9 SKILLS
-                       │
-                       ▼
-              AUDIT REPORT (report.json / report.md)
-                       │
-                       ▼
-             QUERY INTELLIGENCE  (reads the snapshot + report, read-only)
-                       │
-                       ▼
-                 NLP ENGINE
-                       │
-       ┌───────────────┼───────────────┐
-       ▼               ▼               ▼
-    Intent          Entity        Attributes / Constraints
-       │               │               │
-       └───────────────┴───────────────┘
-                       ▼
-                 Requirements
-                       │
-                       ▼
-             Evidence retrieval  (search the frozen snapshot)
-                       │
-                       ▼
-             Evidence verification + combination check
-                       │
-                       ▼
-        Score + Explanation  (Coverage · Answerability · Quality · Opportunity)
-                       │
-                       ▼
-               query-result.json
-```
-
-### Brand AI Readiness Audit
-
-Nine Agent Skills, each owning one gate of the discovery funnel:
+Discovery is a funnel, not a switch. A page can pass one stage and fail the next, and a
+fix aimed at the wrong stage does nothing — so the marketplace has one detector per gate:
 
 ```
 Exists → discovered → accessible → readable → understood → retrieved → selected → cited
 ```
 
-| Skill | Purpose |
-|---|---|
-| `brand-ai-readiness-audit` *(entrypoint)* | Plans the audit, dispatches every skill below, merges and deduplicates findings, emits `report.json` / `report.md`. |
-| `site-snapshot-collector` | **The only skill that touches the network.** Parses `robots.txt`, discovers and samples URLs, fetches each page as a crawler and (optionally) a browser. Emits `snapshot.json`. |
-| `crawl-access-audit` | Robots policy per crawler role, `noindex`, sitemap health, redirects, canonicals, user-agent blocking. |
-| `render-readability-audit` | Raw-HTML vs. rendered-DOM gaps, facts locked in images/PDFs, content behind interaction. |
-| `structured-data-entity-audit` | Structured-data validity, structured-vs-visible contradictions, entity identity. |
-| `answer-retrievability-audit` | Whether a machine can locate and quote the exact fact a question asks for. |
-| `freshness-corroboration-audit` | Which version of a fact survives: intra-site contradictions, stale content, availability signals. |
-| `engagement-audit` | Whether a visitor who found something useful can follow a next step. |
-| `opportunity-and-monitoring` | Cross-detector opportunities and the measurement plan (capped at 8). |
-
-Read-only and recommend-only: GET/HEAD only, robots.txt respected, no
-authentication, no bot-challenge circumvention, and no skill ever writes
-back to the audited site.
-
-### Query Intelligence
-
-**Example.** For the query:
-
-> "Best laptop for CSE students under ₹60,000 with 16GB RAM and good
-> battery life"
-
-the engine extracts:
+### Architecture
 
 ```
-Intent:      recommendation
-Entity:      laptop
-Audience:    CSE students
-Price:       ≤ ₹60,000
-Attribute:   RAM = 16GB
-Attribute:   battery life = good
-Qualifier:   best   (subjective — flagged, never silently assumed true)
+                     WEBSITE
+                        │
+                        ▼
+            site-snapshot-collector          ← the only step that touches the network
+                        │
+                        ▼
+                  snapshot.json              (frozen evidence: robots, sitemap, pages,
+                        │                     raw HTML + rendered DOM, structured data)
+       ┌────────┬───────┼────────┬────────┬────────┐
+       ▼        ▼       ▼        ▼        ▼        ▼
+     crawl   render  structured answer freshness engagement     six detectors, each
+     access  readab.  data /    retriev. corrob.   audit         reads the same snapshot
+       │        │     entity     │        │        │
+       └────────┴───────┬────────┴────────┴────────┘
+                        ▼
+            opportunity-and-monitoring       cross-detector opportunities (max 8)
+                        │
+                        ▼
+      merge → dedupe → severity → priority → validate
+                        │
+                        ▼
+              report.json  +  report.md
 ```
 
-Each requirement is then checked, independently and with a citation, against
-the pages that actually identify "laptop" on the audited site — never a
-sitewide keyword search.
+### The skills
 
-#### Evidence statuses
+| Skill | Gate | What it checks |
+|---|---|---|
+| `brand-ai-readiness-audit` *(entrypoint)* | — | Plans the audit, dispatches every skill below, merges and deduplicates findings, applies severity and priority, emits the report. Owns no checks itself. |
+| `site-snapshot-collector` | — | **The only skill that touches the network.** Parses `robots.txt`, discovers and samples URLs, fetches each page as a crawler and (optionally) as a browser, plus a control fetch that exposes user-agent blocking. Emits `snapshot.json`. |
+| `crawl-access-audit` | discovered, accessible | Robots policy per crawler role, `noindex`, sitemap health, redirects, canonicals, user-agent blocking. |
+| `render-readability-audit` | readable | Raw-HTML vs. rendered-DOM gaps, facts locked in images/PDFs, content behind interaction, interstitials. |
+| `structured-data-entity-audit` | understood | Structured-data validity and coverage, structured-vs-visible contradictions, organization identity, `sameAs`. |
+| `answer-retrievability-audit` | retrieved, selected | Whether a machine can locate and quote the exact fact a question asks for: answer position, specs, units, entity naming. |
+| `freshness-corroboration-audit` | selected | Intra-site contradictions (e.g. price by SKU), date-signal integrity, stale content, availability signals. |
+| `engagement-audit` | post-discovery | Whether a visitor who found something useful can follow a next step: dead ends, orphan pages, missing action paths. |
+| `opportunity-and-monitoring` | — | Relationships *between* findings: compound opportunities, template leverage, monitoring and measurement plan. Capped at 8. |
 
-| Status | Meaning |
-|---|---|
-| `SUPPORTED` | The requirement is genuinely evidenced on the entity's own pages. |
-| `PARTIALLY_SUPPORTED` | Evidence exists but is incomplete or ambiguous. |
-| `NOT_FOUND` | No evidence for this requirement was found anywhere on the entity's pages. |
-| `CONTRADICTED` | Evidence was found, and it conflicts with what the query asked for. |
-| `NOT_ASSESSABLE` | Genuinely can't be checked (no entity to scope by, unsupported language, or a subjective claim like "best" no site can verify about itself). Excluded from the score, never penalized. |
-| `INVALID_REQUIREMENT` | The concept is real (RAM is a recognized attribute) but has **no evidenced relationship to this entity** — e.g. asking a keyboard product about RAM. Unlike `NOT_ASSESSABLE`, this *does* count against the score. |
-
-#### The combination check
-
-Checking requirements independently has a real failure mode. Suppose the
-site has:
-
-```
-Product A:  positioned for students, ₹45,000, 8GB RAM
-Product B:  16GB RAM, ₹95,000, no student positioning
-```
-
-A query for *"laptop for students under ₹60,000 with 16GB RAM"* must **not**
-be marked fully supported just because each individual piece is true of
-*some* product on the site — no single product actually satisfies all
-three. The combination checker verifies whether one page accounts for more
-than one requirement's evidence, and reports exactly which product came
-closest and what it was missing, instead of quietly assembling a
-"Frankenstein" answer from unrelated products.
-
-#### Domain support
-
-One NLP/evidence engine — it never branches on domain. What changes per
-site is only which **vocabulary** it's handed:
-
-```
-Common NLP + evidence engine
-       │
-       ├── Shopping schema     (RAM, storage, battery · students, gamers · programming, gaming)
-       ├── Education schema    (tuition, accreditation · undergrad/grad/international · research)
-       ├── Healthcare schema   (insurance, telehealth, specialty · patients, seniors · checkups)
-       └── Generic fallback    (no attribute guesses — only broad, safe audience/use-case terms)
-```
-
-Domain is detected from the snapshot's own `schema.org` types first (e.g.
-`Course` → education), falling back to a conservative keyword check only
-when structured data gives no signal at all. A site that doesn't confidently
-match any of the three schemas gets the generic fallback rather than a wrong
-guess.
-
-#### Scoring
-
-Never one blended percentage — five independent numbers:
-
-| Dimension | Answers |
-|---|---|
-| **Evidence coverage** | Of what could be checked, how well is it supported? |
-| **Answerability** | Of everything the query asked, how much could be checked at all? |
-| **Confidence** | How strong is the evidence behind the coverage number? |
-| **Query quality** | Is this a coherent, realistic, testable question? |
-| **Opportunity** | A realistic query with a genuine, actionable content gap? |
-
----
-
-## Where do I go?
-
-Each part of the codebase documents itself — this README stays an overview
-and links down to the detail:
-
-| I want to... | Read |
-|---|---|
-| Understand the whole project | this file |
-| Modify or add an audit check (an Agent Skill) | [brand-ai-readiness-audit/README.md](brand-ai-readiness-audit/README.md) |
-| Modify the NLP / Query Intelligence engine | [nlp-query-intelligence/README.md](brand-ai-readiness-audit/nlp-query-intelligence/README.md) |
-| Understand Query Intelligence's test suite and fixtures | [nlp-query-intelligence/tests/README.md](brand-ai-readiness-audit/nlp-query-intelligence/tests/README.md) |
-| Read the design rationale and supporting material | [docs/SUPPORTING_DOCS.md](docs/SUPPORTING_DOCS.md) |
-| See the backend architecture diagram | [Backend-Architecture.pdf](Backend-Architecture.pdf) |
-
-## Project structure
-
-```
-AdobeUniversityHackathon26/
-├── brand-ai-readiness-audit/          the 9-skill audit                                         → brand-ai-readiness-audit/README.md
-│   ├── marketplace.json                 manifest: 9 skills, 1 entrypoint
-│   ├── audit.py                         CLI: runs the full audit pipeline
-│   ├── skills/                          the 9 Agent Skills, each with its own SKILL.md
-│   ├── tests/                           audit fixtures + test harness
-│   ├── tools/                           marketplace validator + report summary helpers
-│   └── nlp-query-intelligence/          Query Intelligence — separate subsystem                 → nlp-query-intelligence/README.md
-│       ├── pipeline.py                    CLI: profile | generate | test | compare | dataset
-│       ├── lib/                           NLP engine, domain vocabularies, scoring, evidence
-│       ├── assets/                        JSON Schemas for its own output files
-│       └── tests/                         its own test suite + synthetic fixtures              → nlp-query-intelligence/tests/README.md
-├── dry-runs/books-toscrape/           a complete example audit of books.toscrape.com (checked in)
-├── docs/                              supporting docs, project explainer, Round 4 video plan
-├── Backend-Architecture.pdf           architecture diagram
-└── REPLAY_TEAMNAME.txt                Round 4 reproduction manifest (template)
-```
-
-`nlp-query-intelligence/` is **not** in `marketplace.json` — it's an
-application subsystem, not a tenth Agent Skill.
-
----
-
-## Prerequisites
-
-- **Python 3.9+** — no pip dependencies (standard library only).
-- *Optional:* Playwright + Chromium for the headless-render half of the
-  render checks (see [Limitations](#limitations)).
+Severity is derived from `gate_impact × reach × certainty`, with caps that stop
+low-certainty findings from being overclaimed.
 
 ---
 
 ## Quick Start
 
-```bash
-git clone https://github.com/psp2535/AdobeUniversityHackathon26.git
-cd AdobeUniversityHackathon26
-```
+### Prerequisites
+
+- **Python 3.9+** — nothing to `pip install`.
+- *Optional:* a headless browser for the rendered-DOM half of the render checks:
+  `pip install playwright && playwright install chromium`. Without it the audit still
+  runs on raw HTML and says so in the report.
 
 ### Run an audit
 
 ```bash
-cd brand-ai-readiness-audit
+git clone https://github.com/psp2535/AdobeUniversityHackathon26.git
+cd AdobeUniversityHackathon26/brand-ai-readiness-audit
 python audit.py https://example.com
 ```
 
-Writes `audit-output/snapshot.json`, `report.json` and `report.md`. Each run
-overwrites the last unless you pass `--out DIR`. Other useful flags:
-`--max-pages N`, `--render auto|on|off`, `--quiet`.
+It writes three files to `audit-output/`:
 
-You can also run it through an agent harness (e.g. Claude Code) by pointing
-the agent at `skills/brand-ai-readiness-audit/SKILL.md` as the marketplace
-entrypoint.
+| File | What it is |
+|---|---|
+| `report.md` | The human-readable report — **read this** |
+| `report.json` | The same data, schema-validated |
+| `snapshot.json` | The raw evidence every finding was derived from |
 
-No live site handy? `dry-runs/books-toscrape/` holds a complete, checked-in
-run — read its `report.md`.
+Useful options:
 
-### Use Query Intelligence
+| Option | Default | What it does |
+|---|---|---|
+| `--out DIR` | `audit-output` | Where to write the output |
+| `--max-pages N` | 25 (cap 40) | How many pages to sample |
+| `--render auto\|on\|off` | `auto` | Use a headless browser for JavaScript-rendered content; `auto` uses one only if installed |
+| `--time-budget N` | 150 | Seconds allowed for fetching |
+| `--user-agent-contact STR` | — | Contact string added to the user agent; polite on sites you don't own |
+| `--keep-going` | off | Finish with a partial report if one detector fails |
+| `--quiet` | off | Print only the summary |
 
-From the repository root, against the checked-in example run:
+For a short `SUMMARY.md` next to the report, run
+`python tools/run_audit_with_summary.py https://example.com` instead.
+
+### Run it through an AI agent
+
+The marketplace is designed to be driven by a general agent harness (e.g. Claude Code).
+Start the agent inside `brand-ai-readiness-audit/` and prompt:
+
+> Read `skills/brand-ai-readiness-audit/SKILL.md` and follow it as the marketplace
+> entrypoint. Audit https://example.com and write the report to `./audit-output`. Do not
+> invent findings: anything you cannot verify goes in `coverage.not_assessed`.
+
+`audit.py` runs exactly the same sequence of scripts the entrypoint skill tells an agent
+to follow — it contains no audit logic of its own.
+
+### Try it without a live site
+
+The 35 test fixtures are small websites served on localhost, so the whole pipeline runs
+offline:
 
 ```bash
-cd brand-ai-readiness-audit/nlp-query-intelligence
-python pipeline.py profile  --snapshot ../../dry-runs/books-toscrape/snapshot.json --out nlp-output/website-profile.json
-python pipeline.py generate --snapshot ../../dry-runs/books-toscrape/snapshot.json --profile nlp-output/website-profile.json --out nlp-output/generated-queries.json
-python pipeline.py test     --query "Is there a mystery book under 20 pounds" --snapshot ../../dry-runs/books-toscrape/snapshot.json --profile nlp-output/website-profile.json --report ../../dry-runs/books-toscrape/report.json --out nlp-output/result.json
+cd brand-ai-readiness-audit
+python tests/fixture_server.py --dir tests/fixtures/F07-stale-conflict   # terminal 1
+python audit.py http://localhost:8099 --render off                       # terminal 2
 ```
 
-To use your own audit instead, swap `../../dry-runs/books-toscrape/` for
-`../audit-output/`.
+Or just read a complete, checked-in run:
+[dry-runs/books-toscrape/report.md](dry-runs/books-toscrape/report.md).
 
-### Fresh-clone reproducibility
+---
 
-| | |
-|---|---|
-| **Required after cloning** | Python 3.9+. Nothing to install or build. |
-| **Checked in for an immediate demo** | `dry-runs/books-toscrape/` — a real, complete example run. |
-| **Generated, not committed** | `audit-output/`, `nlp-output/`, `__pycache__/` — all reproducible by running the commands above. |
+## Sample output
+
+From the checked-in audit of books.toscrape.com:
+
+```
+| Severity | Count |
+| Critical | 0     |
+| High     | 2     |
+| Medium   | 6     |
+| Low      | 2     |
+
+Do these first
+1. Publish a robots.txt that declares the sitemap and states an explicit policy
+   for training and retrieval crawlers.                 (engineering · trivial)
+2. Publish a sitemap with accurate lastmod values.      (engineering · config)
+3. Add one Organization node to the homepage, in JSON-LD, with a stable
+   identifier.                                          (engineering · template-change)
+```
+
+Every finding in the full report states what was observed (with example URLs), why it
+matters, what to do, its priority, effort and owner, and how to check the fix worked.
+
+---
+
+## Project structure
+
+```
+AdobeUniversityHackathon26/
+├── brand-ai-readiness-audit/          the Agent Skill marketplace   → brand-ai-readiness-audit/README.md
+│   ├── marketplace.json                 manifest: 9 skills, 1 entrypoint
+│   ├── audit.py                         CLI: runs the full audit pipeline
+│   ├── skills/                          the 9 Agent Skills, each with its own SKILL.md + scripts
+│   ├── tests/                           35 fixture sites, expectations, fixture server, test harness
+│   └── tools/                           marketplace validator, summary generator
+├── dry-runs/books-toscrape/           a complete example audit (report, findings, snapshot)
+├── docs/                              supporting docs and project explainer
+├── Backend-Architecture.pdf           architecture overview
+└── REPLAY_TEAMNAME.txt                Round 4 reproduction manifest
+```
 
 ---
 
 ## Testing
 
-From the repository root:
-
 ```bash
-# Existing 9-skill audit
 cd brand-ai-readiness-audit
 python tools/validate_marketplace.py --root . --strict   # Agent Skills spec conformance
-python tests/run_tests.py                                 # fixtures, scoring, determinism, schema
-
-# Query Intelligence
-cd nlp-query-intelligence
-python tests/run_tests.py                                 # its own layered harness + fixtures
+python tests/run_tests.py                                 # 8 layers, 35 fixtures: scoring, determinism, schema
 ```
+
+Several fixtures are **negative controls** whose target is zero findings above `info`: a
+clean site, a training-only crawler block, a non-English site, a two-page site, a
+Microdata-only site, and correctly noindexed utility pages.
 
 ---
 
@@ -324,36 +222,33 @@ python tests/run_tests.py                                 # its own layered harn
 
 | Problem | Fix |
 |---|---|
-| `python: command not found` | Some systems only expose `python3`, or need the Python launcher (`py`) on Windows. |
-| `audit.py` produces 0 findings | That can be a genuinely clean result, not an error — check the report's coverage section for what was actually assessed. |
-| Render checks listed under `coverage.not_assessed` | No headless browser is installed — see [Limitations](#limitations). The rest of the audit still runs. |
+| `python: command not found` | Use `python3`, or the `py` launcher on Windows. |
+| `audit.py` produces 0 findings | That can be a genuinely clean result — check the report's coverage section for what was actually assessed. |
+| Render checks listed under `coverage.not_assessed` | No headless browser is installed. Install Playwright + Chromium (see Prerequisites); the rest of the audit is unaffected. |
+| Exit code `1` | The audit could not be completed (e.g. the site was unreachable). Exit code `2` means bad arguments. |
 
 ---
 
-## Important design principles
+## Design principles
 
 - **Evidence-or-silence.** No concrete URL and observed value, no finding.
-- **Capability gating, not fabrication.** A check that couldn't run is
-  `NOT_ASSESSABLE` / `coverage.not_assessed`, never a quiet pass or fail.
-- **No technique guarantees citation**, and Query Intelligence never claims
-  to know what an AI assistant would actually answer — only whether the
-  site's own evidence could support the answer.
-- **Nothing commercial.** No paid placement, no sponsorships, no retainers.
+- **Capability gating, not fabrication.** A check that couldn't run is reported as
+  not assessed — the absence of our headless browser is never a defect in someone's site.
+- **No technique guarantees citation.** Structured data and server-side rendering raise
+  eligibility; the report never promises an assistant will cite you.
+- **Nothing commercial.** No paid placement, sponsorships or retainers — technical and
+  editorial levers only.
 
 ## Limitations
 
-- Query Intelligence's "valued" attribute extraction (explicit numbers like
-  `16GB`) is strongest for shopping/electronics; education and healthcare
-  domains rely more on presence-based attributes and price/duration
-  constraints.
-- Domain detection uses `schema.org` types first and a conservative keyword
-  fallback second — a site with neither signal falls back to the generic
-  vocabulary rather than guessing.
-- The audit's headless-render step (`--render on/auto`) requires
-  `pip install playwright && playwright install chromium`; without it, the
-  audit still runs against raw HTML and says so in the report.
+- Samples up to 40 pages per run, so very large sites are audited by template sample,
+  not exhaustively.
+- Rendered-DOM checks need Playwright + Chromium; without them those checks are reported
+  as not assessed.
+- Freshness checks compare the site only against itself — no off-site corroboration.
+- Lexical checks run only where the page language is detected and supported; structural
+  checks run everywhere.
 
 ## License
 
-Apache License 2.0 — see
-[`brand-ai-readiness-audit/LICENSE`](brand-ai-readiness-audit/LICENSE).
+Apache License 2.0 — see [`brand-ai-readiness-audit/LICENSE`](brand-ai-readiness-audit/LICENSE).

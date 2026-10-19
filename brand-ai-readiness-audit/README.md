@@ -255,11 +255,9 @@ brand-ai-readiness-audit/
 ├── README.md  LICENSE
 ├── skills/                   nine agentskills.io-compliant skill folders, each with its own SKILL.md
 ├── tools/validate_marketplace.py
-├── tests/                    fixtures, expectations, server, harness
-└── nlp-query-intelligence/   separate, optional subsystem — see its own README
+└── tests/                    fixtures, expectations, server, harness
 ```
 
 ## Related documentation
 
-- [Project root README](../README.md) — how this fits together with Query Intelligence
-- [Query Intelligence](nlp-query-intelligence/README.md) — the NLP subsystem that reads this audit's own output
+- [Project root README](../README.md) — project overview and quick start

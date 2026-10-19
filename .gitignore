@@ -55,3 +55,6 @@ docs/USER_MANUAL.md
 # Generated output
 audit-output/
 nlp-output/
+
+# Query Intelligence subsystem (kept locally, not published)
+brand-ai-readiness-audit/nlp-query-intelligence/
