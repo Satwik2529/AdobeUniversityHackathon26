@@ -197,7 +197,6 @@ AdobeUniversityHackathon26/
 │   ├── tests/                           35 fixture sites, expectations, fixture server, test harness
 │   └── tools/                           marketplace validator, summary generator
 ├── dry-runs/books-toscrape/           a complete example audit (report, findings, snapshot)
-├── docs/                              project explainer and Round 4 video plan
 └── Backend-Architecture.pdf           architecture overview
 ```
 
