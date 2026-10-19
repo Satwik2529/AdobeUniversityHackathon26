@@ -58,3 +58,8 @@ nlp-output/
 
 # Query Intelligence subsystem (kept locally, not published)
 brand-ai-readiness-audit/nlp-query-intelligence/
+
+# Submission write-up and Round 4 manifest template (kept locally, not published)
+docs/SUPPORTING_DOCS.md
+docs/SUPPORTING_DOCS.pdf
+REPLAY_TEAMNAME.txt
